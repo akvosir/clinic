@@ -26,34 +26,22 @@
 </head>
 <body>
 
-<div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-2.jpg">
-    	<div class="sidebar-wrapper">
-            <div class="logo">PERSON'S NAME</div>
-            <ul class="nav">
-                <li class="active">
-                    <a href="reception_cards.html">
-                        <i class="pe-7s-note2"></i>
-                        <p>Медичні картки</p>
-                    </a>
-                </li>
-								<li>
-                    <a href="reception_schedule.html">
-                        <i class="pe-7s-clock"></i>
-                        <p>Розклад</p>
-                    </a>
-									</li>
-									<li>
-                    <a href="reception_registration.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Реєстрація пацієнта</p>
-                    </a>
-									</li>
-            </ul>
+	<div class="wrapper">
+		<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-2.jpg">
+			<div class="sidebar-wrapper">
+						<div class="logo">PERSON'S NAME</div>
+						<ul class="nav">
+								<li class="active">
+										<a href="reception_cards.html">
+												<i class="pe-7s-note2"></i>
+												<p>Розклад</p>
+										</a>
+								</li>
+						</ul>
 
 
-    	</div>
-    </div>
+			</div>
+		</div>
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
@@ -105,33 +93,66 @@
 				<div class="content">
 						<div class="container-fluid">
 								<div class="row">
-									<div class="col-md-12">
-											<div class="card card-plain">
-													<div class="header">
-															<h4>Препарати</h4>
-													</div>
-													<div class="content table-responsive table-full-width">
-															<table class="table table-hover">
-																	<thead>
-																		<th>№</th>
-																		<th>ПІБ</th>
-																		<th>Дата народження</th>
-																		<th>Лікар</th>
-																	</thead>
-																	<tbody>
-																			<tr>
-																				<td></td>
-																				<td></td>
-																				<td></td>
-																				<td></td>
-																			</tr>
-																	</tbody>
-															</table>
-													</div>
-											</div>
+										<div class="col-md-16">
+												<div class="card">
+														<div class="header">
+																	<h4 class="title">ОБРАТИ СПЕЦІАЛІСТА</h4>
+														</div>
+														<div class="content">
+															<form>
+
+																		<div class="row">
+																			<div class="col-md-16">
+																					<div class="form-group">
+																						<label>ОБРАТИ СПЕЦІАЛІСТА</label>
+																						<input type="text" class="form-control" placeholder="Лікар-спеціаліст" value="">
+																					</div>
+																			</div>
+																		</div>
+
+																		<div class="row">
+																			<div class="col-md-16">
+																					<div class="form-group">
+																						<label>ОБРАТИ ЛІКАРЯ</label>
+																						<input type="text" class="form-control" placeholder="Лікар" value="">
+																					</div>
+																			</div>
+																		</div>
+
+																		<div class="row">
+																			<div class="col-md-2">
+																					<div class="form-group">
+																						<label>ДАТА</label>
+																						<input type="text" class="form-control" placeholder="Дата" value=""
+																					</div>
+																			</div>
+																		</div>
+
+																		<div class="row">
+																			<div class="col-md-2">
+																					<div class="form-group">
+																						<label>ЧАС</label>
+																						<input type="text" class="form-control" placeholder="Час" value="">
+																					</div>
+																			</div>
+																		</div>
+
+
+
+
+						                    </div>
+
+
+																	<button type="submit" class="btn btn-info btn-fill pull-right">Зберегти запис</button>
+																	<div class="clearfix"></div>
+															</form>
+														</div>
+												</div>
+										</div>
 									</div>
 								</div>
 							</div>
+
 
 
         <footer class="footer">
