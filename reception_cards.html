@@ -23,6 +23,12 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+
+
 </head>
 <body>
 
@@ -107,17 +113,11 @@
 								<div class="row">
 										<div class="col-md-16">
 												<div class="card">
-														<div class="header">
-																	<h4 class="title">КАРТКИ</h4>
-														</div>
 														<div class="content">
 															<form>
-
 																<div class="col-md-12">
 						                        <div class="card card-plain">
-																			<input type="text" class="form-control" placeholder="Пацієнт">
-						                            <div class="content table-responsive table-full-width">
-						                                <table class="table table-hover">
+						                                <table id="table_id" class="ui celled table" cellspacing="0" width="100%">
 						                                    <thead>
 																									<th>№</th>
 						                                      <th>ПІБ</th>
@@ -139,7 +139,6 @@
 						                                        </tr>
 						                                    </tbody>
 						                                </table>
-						                            </div>
 						                        </div>
 						                    </div>
 
@@ -190,5 +189,17 @@
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
+		<script src="http:////code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+<script src="http:////cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+
+		<script>
+		$(document).ready(function(){
+				$('#table_id').DataTable();
+		});
+		</script>
 </html>
