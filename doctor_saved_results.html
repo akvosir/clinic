@@ -32,23 +32,11 @@
             <div class="logo">PERSON'S NAME</div>
             <ul class="nav">
                 <li class="active">
-                    <a href="reception_cards.html">
+                    <a href="doctor_schedule.html">
                         <i class="pe-7s-note2"></i>
-                        <p>Медичні картки</p>
-                    </a>
-                </li>
-								<li>
-                    <a href="reception_schedule.html">
-                        <i class="pe-7s-clock"></i>
                         <p>Розклад</p>
                     </a>
-									</li>
-									<li>
-                    <a href="reception_registration.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Реєстрація пацієнта</p>
-                    </a>
-									</li>
+                </li>
             </ul>
 
 
@@ -108,98 +96,107 @@
 										<div class="col-md-16">
 												<div class="card">
 														<div class="header">
-																<h4 class="title">РЕЄСТРАЦІЯ ПАЦІЄНТА</h4>
+                                <h4 class="title">ВСЕ ДОЛЖНО БЫТЬ ЗАПОЛНЕННО</h4>
+																<h4 class="title">ІМЯ ПАЦІЄНТА</h4>
+																<h4 class="title">ВІК</h4>
 														</div>
 														<div class="content">
 															<form>
 
 																<div class="row">
-																	<div class="col-md-4">
+																	<div class="col-md-12">
 																			<div class="form-group">
-																					<label>Прізвище</label>
-																					<input type="text" class="form-control" placeholder="Прізвище" value="">
+																					<label>Причина відвідування</label>
+																					<input type="text" class="form-control" placeholder="Причина відвідування" value="">
 																			</div>
 																	</div>
-																	<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Ім'я</label>
-																						<input type="text" class="form-control" placeholder="Ім'я" value="">
-																				</div>
-																		</div>
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>По батькові</label>
-																						<input type="text" class="form-control" placeholder="По батькові" value="">
-																				</div>
-																		</div>
 																</div>
 
 																<div class="row">
-																	<div class="col-md-3">
+																	<div class="col-md-12">
 																			<div class="form-group">
-																				<label>Стать</label>
-																				<input type="text" class="form-control" placeholder="Стать" list="gender">
-																				<datalist id="gender">
-																					<option>Жінка</option>
-																					<option>Чоловік</option>
+																					<label>Симптоми</label>
+																					<input type="text" class="form-control" placeholder="Симптоми" value="">
+																			</div>
+																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="col-md-12">
+																			<div class="form-group">
+																					<label>Діагноз</label>
+																					<input type="text" class="form-control" placeholder="Діагноз" value="">
+																			</div>
+																	</div>
+																</div>
+
+																<div class="col-md-12">
+						                        <div class="card card-plain">
+						                            <div class="header">
+						                                <p class="category">Препарати</p>
+						                            </div>
+						                            <div class="content table-responsive table-full-width">
+						                                <table class="table table-hover">
+						                                    <thead>
+						                                      <th>Назва препарату</th>
+						                                    	<th>Спосіб прийому</th>
+						                                    	<th>Початок прийому</th>
+						                                    	<th>Кінець прийому</th>
+						                                    </thead>
+						                                    <tbody>
+						                                        <tr>
+																											<td>метеоспазмил</td>
+						                                        	<td>2 таб 3 раза в день до еды</td>
+						                                        	<td>12/05/2017</td>
+						                                        	<td>18/05/2017</td>
+						                                        </tr>
+						                                    </tbody>
+						                                </table>
+						                            </div>
+						                        </div>
+						                    </div>
+
+																<div class="row">
+																	<div class="col-md-12">
+																			<div class="form-group">
+																				<h4>РЕКОМЕНДОВАНІ</h4>
+																				<label>Консультація лікаря-спеціаліста</label>
+																				<input type="text" class="form-control" placeholder="Лікар-спеціаліст" list="specialists">
+																				<datalist id="specialists">
+																					<option>Гінеколог</option>
+																					<option>Гастроентеролог</option>
+																					<option>Офтальмолог</option>
+																					<option>Лор</option>
+																					<option>Невропатолог</option>
 																				</datalist>
 																			</div>
 																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="col-md-12">
+																			<div class="form-group">
+																				<label>Аналіз</label>
+																				<input type="text" class="form-control" placeholder="Аналізи" list="analysis">
+																				<datalist id="analysis">
+																					<option>kal</option>
+																					<option>mocha</option>
+																					<option>krov</option>
+																				</datalist>
+																			</div>
+																	</div>
+																</div>
+
+																<div class="row">
 																	<div class="col-md-4">
 																			<div class="form-group">
-																					<label>Дата народження</label>
-																					<input type="date" class="form-control" placeholder="Дата" value="">
+																				<label>Наступний прийом</label>
+																				<input type="date" class="form-control" placeholder="Дата" value="">
 																			</div>
 																	</div>
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label for="exampleInputEmail1">Електронна пошта</label>
-																						<input type="email" class="form-control" placeholder="Email">
-																				</div>
-																		</div>
 																</div>
 
-																<div class="row">
-																		<div class="col-md-12">
-																				<div class="form-group">
-																						<label>Адреса</label>
-																						<input type="text" class="form-control" placeholder="Домашня адреса" value="">
-																				</div>
-																		</div>
-																</div>
-
-																<div class="row">
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Місто</label>
-																						<input type="text" class="form-control" placeholder="Місто" value="">
-																				</div>
-																		</div>
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Поштовий індекс</label>
-																						<input type="number" class="form-control" placeholder="Індекс">
-																				</div>
-																		</div>
-																		<!--ISPRAVIT'-->
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Номер телефону</label>
-																						<input type="tel" class="form-control" placeholder="Номер телефону" value="">
-																				</div>
-																		</div>
-
-																</div>
-																	<div class="row">
-																			<div class="col-md-12">
-																					<div class="form-group">
-																							<label>Хронічні хвороби</label>
-																							<textarea rows="5" class="form-control" placeholder="" value=""></textarea>
-																					</div>
-																			</div>
-																	</div>
-
-																	<button type="submit" class="btn btn-info btn-fill pull-right">Додати пацієнта</button>
+																	<button type="submit" class="btn btn-info btn-fill pull-right">Зберегти</button>
 																	<div class="clearfix"></div>
 															</form>
 														</div>
@@ -208,7 +205,6 @@
 									</div>
 								</div>
 							</div>
-
 
         <footer class="footer">
             <div class="container-fluid">

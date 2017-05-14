@@ -32,7 +32,7 @@
 						<div class="logo">PERSON'S NAME</div>
 						<ul class="nav">
 								<li class="active">
-										<a href="reception_cards.html">
+										<a href="doctor_schedule.html">
 												<i class="pe-7s-note2"></i>
 												<p>Розклад</p>
 										</a>
@@ -105,7 +105,12 @@
 																			<div class="col-md-16">
 																					<div class="form-group">
 																						<label>ОБРАТИ ТИП АНАЛІЗУ</label>
-																						<input type="text" class="form-control" placeholder="Аналіз" value="">
+																						<input type="text" class="form-control" placeholder="Аналіз" list="anal"/>
+																						<datalist id = "anal">
+																							<option>kal</option>
+																							<option>mocha</option>
+																							<option>krov</option>
+																						</datalist>
 																					</div>
 																			</div>
 																		</div>
@@ -114,7 +119,7 @@
 																			<div class="col-md-2">
 																					<div class="form-group">
 																						<label>ДАТА</label>
-																						<input type="text" class="form-control" placeholder="Дата" value=""
+																						<input type="date" class="form-control" placeholder="Дата" value=""
 																					</div>
 																			</div>
 																		</div>
@@ -123,7 +128,7 @@
 																			<div class="col-md-2">
 																					<div class="form-group">
 																						<label>ЧАС</label>
-																						<input type="text" class="form-control" placeholder="Час" value="">
+																						<input type="time" class="form-control" placeholder="Час" value="">
 																					</div>
 																			</div>
 																		</div>

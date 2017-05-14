@@ -32,7 +32,7 @@
             <div class="logo">PERSON'S NAME</div>
             <ul class="nav">
                 <li class="active">
-                    <a href="reception_cards.html">
+                    <a href="doctor_schedule.html">
                         <i class="pe-7s-note2"></i>
                         <p>Розклад</p>
                     </a>
@@ -160,7 +160,14 @@
 																			<div class="form-group">
 																				<h4>РЕКОМЕНДОВАНІ</h4>
 																				<label>Консультація лікаря-спеціаліста</label>
-																				<input type="text" class="form-control" placeholder="Лікар-спеціаліст" value="">
+																				<input type="text" class="form-control" placeholder="Лікар-спеціаліст" list="specialists">
+																				<datalist id="specialists">
+																					<option>Гінеколог</option>
+																					<option>Гастроентеролог</option>
+																					<option>Офтальмолог</option>
+																					<option>Лор</option>
+																					<option>Невропатолог</option>
+																				</datalist>
 																			</div>
 																	</div>
 																</div>
@@ -169,7 +176,12 @@
 																	<div class="col-md-12">
 																			<div class="form-group">
 																				<label>Аналіз</label>
-																				<input type="text" class="form-control" placeholder="Аналізи" value="">
+																				<input type="text" class="form-control" placeholder="Аналізи" list="analysis">
+																				<datalist id="analysis">
+																					<option>kal</option>
+																					<option>mocha</option>
+																					<option>krov</option>
+																				</datalist>
 																			</div>
 																	</div>
 																</div>
@@ -178,7 +190,7 @@
 																	<div class="col-md-4">
 																			<div class="form-group">
 																				<label>Наступний прийом</label>
-																				<input type="text" class="form-control" placeholder="Лікар-спеціаліст" value="">
+																				<input type="date" class="form-control" placeholder="Дата" value="">
 																			</div>
 																	</div>
 																</div>

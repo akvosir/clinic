@@ -104,107 +104,123 @@
 
 				<div class="content">
 						<div class="container-fluid">
-								<div class="row">
 										<div class="col-md-16">
 												<div class="card">
 														<div class="header">
-																<h4 class="title">РЕЄСТРАЦІЯ ПАЦІЄНТА</h4>
+																<h4> Шевченко Тарас Григорович</h4>
 														</div>
+
 														<div class="content">
-															<form>
+															<ul role="tablist" class="nav nav-tabs">
+																<li role="presentation" class="active">
+																	<a href="#general_info" data-toggle="tab">Основна інформація</a>
+																</li>
+																<li>
+																	<a href="#visits" data-toggle="tab">Історія візитів</a>
+																</li>
+															</ul>
 
-																<div class="row">
-																	<div class="col-md-4">
-																			<div class="form-group">
-																					<label>Прізвище</label>
-																					<input type="text" class="form-control" placeholder="Прізвище" value="">
-																			</div>
-																	</div>
-																	<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Ім'я</label>
-																						<input type="text" class="form-control" placeholder="Ім'я" value="">
-																				</div>
-																		</div>
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>По батькові</label>
-																						<input type="text" class="form-control" placeholder="По батькові" value="">
-																				</div>
-																		</div>
-																</div>
+															<div class="tab-content">
+																<div id="general_info" class="tab-pane active">
+																	<form>
 
-																<div class="row">
-																	<div class="col-md-3">
-																			<div class="form-group">
-																				<label>Стать</label>
-																				<input type="text" class="form-control" placeholder="Стать" list="gender">
-																				<datalist id="gender">
-																					<option>Жінка</option>
-																					<option>Чоловік</option>
-																				</datalist>
-																			</div>
-																	</div>
-																	<div class="col-md-4">
-																			<div class="form-group">
-																					<label>Дата народження</label>
-																					<input type="date" class="form-control" placeholder="Дата" value="">
-																			</div>
-																	</div>
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label for="exampleInputEmail1">Електронна пошта</label>
-																						<input type="email" class="form-control" placeholder="Email">
-																				</div>
-																		</div>
-																</div>
-
-																<div class="row">
-																		<div class="col-md-12">
-																				<div class="form-group">
-																						<label>Адреса</label>
-																						<input type="text" class="form-control" placeholder="Домашня адреса" value="">
-																				</div>
-																		</div>
-																</div>
-
-																<div class="row">
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Місто</label>
-																						<input type="text" class="form-control" placeholder="Місто" value="">
-																				</div>
-																		</div>
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Поштовий індекс</label>
-																						<input type="number" class="form-control" placeholder="Індекс">
-																				</div>
-																		</div>
-																		<!--ISPRAVIT'-->
-																		<div class="col-md-4">
-																				<div class="form-group">
-																						<label>Номер телефону</label>
-																						<input type="tel" class="form-control" placeholder="Номер телефону" value="">
-																				</div>
-																		</div>
-
-																</div>
 																	<div class="row">
-																			<div class="col-md-12">
+																		<div class="col-md-4">
+																				<div class="form-group">
+																						<label>Дата народження</label>
+																						<input type="text" class="form-control" dasabled placeholder="Дата" value="09/03/1814">
+																				</div>
+																		</div>
+																		<div class="col-md-2">
+																				<div class="form-group">
+																						<label>Стать</label>
+																						<input type="text" class="form-control" placeholder="Стать" list="gender"  value="Чоловік">
+																						<datalist id="gender">
+																							<option>Жінка</option>
+																							<option>Чоловік</option>
+																						</datalist>
+																				</div>
+																		</div>
+
+																			<div class="col-md-4">
 																					<div class="form-group">
-																							<label>Хронічні хвороби</label>
-																							<textarea rows="5" class="form-control" placeholder="" value=""></textarea>
+																							<label for="exampleInputEmail1">Електронна пошта</label>
+																							<input type="email" class="form-control" placeholder="Email" value="13mynalo@gmail.com">
 																					</div>
 																			</div>
 																	</div>
 
-																	<button type="submit" class="btn btn-info btn-fill pull-right">Додати пацієнта</button>
-																	<div class="clearfix"></div>
-															</form>
+																	<div class="row">
+																			<div class="col-md-12">
+																					<div class="form-group">
+																							<label>Адреса</label>
+																							<input type="text" class="form-control" placeholder="Домашня адреса" value="Кріпацьке село, 5, 23">
+																					</div>
+																			</div>
+																	</div>
+
+																	<div class="row">
+																			<div class="col-md-4">
+																					<div class="form-group">
+																							<label>Місто</label>
+																							<input type="text" class="form-control" placeholder="Місто" value="Моринці">
+																					</div>
+																			</div>
+																			<div class="col-md-4">
+																					<div class="form-group">
+																							<label>Поштовий індекс</label>
+																							<input type="number" class="form-control" placeholder="Індекс" value="03024">
+																					</div>
+																			</div>
+																			<!--ISPRAVIT'-->
+																			<div class="col-md-4">
+																					<div class="form-group">
+																							<label>Номер телефону</label>
+																							<input type="tel" class="form-control" placeholder="Номер телефону" value="+38(050)-225-83-92">
+																					</div>
+																			</div>
+
+																	</div>
+																		<div class="row">
+																				<div class="col-md-12">
+																						<div class="form-group">
+																								<label>Хронічні хвороби</label>
+																								<textarea rows="5" class="form-control" placeholder="" value="">Журба за Вкраїну</textarea>
+																						</div>
+																				</div>
+																		</div>
+
+																</form>
+
+																</div>
+																<div id="visits" class="tab-pane">
+																	<form>
+																		<div class="content table-responsive table-full-width">
+																				<table class="table table-hover">
+																						<thead>
+																							<th>Дата візиту</th>
+																							<th>Лікар</th>
+																							<th>Результати</th>
+																						</thead>
+																						<tbody>
+																								<tr>
+																									<td>09/03/1814</td>
+																									<td>Шевченко Тарас Григорович</td>
+																									<td><a href="reception_saved_results.html">Результати</a></td>
+																								</tr>
+																								<tr>
+																									<td>27/08/1856</td>
+																									<td>Франко Іван Якович</td>
+																									<td><a href="reception_saved_results.html">Результати</a></td>
+																								</tr>
+																						</tbody>
+																				</table>
+																		</div>
+																	</form>
+																</div>
+															</div>
 														</div>
 												</div>
-										</div>
 									</div>
 								</div>
 							</div>
