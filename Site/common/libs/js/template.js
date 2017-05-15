@@ -10,7 +10,7 @@
 (function($){
 	$(document).ready(function(){
 	
-		$(".banner-image").backstretch('http://esite.io/projects/D18e2b07490b07c2b4448291991877d50/common/assets/banner.jpg');
+		//$(".banner-image").backstretch('http://esite.io/projects/D18e2b07490b07c2b4448291991877d50/common/assets/banner.jpg');
 		
 		// Fixed header
 		//-----------------------------------------------

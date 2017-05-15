@@ -5513,7 +5513,7 @@ button.close {
   outline: 0;
 }
 .modal.fade .modal-dialog {
-	width: 350px;
+	
   -webkit-transition: -webkit-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
@@ -5522,7 +5522,14 @@ button.close {
        -o-transform: translate(0, -45%);
           transform: translate(0, -45%);
 }
+
 .modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
        -o-transform: translate(0, 0);
@@ -5537,6 +5544,13 @@ button.close {
   width: auto;
   margin: 10px;
 }
+
+.modal-cab {
+  width: 350px;
+  position: relative;
+  margin: 10px;
+}
+
 .modal-content {
   position: relative;
   background-color: #fff;
