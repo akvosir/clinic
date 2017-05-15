@@ -69,20 +69,22 @@ h1 span,
 h2 span,
 h3 span,
 h4 span {
-	color: #339BEB;
+	color: #ffffff;
 }
 .text-colored {
 	color: #55acee;
 }
 a {
-	color: #55acee;
+	color: #673AB7;
 }
 a:hover {
-	color: #339BEB;
+	color: #ffffff;
+	text-decoration: none;
 }
 a:focus,
 a:active {
 	outline: none;
+	text-decoration: none;
 }
 .large {
 	font-size: 18px;
@@ -437,6 +439,8 @@ textarea {
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
+	
+	min-height:	300px;
 }
 .modal-header {
 	background-color: #55acee;
