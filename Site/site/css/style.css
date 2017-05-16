@@ -58,12 +58,13 @@ h4 {
 	font-weight: 700;
 }
 h5 {
-	font-size: 16px;
+	font-size: 14px;
+	color: #9E9E9E;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 400;
 }
 h6 {
-	font-weight: 700;
+	font-size: 16px;
 }
 h1 span,
 h2 span,
@@ -322,6 +323,7 @@ blockquote {
 }
 .btn-default {
 	color: #673AB7;
+	margin-top: 3rem;
 	border: 1px solid #cccccc;
 }
 .btn-default:hover {
@@ -439,8 +441,9 @@ textarea {
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
-	
-	min-height:	300px;
+	min-height:	180px;
+	display: flex;
+    flex-direction: column;
 }
 .modal-header {
 	background-color: #55acee;

@@ -5594,6 +5594,8 @@ button.close {
 .modal-body {
   position: relative;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 .modal-footer {
   padding: 15px;
