@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Collections;
+using MySql.Data.MySqlClient;
 
 namespace clinic
 { 
     public class Card
     {
-        private int idpc;
-        private String surname;
-        private String name;
-        private String fathers_name;
-        private DateTime birthday;
-        private String gender;
-        private String email;
-        private String address;
-        private String city;
-        private int zip;
-        private String telephone;
+        private String surname { get; set; }
+        private String name { get; set; }
+        private String fathers_name { get; set; }
+        private DateTime birthday { get; set; }
+        private String gender { get; set; }
+        private String email { get; set; }
+        private String address { get; set; }
+        private String city { get; set; }
+        private int zip { get; set; }
+        //private String telephone;
 
-        public Card(int Idpc, String Surname, String Name, String Fathers_name, DateTime Birthday, String Gender, String Email, String Address, String City, int Zip, String Telephone) {
-            this.idpc = Idpc;
+        public Card() { }
+        public Card(String Surname, String Name, String Fathers_name, DateTime Birthday, String Gender, String Email, String Address, String City, int Zip) {
             this.name = Name;
             this.surname = Surname;
             this.fathers_name = Fathers_name;
@@ -30,27 +29,59 @@ namespace clinic
             this.address = Address;
             this.city = City;
             this.zip = Zip;
-            this.telephone = Telephone;            
+            //this.telephone = Telephone;            
         }
 
-        public String getSurname { get; set; }
-        /*private String name;
-        private String fathers_name;
-        private DateTime birthday;
-        private String gender;
-        private String email;
-        private String city;
-        private int zip;
-        private String telephone;*/
 
-        //create hashset of cards
-        //get value by patient_id
+        public String Surname {
+            get { return surname; }
+            set { surname = value; }
+        }
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public String Fathers_name
+        {
+            get { return fathers_name; }
+            set { fathers_name = value; }
+        }
+        public DateTime Birthday
+        {
+            get { return birthday; }
+            set { birthday = value; }
+        }
+        public String Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+        public String Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public String Address {
+            get { return address; }
+            set { address = value; }
+        }
+        public String City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+        public int Zip
+        {
+            get { return zip; }
+            set { zip = value; }
+        }
+
     }
 
     public static class PatientSet {
-        public static HashSet<Card> set;
+        public static Hashtable set = new Hashtable();
 
-        static PatientSet() {
-        }
     }
 }

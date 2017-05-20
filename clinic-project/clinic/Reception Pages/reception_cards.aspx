@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="reception_cards.aspx.cs" Inherits="clinic.reception_cards" %>
 
+<asp:Content ID="Con" ContentPlaceHolderID="Content5" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#GridView1').DataTable();
+        });
+    </script>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Content1" runat="server">
     <li class="active">
         <a href="reception_cards.aspx">
@@ -31,26 +39,28 @@
     <div class="col-md-16">
         <div class="card">
             <div class="content">
-                <form>
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <table id="table_id" class="ui celled table" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                    <th>№</th>
-                                    <th>ПІБ</th>
-                                    <th>Дата народження</th>
-                                    <th>Картка пацієнта</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                     <%=getWhileLoopData()%>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="col-md-12">
+                    <div class="card card-plain">
+
+                        <asp:GridView runat="server" ID="GridView1" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
+                            <Columns>
+                                <asp:BoundField DataField="idpatient_card" HeaderText="ID" />
+                                <asp:TemplateField HeaderText="ПІБ">
+                                    <ItemTemplate>
+                                        <%# Eval("surname") + " " + Eval("name") + " " + Eval("fathers_name")%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="birthday" HeaderText="birthday" />
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="card_Click" runat="server" OnClick="card_Click" ItemStyle-Width="150">Картка</asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                     </div>
-                    <div class="clearfix"></div>
-                </form>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>

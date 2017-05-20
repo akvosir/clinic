@@ -31,28 +31,36 @@
     <div class="col-md-16">
         <div class="card">
             <div class="header">
-                <asp:Label runat="server" ID="rci_name">FUCKERY</asp:Label>
+                <asp:Label runat="server"  ID="rci_name"></asp:Label>
                 
             </div>  
 
             <div class="content">
                 <ul role="tablist" class="nav nav-tabs">
                     <li role="presentation" class="active">
-                        <a href="#general_info" data-toggle="tab">Основна інформація</a>
+                        <a href="#general_info" aria-controls="general_info" role="tab" data-toggle="tab">Основна інформація</a>
                     </li>
                     <li>
-                        <a href="visits" data-toggle="tab">Історія візитів</a>
+                        <a href="#visits" aria-controls="visits" role="tab" data-toggle="tab">Історія візитів</a>
                     </li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="general_info" class="tab-pane active">
-                        <form>
+                    <div id="general_info" role="tabpanel" class="tab-pane active">
                             <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Номер картки</label>
+                                        <asp:TextBox  runat="server" type="text" id="rci_id" class="form-control" disabled/>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Дата народження</label>
-                                        <asp:TextBox  runat="server" type="text" id="rci_birthday" class="form-control" disabled placeholder="Дата"/>
+                                        <asp:TextBox  runat="server" type="text" id="rci_birthday" class="form-control" disabled/>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -100,7 +108,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Номер телефону</label>
-                                        <asp:TextBox  runat="server" type="tel" id="rci_number" class="form-control" placeholder="Номер телефону"/>
+                                        <asp:TextBox  runat="server" type="tel" id="rci_phonenumber" class="form-control" placeholder="Номер телефону"/>
                                     </div>
                                 </div>
 
@@ -109,15 +117,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Хронічні хвороби</label>
-                                        <textarea rows="5" id="rci_disease" class="form-control" placeholder="" value="">Журба за Вкраїну</textarea>
+                                        <textarea rows="5" id="rci_disease" class="form-control">Журба за Вкраїну</textarea>
                                     </div>
                                 </div>
-                            </div>
-
-                        </form>
-
+                            </div> 
                     </div>
-                    <div id="#visits" class="tab-pane">
+                    <div id="visits" role="tabpanel" class="tab-pane">
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover">
                                     <thead>

@@ -22,6 +22,15 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.Label rci_name;
         
         /// <summary>
+        /// rci_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox rci_id;
+        
+        /// <summary>
         /// rci_birthday control.
         /// </summary>
         /// <remarks>
@@ -76,12 +85,12 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.TextBox rci_zip;
         
         /// <summary>
-        /// rci_number control.
+        /// rci_phonenumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_number;
+        protected global::System.Web.UI.WebControls.TextBox rci_phonenumber;
     }
 }

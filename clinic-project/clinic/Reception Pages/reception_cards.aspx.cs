@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace clinic
@@ -12,16 +10,50 @@ namespace clinic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack) {
+                Bind();
+            }
+            //govno, initialization of PatientSet
+
         }
 
-        private void createLB() {
-        }
-
-        public string getWhileLoopData()
+        protected void Bind()
         {
-            
-            string htmlStr = "";
+            using (MySqlConnection con = new MySqlConnection(@"Data Source = localhost; Database = clinic; User Id = root; Password = 'root'"))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * from patient_card"))
+                {
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable ds = new DataTable())
+                        {
+                            sda.Fill(ds);
+                            if (ds.Rows.Count > 0)
+                            {
+                                GridView1.DataSource = ds;
+                                GridView1.DataBind();
+                                GridView1.UseAccessibleHeader = true;
+                                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            fillCards();
+        }
+
+        protected void card_Click(object sender, EventArgs e)
+        {
+            GridViewRow clickedRow = ((LinkButton)sender).NamingContainer as GridViewRow;
+            Response.Redirect("reception_card_individual.aspx?ID=" + Server.UrlEncode(clickedRow.Cells[0].Text));
+        }
+
+        protected void fillCards()
+        {
             MySqlConnection thisConnection = new MySqlConnection(@"Data Source = localhost; Database = clinic; User Id = root; Password = 'root'");
             MySqlCommand thisCommand = thisConnection.CreateCommand();
             thisCommand.CommandText = "SELECT * from patient_card";
@@ -31,31 +63,22 @@ namespace clinic
             while (reader.Read())
             {
                 int id = reader.GetInt32(0);
-                string Surname = reader.GetString(1);
-                string Name = reader.GetString(2);
-                string Fathers_name = reader.GetString(3);
+                String Surname = reader.GetString(1);
+                String Name = reader.GetString(2);
+                String Fathers_name = reader.GetString(3);
                 DateTime Birthday = reader.GetDateTime(4);
-                string Gender = reader.GetString(5);
-                string Email = reader.GetString(6);
-                string Address = reader.GetString(7);
-                string City = reader.GetString(8);
+                String Gender = reader.GetString(5);
+                String Email = reader.GetString(6);
+                String Address = reader.GetString(7);
+                String City = reader.GetString(8);
                 int Zip_code = reader.GetInt32(9);
-                string Telephone = reader.GetString(10);
-                //Card card = new Card(id, Surname, Name, Fathers_name, Birthday, Gender, Email, Address, City, Zip_code, Telephone);
-                
-                htmlStr += "<tr><td>" + id + "</td><td>" + Surname + " " + Name + " " + Fathers_name + "</td><td>" + Birthday.ToString("dd/MM/yyyy") 
-                    + "</td><td>" + "<a href=\"reception_card_individual.aspx\">Картка</a>" + "</td></tr>";
+                //string Telephone = reader.GetString(10);
+                Card card = new Card(Surname, Name, Fathers_name, Birthday, Gender, Email, Address, City, Zip_code);
+                PatientSet.set.Add(id, card);
             }
-           
-            thisConnection.Close();
-            
 
-            return htmlStr;
+            thisConnection.Close();
         }
 
     }
 }
-
-//get id from previous page
-//get card from hashset
-//fill textboxes with data

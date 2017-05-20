@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cards.aspx" />
     <Content Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.eot" />
@@ -105,6 +106,7 @@
     <Content Include="Reception Pages\reception_schedule.aspx" />
     <Content Include="Reception Pages\reception_card_individual.aspx" />
     <Content Include="Reception Pages\reception_results.aspx" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,7 +127,6 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\chartist.min.js" />
     <Content Include="assets\js\demo.js" />
-    <Content Include="assets\js\jquery-1.10.2.js" />
     <Content Include="assets\js\light-bootstrap-dashboard.js" />
     <Content Include="Login Page\index.js" />
     <Content Include="Login Page\LoginPage.aspx" />
@@ -133,6 +134,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cards.aspx.cs">
+      <DependentUpon>cards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cards.aspx.designer.cs">
+      <DependentUpon>cards.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login Page\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -184,6 +192,13 @@
     </Compile>
     <Compile Include="Reception Pages\reception_results.aspx.designer.cs">
       <DependentUpon>reception_results.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

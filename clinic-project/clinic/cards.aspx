@@ -1,16 +1,17 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="clinicWeb.Site" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cards.aspx.cs" Inherits="clinic.cards" %>
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <title></title>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script  type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -23,15 +24,24 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" rel="stylesheet" />
+    <link type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css" rel="stylesheet" />
 
-    <asp:ContentPlaceHolder ID="Content5" runat="server">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-    </asp:ContentPlaceHolder>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#GridView1').dataTable();
+        });
+    </script>
 </head>
-
 <body>
     <form id="form1" runat="server">
         <div class="wrapper">
@@ -39,14 +49,24 @@
                 <div class="sidebar-wrapper">
                     <div class="logo">PERSON'S NAME</div>
                     <ul class="nav">
-                        <asp:ContentPlaceHolder ID="Content1" runat="server">
-                        </asp:ContentPlaceHolder>
-
-                        <asp:ContentPlaceHolder ID="Content2" runat="server">
-                        </asp:ContentPlaceHolder>
-
-                        <asp:ContentPlaceHolder ID="Content3" runat="server">
-                        </asp:ContentPlaceHolder>
+                        <li>
+                            <a href="reception_registration.aspx">
+                                <i class="pe-7s-graph"></i>
+                                <p>Реєстрація пацієнта</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reception_registration.aspx">
+                                <i class="pe-7s-graph"></i>
+                                <p>Реєстрація пацієнта</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reception_registration.aspx">
+                                <i class="pe-7s-graph"></i>
+                                <p>Реєстрація пацієнта</p>
+                            </a>
+                        </li>
                     </ul>
 
 
@@ -77,7 +97,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href="">Account
-                            </a>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -88,9 +108,26 @@
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <asp:ContentPlaceHolder ID="mainContent" runat="server">
+                            <div class="col-md-16">
+        <div class="card">
+            <div class="content">
+                    <div class="col-md-12">
+                        <div class="card card-plain">
 
-                            </asp:ContentPlaceHolder>
+                            <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" Width="100%" AllowPaging="true">
+                                <Columns>
+                                    <asp:BoundField DataField="idpatient_card" HeaderText="ID" />
+                                    <asp:BoundField DataField="name" HeaderText="name" />
+                                    <asp:BoundField DataField="birthday" HeaderText="birthday" />
+                                </Columns>
+                            </asp:GridView>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +159,7 @@
 </body>
 
 <!--   Core JS Files   -->
-
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
@@ -136,5 +173,4 @@
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
-
 </html>
