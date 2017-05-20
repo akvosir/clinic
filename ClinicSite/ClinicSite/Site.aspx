@@ -10,6 +10,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap-combined.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
+    <link href="css/css/bootstrap.css" rel="stylesheet">
 
 		<!-- Font Awesome CSS -->
 	<link href="css/font-awesome/font-awesome/css/font-awesome.css" rel="stylesheet">

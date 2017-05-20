@@ -111,9 +111,11 @@
     <Content Include="assets\logo.jpg" />
     <Content Include="css\bootstrap-combined.min.css" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
+    <Content Include="css\bootstrap.css" />
     <Content Include="css\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="javas\bootstrap-datetimepicker.min.js" />
+    <Content Include="javas\bootstrap.js" />
     <Content Include="javas\bootstrap.min.js" />
     <Content Include="javas\isotope.pkgd.js" />
     <Content Include="javas\isotope.pkgd.min.js" />
