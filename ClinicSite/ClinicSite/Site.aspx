@@ -8,7 +8,8 @@
 	<title>Clinic without queue</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
-    <link href="css/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css">
 
 		<!-- Font Awesome CSS -->
 	<link href="css/font-awesome/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -739,8 +740,15 @@
 		<!-- JavaScript files placed at the end of the document so the pages load faster
 		================================================== -->
 		<!-- Jquery and Bootstap core js files -->
-		<script type="text/javascript" src="javas/jquery.min.js"></script>
-		<script type="text/javascript" src="javas/bootstrap.min.js"></script>
+        <script type="text/javascript" src="javas/jquery.min.js"></script>
+        <script type="text/javascript" src="javas/bootstrap.min.js"></script>
+        <script type="text/javascript" src="javas/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript">
+            $('#datetimepicker').datetimepicker({
+                format: 'dd/MM/yyyy hh:mm:ss'
+            });
+        </script>
 
 		<!-- Modernizr javascript -->
 		<script type="text/javascript" src="javas/modernizr.js"></script>
