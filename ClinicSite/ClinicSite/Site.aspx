@@ -67,7 +67,12 @@
 								<nav class="navbar navbar-default" role="navigation">
 									<div class="container-fluid">
 
-										
+										<div id="datetimepicker" class="input-append date">
+                                        <input type="text"></input>
+                                            <span class="add-on">
+                                                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                            </span>
+                                        </div>
 
 										<!-- Collect the nav links, forms, and other content for toggling -->
 										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
