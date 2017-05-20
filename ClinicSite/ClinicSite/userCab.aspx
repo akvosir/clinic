@@ -8,8 +8,9 @@
     <title>Clinic without queue</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="screen">
     <link href="css/css/bootstrap.css" rel="stylesheet">
-     <link href="css/css/bootstrap-datetimepicker.css" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -63,6 +64,14 @@
 					</div>
                     
 				</div>
+
+                <div id="datetimepicker" class="input-append date">
+                <input type="text"></input>
+                    <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                    </span>
+                </div>
+
 		</header>
     </div>
     </form>
@@ -82,7 +91,16 @@
                   </div>
               </div>
     
-    
-    <script type="text/javascript" src="javas/bootstrap.min.js"></script>
+        <script type="text/javascript" src="javas/jquery.min.js"></script>
+        <script type="text/javascript" src="javas/bootstrap.min.js"></script>
+        <script type="text/javascript" src="javas/bootstrap-datetimepicker.min.js"></script>
+
+        <script type="text/javascript">
+            $('#datetimepicker').datetimepicker({
+                format: 'dd/MM/yyyy hh:mm:ss'
+            });
+        </script>
+
+
 </body>
 </html>
