@@ -1,14 +1,6 @@
-/* Theme Name: Worthy - Free Powerful Theme by HtmlCoder
- * Author:HtmlCoder
- * Author URI:http://www.htmlcoder.me
- * Version:1.0.0
- * Created:November 2014
- * License: Creative Commons Attribution 3.0 License (https://creativecommons.org/licenses/by/3.0/)
- * File Description: Initializations of plugins 
- */
 
 (function($){
-	$(document).ready(function(){
+	//$(document).ready(function(){
 	
 		//$(".banner-image").backstretch('http://esite.io/projects/D18e2b07490b07c2b4448291991877d50/common/assets/banner.jpg');
 		
@@ -109,5 +101,5 @@
 			});
 		}
 
-	}); // End document ready
+	//}); // End document ready
 })(this.jQuery);
