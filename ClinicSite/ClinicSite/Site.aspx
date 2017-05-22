@@ -1,30 +1,21 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Site.aspx.cs" Inherits="ClinicSite.Site" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <meta charset="utf-8">
 	<title>Clinic without queue</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
     <link href="css/css/bootstrap.css" rel="stylesheet">
-
-		<!-- Font Awesome CSS -->
 	<link href="css/font-awesome/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/css/animations.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
-		<!-- Plugins -->
-	<link href="css/css/animations.css" rel="stylesheet">
-
-	<link href="css/style.css" rel="stylesheet">
-
-		<!-- Custom css --> 
-	<link href="css/css/custom.css" rel="stylesheet">
 </head>
 <body class="no-trans">
-		<!-- scrollToTop -->
-		<!-- ================ -->
-		
+	<form id="Site" runat ="server">
 
 		<!-- header start -->
 		<!-- ================ --> 
@@ -125,7 +116,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">
-						    <form class = "text-center">
+						    <div class = "text-center">
 						        <button class="btn btn-default" >
 									<a class="overlay-container" data-toggle="modal" data-target="#Visit">Записатися на прийом</a>
 								</button>
@@ -154,49 +145,79 @@
 												<h4 class="modal-title" id="project-2-label">Реєстрація</h4>
 											</div>
 											<div class="modal-body">
-												<form role="form" id="footer-form">
+												<div role="form" id="footer-form">
+                                                    <div class="form-group has-feedback">
+                                                            <asp:RadioButtonList ID="ddlGender" CssClass="radioButtonList" runat="server" RepeatDirection="Horizontal">
+                                                                <asp:ListItem Text="Ж" CssClass="radioButtonList" Value="1" />
+                                                                <asp:ListItem Text="M" CssClass="radioButtonList" Value="0" />
+                                                             </asp:RadioButtonList>
+													</div>
 													<div class="form-group has-feedback">
-														<label class="sr-only" for="1name">Призвище</label>
-														<input type="text" class="form-control" id="1name" placeholder="Призвище" name="1name" required>
+														<label class="sr-only">Призвище</label>
+														<asp:TextBox runat="server" type="text" ID="rec_surname" CssClass="form-control" placeholder="Прізвище"></asp:TextBox>
 														<i class="fa fa-user form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
-														<label class="sr-only" for="2name">Ім'я</label>
-														<input type="text" class="form-control" id="2name" placeholder="Ім'я" name="2name" required>
+														<label class="sr-only">Ім'я</label>
+														<asp:TextBox runat="server" type="text" ID="rec_name" CssClass="form-control" placeholder="Ім'я"></asp:TextBox>
 														<i class="fa fa-user form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
-														<label class="sr-only" for="3name">Побатькові</label>
-														<input type="text" class="form-control" id="3name" placeholder="Побатькові" name="3name" required>
+														<label class="sr-only">Побатькові</label>
+														<asp:TextBox runat="server" type="text" ID="rec_fathers" CssClass="form-control" placeholder="По батькові"></asp:TextBox>
 														<i class="fa fa-user form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
-														<label class="sr-only" for="phone">Дата народження</label>
-														<input type="data" class="form-control" id="date" placeholder="дд.мм.рр." name="date" required>
+														<label class="sr-only">Дата народження</label>
+                                                        <asp:TextBox runat="server" type="date" ID="rec_birthday" CssClass="form-control" placeholder="Дата"></asp:TextBox>
 													</div>
 													<div class="form-group has-feedback">
-														<label class="sr-only" for="phone">Телефон</label>
-														<input type="text" class="form-control" id="phone" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ" name="phone" required>
+														<label class="sr-only">Телефон</label>
+                                                        <asp:TextBox runat="server" type="text" ID="rec_number" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox>
 														<i class="fa fa-phone form-control-feedback"></i>
 													</div>
+                                                    <div class="form-group has-feedback">
+														<label class="sr-only">Адреса</label>
+                                                        <asp:TextBox runat="server" type="text" ID="rec_address" CssClass="form-control" placeholder="Домашня адреса"></asp:TextBox>
+														<%--<i class="fa fa-phone form-control-feedback"></i>--%>
+													</div>
+                                                    <div class="form-group has-feedback">
+														<label class="sr-only">Місто</label>
+                                                        <asp:TextBox runat="server" type="text" ID="rec_city" CssClass="form-control" placeholder="Місто"></asp:TextBox>
+														<%--<i class="fa fa-phone form-control-feedback"></i>--%>
+													</div>
+                                                    <div class="form-group has-feedback">
+														<label class="sr-only">>Поштовий індекс</label>
+                                                        <asp:TextBox runat="server" type="number" ID="rec_zip" CssClass="form-control" placeholder="Індекс"></asp:TextBox>
+													</div>
 													<div class="form-group has-feedback">
-															<label class="sr-only" for="email2">Пошта</label>
-															<input type="email" class="form-control" id="email2" placeholder="Введіть пошту" name="email2" required>
+															<label class="sr-only">Пошта</label>
+															<asp:TextBox runat="server" type="email" ID="rec_email" CssClass="form-control" placeholder="Пошта"></asp:TextBox>
 															<i class="fa fa-envelope form-control-feedback"></i>
 													</div>
+                                                    <div class="form-group has-feedback">
+														<label class="sr-only">Пароль</label>
+                                                        <asp:TextBox runat="server" type="password" ID="reg_psswrd" CssClass="form-control" placeholder="Введіть пароль"></asp:TextBox>
+													</div>
+                                                    <%--<div class="form-group has-feedback">
+																		<label class="sr-only" for="password2">Пароль</label>
+																		<input type="password" class="form-control" id="password2" placeholder="Повторіть пароль" name="password" required>
+													</div>--%>
 													<div class="form-group has-feedback">
 															<label for="checkbox">Я згоден на обробку особистих даних</label>
 															<input type="checkbox" id="checkbox" name="checkbox">
 													</div>
-													<input type="submit" value="Отримати пароль" class="btn btn-default">
-												</form>
+                                                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                                                    <asp:Button runat="server" Text="Відправити данні" OnClick="Register_Click" ID="Register"  CssClass="btn btn-default"/>
+                                                    <div class="clearfix"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 
 								
-						    </form>
+						    </div>
 							<h1 class="text-center">Назва клініки</h1>
 							<p class="lead text-center">Короткий опис клініки.</p>
 						</div>
@@ -742,25 +763,15 @@
 		<script type="text/javascript" src="javas/jquery.min.js"></script>
 		<script type="text/javascript" src="javas/bootstrap.min.js"></script>
 
-		<!-- Modernizr javascript -->
-		<script type="text/javascript" src="javas/modernizr.js"></script>
-
-		<!-- Isotope javascript -->
-		<script type="text/javascript" src="javas/isotope.pkgd.min.js"></script>
 		
-		<!-- Backstretch javascript -->
+		<script type="text/javascript" src="javas/modernizr.js"></script>
+		<script type="text/javascript" src="javas/isotope.pkgd.min.js"></script>
 		<script type="text/javascript" src="javas/jquery.backstretch.min.js"></script>
-
-		<!-- Appear javascript -->
 		<script type="text/javascript" src="javas/jquery.appear.js"></script>
-
-		<!-- Initialization of Plugins -->
 		<script type="text/javascript" src="javas/template.js"></script>
 
 	
 	
-
+        </form>
 	</body>
-</html>
-
 </html>
