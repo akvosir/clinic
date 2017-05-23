@@ -116,11 +116,15 @@
     <Content Include="css\bootstrap-combined.min.css" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\light-bootstrap-dashboard.css" />
+    <Content Include="css\pe-icon-7-stroke.css" />
     <Content Include="css\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="javas\bootstrap-datetimepicker.min.js" />
+    <Content Include="javas\bootstrap-checkbox-radio-switch.js" />
     <Content Include="javas\bootstrap.min.js" />
-    <Content Include="javas\login.js" />
+    <Content Include="javas\chartist.min.js" />
+    <Content Include="javas\bootstrap-notify.js" />
+    <Content Include="javas\light-bootstrap-dashboard.js" />
     <Content Include="javas\isotope.pkgd.min.js" />
     <Content Include="javas\jquery.appear.js" />
     <Content Include="javas\jquery.backstretch.min.js" />
@@ -137,7 +141,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="javas\.mfhidden" />
-    <Content Include="userCab.aspx" />
+    <Content Include="User.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.aspx" />
+    <Content Include="UserFunctions.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -159,12 +164,19 @@
     <Compile Include="Site.aspx.designer.cs">
       <DependentUpon>Site.aspx</DependentUpon>
     </Compile>
-    <Compile Include="userCab.aspx.cs">
-      <DependentUpon>userCab.aspx</DependentUpon>
+    <Compile Include="User.Master.cs">
+      <DependentUpon>User.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="userCab.aspx.designer.cs">
-      <DependentUpon>userCab.aspx</DependentUpon>
+    <Compile Include="User.Master.designer.cs">
+      <DependentUpon>User.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserFunctions.aspx.cs">
+      <DependentUpon>UserFunctions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserFunctions.aspx.designer.cs">
+      <DependentUpon>UserFunctions.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
