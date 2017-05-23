@@ -7,19 +7,19 @@ namespace clinic
 { 
     public class Card
     {
-        private String surname { get; set; }
-        private String name { get; set; }
-        private String fathers_name { get; set; }
-        private DateTime birthday { get; set; }
-        private String gender { get; set; }
-        private String email { get; set; }
-        private String address { get; set; }
-        private String city { get; set; }
-        private int zip { get; set; }
-        //private String telephone;
+        private String surname;
+        private String name;
+        private String fathers_name;
+        private DateTime birthday;
+        private String gender;
+        private String email;
+        private String address;
+        private String city;
+        private int zip;
+        private String telephone;
 
         public Card() { }
-        public Card(String Surname, String Name, String Fathers_name, DateTime Birthday, String Gender, String Email, String Address, String City, int Zip) {
+        public Card(String Surname, String Name, String Fathers_name, DateTime Birthday, String Gender, String Email, String Address, String City, int Zip, String Telephone) {
             this.name = Name;
             this.surname = Surname;
             this.fathers_name = Fathers_name;
@@ -29,7 +29,7 @@ namespace clinic
             this.address = Address;
             this.city = City;
             this.zip = Zip;
-            //this.telephone = Telephone;            
+            this.telephone = Telephone;            
         }
 
 
@@ -49,7 +49,7 @@ namespace clinic
         }
         public DateTime Birthday
         {
-            get { return birthday; }
+            get { return birthday.Date; }
             set { birthday = value; }
         }
         public String Gender
@@ -76,6 +76,11 @@ namespace clinic
         {
             get { return zip; }
             set { zip = value; }
+        }
+
+        public String Telephone {
+            get { return telephone; }
+            set { telephone = value; }
         }
 
     }

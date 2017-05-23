@@ -7,153 +7,171 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace clinic {
+namespace clinic.Doctor_Pages {
     
     
-    public partial class reception_card_individual {
+    public partial class doctor_card {
         
         /// <summary>
-        /// rci_name control.
+        /// sc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label rci_name;
+        protected global::System.Web.UI.WebControls.LinkButton sc;
         
         /// <summary>
-        /// rci_id control.
+        /// sp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_id;
+        protected global::System.Web.UI.WebControls.LinkButton sp;
         
         /// <summary>
-        /// rci_surname control.
+        /// an control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_surname;
+        protected global::System.Web.UI.WebControls.LinkButton an;
         
         /// <summary>
-        /// rci_editname control.
+        /// pat_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_editname;
+        protected global::System.Web.UI.WebControls.Label pat_name;
         
         /// <summary>
-        /// rci_fathers control.
+        /// pat_age control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_fathers;
+        protected global::System.Web.UI.WebControls.Label pat_age;
         
         /// <summary>
-        /// rci_birthday control.
+        /// vis_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_birthday;
+        protected global::System.Web.UI.WebControls.Label vis_date;
         
         /// <summary>
-        /// rci_gender control.
+        /// dc_reason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_gender;
+        protected global::System.Web.UI.WebControls.TextBox dc_reason;
         
         /// <summary>
-        /// rci_email control.
+        /// dc_symptoms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_email;
+        protected global::System.Web.UI.WebControls.TextBox dc_symptoms;
         
         /// <summary>
-        /// rci_address control.
+        /// dc_diagnosis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_address;
+        protected global::System.Web.UI.WebControls.TextBox dc_diagnosis;
         
         /// <summary>
-        /// rci_city control.
+        /// medicine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_city;
+        protected global::System.Web.UI.WebControls.DropDownList medicine;
         
         /// <summary>
-        /// rci_zip control.
+        /// med_take control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_zip;
+        protected global::System.Web.UI.WebControls.TextBox med_take;
         
         /// <summary>
-        /// rci_phonenumber control.
+        /// med_st control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rci_phonenumber;
+        protected global::System.Web.UI.WebControls.TextBox med_st;
         
         /// <summary>
-        /// rci_app control.
+        /// med_en control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button rci_app;
+        protected global::System.Web.UI.WebControls.TextBox med_en;
         
         /// <summary>
-        /// rci_edit control.
+        /// add_med control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button rci_edit;
+        protected global::System.Web.UI.WebControls.Button add_med;
         
         /// <summary>
-        /// rci_save control.
+        /// specialists control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button rci_save;
+        protected global::System.Web.UI.WebControls.DropDownList specialists;
         
         /// <summary>
-        /// visit_table control.
+        /// analysis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView visit_table;
+        protected global::System.Web.UI.WebControls.DropDownList analysis;
+        
+        /// <summary>
+        /// dc_next control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dc_next;
+        
+        /// <summary>
+        /// add_visit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button add_visit;
     }
 }

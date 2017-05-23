@@ -13,15 +13,16 @@ namespace clinic
             if (!IsPostBack) {
                 Bind();
             }
-            //govno, initialization of PatientSet
 
         }
 
         protected void Bind()
         {
-            using (MySqlConnection con = new MySqlConnection(@"Data Source = localhost; Database = clinic; User Id = root; Password = 'root'"))
+            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT * from patient_card"))
+
+                using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, surname, name, fathers_name, birthday, gender, email, " +
+                    "address, city, zip_code, telephone  FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient "))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -38,12 +39,14 @@ namespace clinic
                                 GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
                             }
 
+                            fillCards(con, cmd);
+
                         }
                     }
                 }
             }
 
-            fillCards();
+            
         }
 
         protected void card_Click(object sender, EventArgs e)
@@ -52,11 +55,8 @@ namespace clinic
             Response.Redirect("reception_card_individual.aspx?ID=" + Server.UrlEncode(clickedRow.Cells[0].Text));
         }
 
-        protected void fillCards()
+        protected void fillCards(MySqlConnection thisConnection, MySqlCommand thisCommand)
         {
-            MySqlConnection thisConnection = new MySqlConnection(@"Data Source = localhost; Database = clinic; User Id = root; Password = 'root'");
-            MySqlCommand thisCommand = thisConnection.CreateCommand();
-            thisCommand.CommandText = "SELECT * from patient_card";
             thisConnection.Open();
             MySqlDataReader reader = thisCommand.ExecuteReader();
 
@@ -72,9 +72,16 @@ namespace clinic
                 String Address = reader.GetString(7);
                 String City = reader.GetString(8);
                 int Zip_code = reader.GetInt32(9);
-                //string Telephone = reader.GetString(10);
-                Card card = new Card(Surname, Name, Fathers_name, Birthday, Gender, Email, Address, City, Zip_code);
-                PatientSet.set.Add(id, card);
+                string Telephone = reader.GetString(10);
+                Card card = new Card(Surname, Name, Fathers_name, Birthday, Gender, Email, Address, City, Zip_code, Telephone);
+
+                if (!PatientSet.set.Contains(id))
+                {
+                    PatientSet.set.Add(id, card);
+                }
+                else {
+                }
+
             }
 
             thisConnection.Close();

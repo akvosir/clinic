@@ -7,45 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace clinic {
+namespace clinicWeb {
     
     
-    public partial class WebForm3 {
+    public partial class Site {
         
         /// <summary>
-        /// dateTB control.
+        /// doctor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dateTB;
+        protected global::System.Web.UI.HtmlControls.HtmlForm doctor;
         
         /// <summary>
-        /// doc control.
+        /// ContentPlaceHolderMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList doc;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderMenu;
         
         /// <summary>
-        /// submit control.
+        /// mainContentdoc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submit;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder mainContentdoc;
     }
 }

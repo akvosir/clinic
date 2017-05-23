@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="reception_cards.aspx.cs" Inherits="clinic.reception_cards" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_cards.aspx.cs" Inherits="clinic.reception_cards" %>
 
 <asp:Content ID="Con" ContentPlaceHolderID="Content5" runat="server">
     <script type="text/javascript">
@@ -50,7 +50,7 @@
                                         <%# Eval("surname") + " " + Eval("name") + " " + Eval("fathers_name")%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="birthday" HeaderText="birthday" />
+                                <asp:BoundField DataField="birthday" DataFormatString="{0:dd-MM-yyyy}" HeaderText="Дата народження" />
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:LinkButton ID="card_Click" runat="server" OnClick="card_Click" ItemStyle-Width="150">Картка</asp:LinkButton>

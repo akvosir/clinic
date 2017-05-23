@@ -7,108 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace clinic {
+namespace clinic.Doctor_Pages {
     
     
-    public partial class reception_registration {
+    public partial class doctor_card_ind {
         
         /// <summary>
-        /// rec_surname control.
+        /// dsr_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_surname;
+        protected global::System.Web.UI.WebControls.Label dsr_name;
         
         /// <summary>
-        /// rec_name control.
+        /// dsr_visit_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_name;
+        protected global::System.Web.UI.WebControls.Label dsr_visit_date;
         
         /// <summary>
-        /// rec_fathers control.
+        /// dsr_reason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_fathers;
+        protected global::System.Web.UI.WebControls.TextBox dsr_reason;
         
         /// <summary>
-        /// ddlGender control.
+        /// dsr_symptoms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGender;
+        protected global::System.Web.UI.WebControls.TextBox dsr_symptoms;
         
         /// <summary>
-        /// rec_birthday control.
+        /// dsr_diagnosis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_birthday;
+        protected global::System.Web.UI.WebControls.TextBox dsr_diagnosis;
         
         /// <summary>
-        /// rec_email control.
+        /// dsr_med_table control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_email;
+        protected global::System.Web.UI.WebControls.GridView dsr_med_table;
         
         /// <summary>
-        /// rec_address control.
+        /// dsr_consult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_address;
+        protected global::System.Web.UI.WebControls.TextBox dsr_consult;
         
         /// <summary>
-        /// rec_city control.
+        /// dsr_analysis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_city;
+        protected global::System.Web.UI.WebControls.TextBox dsr_analysis;
         
         /// <summary>
-        /// rec_zip control.
+        /// dsr_next_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_zip;
-        
-        /// <summary>
-        /// rec_number control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_number;
-        
-        /// <summary>
-        /// rec_submitButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button rec_submitButton;
+        protected global::System.Web.UI.WebControls.TextBox dsr_next_date;
     }
 }

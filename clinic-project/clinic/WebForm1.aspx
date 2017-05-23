@@ -8,11 +8,11 @@
 <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" rel="stylesheet" />
 <link type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css" rel="stylesheet" />
     
-<script  type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script  type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
 
      <script type="text/javascript">
          $(document).ready(function () {
@@ -32,6 +32,7 @@
                     <asp:BoundField DataField="birthday" HeaderText="birthday" />
                 </Columns>
             </asp:GridView>
+
 
             
         </div>

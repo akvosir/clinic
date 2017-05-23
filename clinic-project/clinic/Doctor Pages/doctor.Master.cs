@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic
 {
-    public partial class WebForm5 : System.Web.UI.Page
+    public partial class doctor : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
