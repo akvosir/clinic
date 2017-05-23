@@ -22,7 +22,7 @@ namespace clinic.Doctor_Pages
         {
             using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Pwd = jnFq8Gk5Gk"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT analysis_name FROM analysis"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT analysis_name, id_analysis FROM analysis"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {

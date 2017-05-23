@@ -117,7 +117,7 @@ namespace clinic.Doctor_Pages
         {
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT doctor_specialty FROM doctors"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM doctor_specialty"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {

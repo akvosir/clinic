@@ -19,9 +19,9 @@ namespace clinic.Doctor_Pages
 
         protected void bindSpecialists()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT doctor_specialty FROM doctors", con))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM doctor_specialty", con))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -47,8 +47,8 @@ namespace clinic.Doctor_Pages
         {
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', doctor_surname, doctor_name, doctor_fathersname) AS 'name' " +
-                    "FROM doctors WHERE doctor_specialty =" + "'" + app_spec.SelectedValue + "'"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', doctor_surname, doctor_name, doctor_fathersname) AS 'name', id_doctor " +
+                    "FROM doctors WHERE doctor_specialty = " + "'" + app_spec.SelectedValue + "'"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -107,6 +107,11 @@ namespace clinic.Doctor_Pages
         {
             string id = Request.QueryString["ID"];
             Response.Redirect("doctor_analysis.aspx?ID=" + Server.UrlEncode(id));
+        }
+
+        protected void app_spec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bindSpecialistsByName();
         }
     }
 }

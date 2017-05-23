@@ -31,6 +31,15 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.TextBox rci_id;
         
         /// <summary>
+        /// rci_surnameLab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rci_surnameLab;
+        
+        /// <summary>
         /// rci_surname control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.TextBox rci_surname;
         
         /// <summary>
+        /// rci_nameLab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rci_nameLab;
+        
+        /// <summary>
         /// rci_editname control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace clinic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox rci_editname;
+        
+        /// <summary>
+        /// rci_fathnameLab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rci_fathnameLab;
         
         /// <summary>
         /// rci_fathers control.

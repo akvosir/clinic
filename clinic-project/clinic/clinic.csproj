@@ -112,6 +112,7 @@
     <Content Include="Reception Pages\reception_schedule.aspx" />
     <Content Include="Reception Pages\reception_card_individual.aspx" />
     <Content Include="Reception Pages\reception_saved_results.aspx" />
+    <Content Include="Reception Pages\reception_app.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="Doctor Pages\doctor.Master" />
     <Content Include="WebForm2.aspx" />
@@ -208,7 +209,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reception Pages\Card.cs" />
-    <Compile Include="Reception Pages\Visit.cs" />
     <Compile Include="Reception Pages\reception_registration.aspx.cs">
       <DependentUpon>reception_registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,6 +250,13 @@
     </Compile>
     <Compile Include="Reception Pages\reception_saved_results.aspx.designer.cs">
       <DependentUpon>reception_saved_results.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reception Pages\reception_app.aspx.cs">
+      <DependentUpon>reception_app.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reception Pages\reception_app.aspx.designer.cs">
+      <DependentUpon>reception_app.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

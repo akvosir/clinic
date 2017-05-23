@@ -13,16 +13,20 @@
     <div class="col-md-16">
         <div class="card">
             <div class="header">
-                <h4 class="title">РОЗКЛАД НА ДЕНЬ</h4>
-                <asp:TextBox runat="server" type="text" ID="ff" class="form-control" placeholder="Оберіть дату"></asp:TextBox>
+                <h2 class="title">РОЗКЛАД НА ДЕНЬ</h2>
             </div>
             <div class="content">
 
                 <div class="col-md-12">
                     <div class="card card-plain">
+
+                        <asp:TextBox runat="server" type="date" ID="date_bar" OnTextChanged="date_bar_TextChanged" AutoPostBack="true" class="form-control" placeholder="Оберіть дату"></asp:TextBox>
+
+
                         <div class="content table-responsive table-full-width">
                             <asp:GridView runat="server" ID="doc_schedule" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                                 <Columns>
+                                    <asp:BoundField DataField="idpatient_card" HeaderText="Номер картки" />
                                     <asp:BoundField DataField="start_app" DataFormatString="{0:t}" HeaderText="Час прийому" />
                                     <asp:TemplateField HeaderText="ПІБ">
                                         <ItemTemplate>

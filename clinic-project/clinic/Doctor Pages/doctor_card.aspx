@@ -96,7 +96,7 @@
                         <div class="form-group">
                             <h4>РЕКОМЕНДОВАНІ</h4>
                             <label>Консультація лікаря-спеціаліста</label>
-                            <asp:DropDownList runat="server" ID="specialists" DataValueField="doctor_specialty" class="form-control">
+                            <asp:DropDownList runat="server" ID="specialists" DataValueField="name_specialty" class="form-control">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Аналіз</label>
-                            <<asp:DropDownList runat="server" ID="analysis" DataValueField="analysis_name" class="form-control">
+                            <asp:DropDownList runat="server" ID="analysis" DataValueField="analysis_name" class="form-control">
                             </asp:DropDownList>
                             <!--add dynamic button-->
                         </div>

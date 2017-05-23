@@ -12,17 +12,17 @@ namespace clinic.Doctor_Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                d_schedule();
+                d_schedule(DateTime.Now);
             }
         }
 
-        protected void d_schedule()
+        protected void d_schedule(DateTime date)
         {
             //after login get doctor's id
-            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT patient_card.idpatient_card, patient_card.name, patient_card.surname, patient_card.fathers_name, start_app FROM `doctor_schedule` " +
-                    "INNER JOIN patient_card ON patient = patient_card.idpatient_card WHERE doctor = 1"))
+                    "INNER JOIN patient_card ON patient = patient_card.idpatient_card WHERE doctor = 1 AND date(start_app) = '" + date.ToString("yyyy-MM-dd") + "'"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -55,6 +55,10 @@ namespace clinic.Doctor_Pages
         {
             GridViewRow clickedRow = ((LinkButton)sender).NamingContainer as GridViewRow;
             Response.Redirect("doctor_card_ind.aspx?ID=" + Server.UrlEncode(clickedRow.Cells[0].Text));
+        }
+        protected void date_bar_TextChanged(object sender, EventArgs e)
+        {
+            d_schedule(DateTime.Parse(date_bar.Text));
         }
     }
 }

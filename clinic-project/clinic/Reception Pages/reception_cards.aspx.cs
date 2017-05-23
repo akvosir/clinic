@@ -52,6 +52,7 @@ namespace clinic
         protected void card_Click(object sender, EventArgs e)
         {
             GridViewRow clickedRow = ((LinkButton)sender).NamingContainer as GridViewRow;
+            Session["page"] = "cards";
             Response.Redirect("reception_card_individual.aspx?ID=" + Server.UrlEncode(clickedRow.Cells[0].Text));
         }
 

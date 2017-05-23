@@ -49,16 +49,19 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <asp:Label runat="server" ID="rci_surnameLab" Text="Прізвище" Visible="false"></asp:Label>
                                     <asp:TextBox runat="server" Visible="false" type="text" AutoPostBack="true" ID="rci_surname" class="form-control" placeholder="Прізвище"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
+                                    <asp:Label runat="server" ID="rci_nameLab" Text="Ім'я" Visible="false"></asp:Label>
                                     <asp:TextBox runat="server" Visible="false" type="text" ID="rci_editname" class="form-control" placeholder="Ім'я"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <asp:Label runat="server" ID="rci_fathnameLab" Text="По батькові" Visible="false"></asp:Label>
                                     <asp:TextBox runat="server" Visible="false" type="text" ID="rci_fathers" class="form-control" placeholder="По батькові"></asp:TextBox>
                                 </div>
                             </div>
@@ -126,25 +129,20 @@
                             </div>
                         </div>
 
-                        <div class="btn-group btn-group-justified">
-                            <div class="btn-group">
-                                <asp:Button runat="server" Text="Записати на прийом" type="button" ID="rci_app" class="btn btn-primary"></asp:Button>
-                            </div>
-                            <div class="btn-group">
-                                <asp:Button runat="server" Text="Змінити інформацію про пацієнта" OnClick="rci_edit_Click" type="button" ID="rci_edit" class="btn btn-primary"></asp:Button>
-                            </div>
-                            <div class="btn-group">
-                                <asp:Button runat="server" Text="Зберегти" Visible="false" type="button" ID="rci_save" OnClick="rci_save_Click" class="btn btn-primary"></asp:Button>
-                            </div>
+                      
+                                <asp:Button runat="server" Text="Записати на прийом" type="button" ID="rci_app" OnClick="rci_app_Click" class="btn btn-info btn-fill"></asp:Button>
+                                <asp:Button runat="server" Text="Змінити інформацію про пацієнта" OnClick="rci_edit_Click" type="button" ID="rci_edit" class="btn btn-info btn-fill"></asp:Button>
+                                <asp:Button runat="server" Text="Зберегти" Visible="false" type="button" ID="rci_save" OnClick="rci_save_Click" class="btn btn-info btn-fill"></asp:Button>
+                                                       
                         </div>
-                    </div>
+
 
                     <div class="container">
                         <h4>ІСТОРІЯ ВІЗИТІВ</h4>
                         <div class="card card-plain">
                             <asp:GridView runat="server" ID="visit_table" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                                 <Columns>
-                                    <asp:BoundField DataField="visit_date" HeaderText="Дата візиту" />
+                                    <asp:BoundField DataField="visit_date" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Дата візиту" />
                                     <asp:TemplateField HeaderText="Лікар">
                                         <ItemTemplate>
                                             <%# Eval("doctor_surname") + " " + Eval("doctor_name") + " " + Eval("doctor_fathersname")%>
