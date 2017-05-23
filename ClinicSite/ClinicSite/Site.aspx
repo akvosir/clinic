@@ -148,8 +148,8 @@
 												<form role="form" runat ="server" id="RegisterForm">
                                                     <div class="form-group has-feedback">
                                                             <asp:RadioButtonList ID="ddlGender" CssClass="radioButtonList" runat="server" RepeatDirection="Horizontal">
-                                                                <asp:ListItem Text="Ж" CssClass="radioButtonList" Value="1" />
-                                                                <asp:ListItem Text="M" CssClass="radioButtonList" Value="0" />
+                                                                <asp:ListItem Text="Ж" CssClass="radioButtonList" Value="Жінка" />
+                                                                <asp:ListItem Text="M" CssClass="radioButtonList" Value="Чоловік" />
                                                              </asp:RadioButtonList>
 													</div>
 													<div class="form-group has-feedback">

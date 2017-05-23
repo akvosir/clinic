@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 
 using clinic;
@@ -34,7 +30,7 @@ namespace ClinicSite
 
         protected MySqlConnection Connection()
         {
-            MySqlConnection connection = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'");
+            MySqlConnection connection = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; CharSet = utf8");
             return connection;
         }
         
@@ -51,16 +47,17 @@ namespace ClinicSite
             c.City = rec_city.Text;
             c.Zip = Int32.Parse(rec_zip.Text);
 
+
             using (MySqlConnection cnn = Connection())
             {
 
                 MySqlCommand cmd = cnn.CreateCommand();
 
-                cmd.CommandText = "INSERT INTO patient_card (surname CHARACTER SET 'utf8', name, fathers_name, birthday, gender, email, address, city, zip_code) " +
-                    "VALUES (Convert.ToBase64String(Encoding.UTF8.GetBytes( ?surname)), ?name, ?fathers_name, ?birthday, ?gender, ?email, ?address, ?city, ?zip_code ); SELECT LAST_INSERT_ID()";
+                cmd.CommandText = "INSERT INTO patient_card (surname, name, fathers_name, birthday, gender, email, address, city, zip_code) " +
+                    "VALUES (?surname, ?name, ?fathers_name, ?birthday, ?gender, ?email, ?address, ?city, ?zip_code ); SELECT LAST_INSERT_ID()";
 
-                //cmd.Parameters.AddWithValue("?idpatient_card", id);
-                cmd.Parameters.AddWithValue("Convert.ToBase64String(Encoding.UTF8.GetBytes( ?surname))", c.Surname);
+                
+                cmd.Parameters.AddWithValue("?surname", c.Surname);
                 cmd.Parameters.AddWithValue("?name", c.Name);
                 cmd.Parameters.AddWithValue("?fathers_name", c.Fathers_name);
                 cmd.Parameters.AddWithValue("?birthday", c.Birthday);
@@ -75,6 +72,12 @@ namespace ClinicSite
 
                 LogInCommand(cnn, (UInt64)patientId).ExecuteNonQuery();
             }
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
         protected MySqlCommand LogInCommand(MySqlConnection cnn, UInt64 id)
