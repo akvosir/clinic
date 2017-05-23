@@ -13,6 +13,15 @@ namespace ClinicSite {
     public partial class Site {
         
         /// <summary>
+        /// RegisterForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm RegisterForm;
+        
+        /// <summary>
         /// ddlGender control.
         /// </summary>
         /// <remarks>
@@ -112,12 +121,12 @@ namespace ClinicSite {
         protected global::System.Web.UI.WebControls.TextBox reg_psswrd;
         
         /// <summary>
-        /// btnnRegister control.
+        /// Register control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnnRegister;
+        protected global::System.Web.UI.WebControls.Button Register;
     }
 }

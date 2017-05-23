@@ -119,13 +119,11 @@
     <Content Include="css\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="javas\bootstrap-datetimepicker.min.js" />
-    <Content Include="javas\bootstrap.js" />
     <Content Include="javas\bootstrap.min.js" />
-    <Content Include="javas\isotope.pkgd.js" />
+    <Content Include="javas\login.js" />
     <Content Include="javas\isotope.pkgd.min.js" />
     <Content Include="javas\jquery.appear.js" />
     <Content Include="javas\jquery.backstretch.min.js" />
-    <Content Include="javas\jquery.js" />
     <Content Include="javas\jquery.min.js" />
     <Content Include="javas\modernizr.js" />
     <Content Include="javas\npm.js" />
@@ -139,7 +137,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="javas\.mfhidden" />
-    <Content Include="javas\jquery-1.11.1.min.map" />
     <Content Include="userCab.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

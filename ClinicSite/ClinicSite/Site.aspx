@@ -15,7 +15,7 @@
 
 </head>
 <body class="no-trans">
-	<form id="Site" runat ="server">
+	
 
 		<!-- header start -->
 		<!-- ================ --> 
@@ -145,7 +145,7 @@
 												<h4 class="modal-title" id="project-2-label">Реєстрація</h4>
 											</div>
 											<div class="modal-body">
-												<div role="form" id="footer-form">
+												<form role="form" runat ="server" id="RegisterForm">
                                                     <div class="form-group has-feedback">
                                                             <asp:RadioButtonList ID="ddlGender" CssClass="radioButtonList" runat="server" RepeatDirection="Horizontal">
                                                                 <asp:ListItem Text="Ж" CssClass="radioButtonList" Value="1" />
@@ -207,10 +207,10 @@
 															<label for="checkbox">Я згоден на обробку особистих даних</label>
 															<input type="checkbox" id="checkbox" name="checkbox">
 													</div>
-                                                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                                                    
                                                     <asp:Button runat="server" Text="Відправити данні" OnClick="Register_Click" ID="Register"  CssClass="btn btn-default"/>
                                                     <div class="clearfix"></div>
-												</div>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -772,6 +772,6 @@
 
 	
 	
-        </form>
+        
 	</body>
 </html>
