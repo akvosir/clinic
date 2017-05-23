@@ -74,16 +74,17 @@
 																<h4 class="modal-title" id="project-2-label">Кабінет</h4>
 															</div>
 															<div class="modal-body">
-																<form role="form" id="footer-form">
-																	<div class="form-group has-feedback">
-																		<label class="sr-only" for="phone">Телефон</label>
-																		<input type="text" class="form-control" id="phone" placeholder="Телефон" name="phone" required>
-																	</div>
-																	<div class="form-group has-feedback">
-																		<label class="sr-only" for="password">Пароль</label>
-																		<input type="password" class="form-control" id="password" placeholder="Введіть пароль" name="password" required>
-																	</div>
-																	<input type="submit" value="Ввійти" class="btn btn-default">
+                                                                <form role="form" runat ="server" id="LoginForm">
+                                                                    <div class="form-group has-feedback">
+														                <label class="sr-only">Телефон</label>
+                                                                        <asp:TextBox runat="server" type="text" ID="log_phone" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox>
+														                <i class="fa fa-phone form-control-feedback"></i>
+													                </div>
+                                                                    <div class="form-group has-feedback">
+														                <label class="sr-only">Пароль</label>
+                                                                        <asp:TextBox runat="server" type="password" ID="log_psswrd" CssClass="form-control" placeholder="Введіть пароль"></asp:TextBox>
+													                </div>
+                                                                     <asp:Button runat="server" Text="Ввійти" OnClick="OkButton_Click" ID="Register"  CssClass="btn btn-default"/>
 																	<div class="form-group has-feedback">
 																		<label for="text">Забули пароль?</label>
 																	</div>
@@ -145,7 +146,7 @@
 												<h4 class="modal-title" id="project-2-label">Реєстрація</h4>
 											</div>
 											<div class="modal-body">
-												<form role="form" runat ="server" id="RegisterForm">
+												<%--<form role="form" runat ="server" id="RegisterForm">
                                                     <div class="form-group has-feedback">
                                                             <asp:RadioButtonList ID="ddlGender" CssClass="radioButtonList" runat="server" RepeatDirection="Horizontal">
                                                                 <asp:ListItem Text="Ж" CssClass="radioButtonList" Value="Жінка" />
@@ -179,12 +180,10 @@
                                                     <div class="form-group has-feedback">
 														<label class="sr-only">Адреса</label>
                                                         <asp:TextBox runat="server" type="text" ID="rec_address" CssClass="form-control" placeholder="Домашня адреса"></asp:TextBox>
-														<%--<i class="fa fa-phone form-control-feedback"></i>--%>
 													</div>
                                                     <div class="form-group has-feedback">
 														<label class="sr-only">Місто</label>
                                                         <asp:TextBox runat="server" type="text" ID="rec_city" CssClass="form-control" placeholder="Місто"></asp:TextBox>
-														<%--<i class="fa fa-phone form-control-feedback"></i>--%>
 													</div>
                                                     <div class="form-group has-feedback">
 														<label class="sr-only">>Поштовий індекс</label>
@@ -199,10 +198,6 @@
 														<label class="sr-only">Пароль</label>
                                                         <asp:TextBox runat="server" type="password" ID="reg_psswrd" CssClass="form-control" placeholder="Введіть пароль"></asp:TextBox>
 													</div>
-                                                    <%--<div class="form-group has-feedback">
-																		<label class="sr-only" for="password2">Пароль</label>
-																		<input type="password" class="form-control" id="password2" placeholder="Повторіть пароль" name="password" required>
-													</div>--%>
 													<div class="form-group has-feedback">
 															<label for="checkbox">Я згоден на обробку особистих даних</label>
 															<input type="checkbox" id="checkbox" name="checkbox">
@@ -210,7 +205,7 @@
                                                     
                                                     <asp:Button runat="server" Text="Відправити данні" OnClick="Register_Click" ID="Register"  CssClass="btn btn-default"/>
                                                     <div class="clearfix"></div>
-												</form>
+												</form>--%>
 											</div>
 										</div>
 									</div>

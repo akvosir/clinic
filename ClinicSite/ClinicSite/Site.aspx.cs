@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 
 using clinic;
+using System.Data;
 
 namespace ClinicSite
 {
@@ -100,29 +101,29 @@ namespace ClinicSite
             Response.Write("Here");
         }
 
-        //protected void OkButton_Click(object sender, EventArgs e)
-        //{
-        //    using (MySqlConnection cnn = Connection())
-        //    {
+        protected void OkButton_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection cnn = Connection())
+            {
 
-        //        MySqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
 
-        //        cmd.CommandText = "select * from patient_login  where telephone = '" + log_phone.Text + "' and password = '" + password.Text + "'"; ;
+                string sql = "select * from patient_login  where telephone = '" + log_phone.Text + "' and password = '" + log_psswrd.Text + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, cnn);
+                MySqlCommandBuilder cb = new MySqlCommandBuilder(adapter);
 
-        //        cmd.ExecuteNonQuery();
-        //        DataTable dt = new DataTable();
-        //        MySqlDataAdapter da = new MySqlDataAdapter();
-        //        da.SelectCommand = cmd;
-        //        da.Fill(dt);
+                var dataSet = new DataSet();
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-        //        //filter by type 
-        //        foreach (DataRow dr in dt.Rows)
-        //        {
-        //            Session["telephone"] = dr["telephone"].ToString();
-        //            Response.Redirect("~/userCab.aspx");
-        //        }
-        //        cnn.Close();
-        //    }
-        //}
+                //filter by type 
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Session["telephone"] = dr["telephone"].ToString();
+                    Response.Redirect("~/userCab.aspx");
+                    break;
+                }
+            }
+        }
     }
 }
