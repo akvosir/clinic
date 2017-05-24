@@ -35,45 +35,45 @@ namespace ClinicSite
             return connection;
         }
         
-        protected void PatientCard()
-        {
-            RegistrationForm c = new RegistrationForm();
-            c.Name = rec_name.Text;
-            c.Surname = rec_surname.Text;
-            c.Fathers_name = rec_fathers.Text;
-            c.Birthday = DateTime.Parse(rec_birthday.Text);
-            c.Gender = ddlGender.Text;
-            c.Email = rec_email.Text;
-            c.Address = rec_address.Text;
-            c.City = rec_city.Text;
-            c.Zip = Int32.Parse(rec_zip.Text);
+        //protected void PatientCard()
+        //{
+        //    //RegistrationForm c = new RegistrationForm();
+        //    //c.Name = rec_name.Text;
+        //    //c.Surname = rec_surname.Text;
+        //    //c.Fathers_name = rec_fathers.Text;
+        //    //c.Birthday = DateTime.Parse(rec_birthday.Text);
+        //    //c.Gender = ddlGender.Text;
+        //    //c.Email = rec_email.Text;
+        //    //c.Address = rec_address.Text;
+        //    //c.City = rec_city.Text;
+        //    //c.Zip = Int32.Parse(rec_zip.Text);
 
 
-            using (MySqlConnection cnn = Connection())
-            {
+        //    using (MySqlConnection cnn = Connection())
+        //    {
 
-                MySqlCommand cmd = cnn.CreateCommand();
+        //        MySqlCommand cmd = cnn.CreateCommand();
 
-                cmd.CommandText = "INSERT INTO patient_card (surname, name, fathers_name, birthday, gender, email, address, city, zip_code) " +
-                    "VALUES (?surname, ?name, ?fathers_name, ?birthday, ?gender, ?email, ?address, ?city, ?zip_code ); SELECT LAST_INSERT_ID()";
+        //        cmd.CommandText = "INSERT INTO patient_card (surname, name, fathers_name, birthday, gender, email, address, city, zip_code) " +
+        //            "VALUES (?surname, ?name, ?fathers_name, ?birthday, ?gender, ?email, ?address, ?city, ?zip_code ); SELECT LAST_INSERT_ID()";
 
                 
-                cmd.Parameters.AddWithValue("?surname", c.Surname);
-                cmd.Parameters.AddWithValue("?name", c.Name);
-                cmd.Parameters.AddWithValue("?fathers_name", c.Fathers_name);
-                cmd.Parameters.AddWithValue("?birthday", c.Birthday);
-                cmd.Parameters.AddWithValue("?gender", c.Gender);
-                cmd.Parameters.AddWithValue("?email", c.Email);
-                cmd.Parameters.AddWithValue("?address", c.Address);
-                cmd.Parameters.AddWithValue("?city", c.City);
-                cmd.Parameters.AddWithValue("?zip_code", c.Zip);
-                cnn.Open();
+        //        cmd.Parameters.AddWithValue("?surname", c.Surname);
+        //        cmd.Parameters.AddWithValue("?name", c.Name);
+        //        cmd.Parameters.AddWithValue("?fathers_name", c.Fathers_name);
+        //        cmd.Parameters.AddWithValue("?birthday", c.Birthday);
+        //        cmd.Parameters.AddWithValue("?gender", c.Gender);
+        //        cmd.Parameters.AddWithValue("?email", c.Email);
+        //        cmd.Parameters.AddWithValue("?address", c.Address);
+        //        cmd.Parameters.AddWithValue("?city", c.City);
+        //        cmd.Parameters.AddWithValue("?zip_code", c.Zip);
+        //        cnn.Open();
 
-                object patientId = cmd.ExecuteScalar();
+        //        object patientId = cmd.ExecuteScalar();
 
-                LogInCommand(cnn, (UInt64)patientId).ExecuteNonQuery();
-            }
-        }
+        //        LogInCommand(cnn, (UInt64)patientId).ExecuteNonQuery();
+        //    }
+        //}
 
         public static string Base64Decode(string base64EncodedData)
         {
@@ -89,15 +89,15 @@ namespace ClinicSite
                 "VALUES (?id_patient, ?telephone, ?password)";
 
             cmd.Parameters.AddWithValue("?id_patient", id);
-            cmd.Parameters.AddWithValue("?telephone", rec_number.Text);
-            cmd.Parameters.AddWithValue("?password", reg_psswrd.Text);
+            cmd.Parameters.AddWithValue("?telephone", log_phone.Text);
+            cmd.Parameters.AddWithValue("?password", log_psswrd.Text);
             return cmd;
         }
 
 
         protected void Register_Click(object sender, EventArgs e)
         {
-            PatientCard();
+            //PatientCard();
             Response.Write("Here");
         }
 
@@ -120,7 +120,7 @@ namespace ClinicSite
                 foreach (DataRow dr in dt.Rows)
                 {
                     Session["telephone"] = dr["telephone"].ToString();
-                    Response.Redirect("~/userCab.aspx");
+                    Response.Redirect("~/UserFunctions.aspx");
                     break;
                 }
             }
