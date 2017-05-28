@@ -52,13 +52,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = $('#GridView1').dataTable({
-                columns: [
-                    { 'data': 'idpatient_card' },
-                    {},
-                    {},
-                {}
-            });
+            $('#GridView1').dataTable();
         });
     </script>
 
