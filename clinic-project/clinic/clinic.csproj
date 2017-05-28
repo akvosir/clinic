@@ -66,7 +66,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cards.aspx" />
+    <Content Include="Admin Pages\administration_schedule_manag.aspx" />
+    <Content Include="Admin Pages\administrator_add.aspx" />
+    <Content Include="Admin Pages\administrator_password_manag.aspx" />
+    <Content Include="Admin Pages\administration_new_user.aspx" />
+    <Content Include="Admin Pages\administration_rooms_manag.aspx" />
     <Content Include="Doctor Pages\doctor_analysis.aspx" />
     <Content Include="Doctor Pages\doctor_card.aspx" />
     <Content Include="Doctor Pages\doctor_card_ind.aspx" />
@@ -115,7 +119,7 @@
     <Content Include="Reception Pages\reception_app.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="Doctor Pages\doctor.Master" />
-    <Content Include="WebForm2.aspx" />
+    <Content Include="Admin Pages\admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -143,12 +147,47 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cards.aspx.cs">
-      <DependentUpon>cards.aspx</DependentUpon>
+    <Compile Include="Admin Pages\admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="cards.aspx.designer.cs">
-      <DependentUpon>cards.aspx</DependentUpon>
+    <Compile Include="Admin Pages\admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Pages\administration_schedule_manag.aspx.cs">
+      <DependentUpon>administration_schedule_manag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Pages\administration_schedule_manag.aspx.designer.cs">
+      <DependentUpon>administration_schedule_manag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Pages\administrator_add.aspx.cs">
+      <DependentUpon>administrator_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Pages\administrator_add.aspx.designer.cs">
+      <DependentUpon>administrator_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Pages\administrator_password_manag.aspx.cs">
+      <DependentUpon>administrator_password_manag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Pages\administrator_password_manag.aspx.designer.cs">
+      <DependentUpon>administrator_password_manag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Pages\administration_new_user.aspx.cs">
+      <DependentUpon>administration_new_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Pages\administration_new_user.aspx.designer.cs">
+      <DependentUpon>administration_new_user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin Pages\administration_rooms_manag.aspx.cs">
+      <DependentUpon>administration_rooms_manag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin Pages\administration_rooms_manag.aspx.designer.cs">
+      <DependentUpon>administration_rooms_manag.aspx</DependentUpon>
     </Compile>
     <Compile Include="Doctor Pages\Doctor.cs" />
     <Compile Include="Doctor Pages\doctor.Master.cs">
@@ -208,7 +247,6 @@
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reception Pages\Card.cs" />
     <Compile Include="Reception Pages\reception_registration.aspx.cs">
       <DependentUpon>reception_registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,13 +302,6 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

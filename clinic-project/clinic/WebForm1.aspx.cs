@@ -18,9 +18,10 @@ namespace WebApplication1
 
         protected void Bind()
         {
-            using (MySqlConnection con = new MySqlConnection(@"Data Source = localhost; Database = clinic; User Id = root; Password = 'root'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, name, birthday from patient_card"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, surname, name, fathers_name, birthday, gender, email, " +
+                    "address, city, zip_code, telephone FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient "))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {

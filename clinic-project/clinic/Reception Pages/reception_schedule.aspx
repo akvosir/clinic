@@ -28,32 +28,31 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="mainContent" runat="server">
-    <div class="col-md-16">
+    <div class="container-fluid">
         <div class="card">
             <div class="content">
-                <div class="col-md-12">
-                    <div class="card card-plain">
+                <div class="row">
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>ВИБЕРІТЬ ДАТУ</label>
-                                    <asp:TextBox runat="server" ID="dateTB" class="form-control" type="date"></asp:TextBox>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>ВИБЕРІТЬ ЛІКАРЯ</label>
-                                    <asp:DropDownList runat="server" ID="doc" DataValueField="id_doctor" DataTextField="doctor_surname" class="form-control"></asp:DropDownList>
-                                </div>
-                            </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>ВИБЕРІТЬ ДАТУ</label>
+                            <asp:TextBox runat="server" ID="dateTB" class="form-control" type="date"></asp:TextBox>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <asp:Button runat="server" ID="submit" OnClick="submit_Click" Text="Переглянути дописи" class="btn btn-info btn-fill pull-left" />
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>ВИБЕРІТЬ ЛІКАРЯ</label>
+                            <asp:DropDownList runat="server" ID="doc" DataValueField="id_doctor" DataTextField="name" class="form-control"></asp:DropDownList>
                         </div>
+                    </div>
 
+                    <div class="content">
+                        <asp:Button runat="server" ID="submit" OnClick="submit_Click" Text="Переглянути дописи" class="btn btn-info btn-fill pull-left" />
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="content">
                         <asp:GridView runat="server" ID="GridView1" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                             <Columns>
                                 <asp:BoundField DataField="start_app" DataFormatString="{0:t}" HeaderText="Час" />
@@ -71,10 +70,7 @@
                         </asp:GridView>
                     </div>
                 </div>
-                <div class="clearfix"></div>
             </div>
         </div>
     </div>
-
-
 </asp:Content>

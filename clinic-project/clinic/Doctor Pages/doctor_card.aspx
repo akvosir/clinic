@@ -2,22 +2,22 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderMenu" runat="server">
     <li class="active">
-         <asp:LinkButton runat="server" ID="sc" OnClick="sc_Click" >
+        <asp:LinkButton runat="server" ID="sc" OnClick="sc_Click">
             <i class="pe-7s-note2"></i>
             <p>Розклад</p>
         </asp:LinkButton>
     </li>
     <li>
-        <asp:LinkButton runat="server" ID="sp" OnClick="sp_Click" >
+        <asp:LinkButton runat="server" ID="sp" OnClick="sp_Click">
             <i class="pe-7s-note2"></i>
             <p>Записати до спеціаліста</p>
         </asp:LinkButton>
     </li>
     <li>
-         <asp:LinkButton runat="server" id="an" OnClick="an_Click">
+        <asp:LinkButton runat="server" ID="an" OnClick="an_Click">
             <i class="pe-7s-note2"></i>
             <p>Записати на аналізи</p>
-         </asp:LinkButton>
+        </asp:LinkButton>
     </li>
 </asp:Content>
 
@@ -27,9 +27,11 @@
             <div class="header">
                 <asp:Label runat="server" Font-Size="20px " ID="pat_name"></asp:Label>
                 <p>
-                    <asp:Label runat="server" Font-Size="20px" ID="pat_age"></asp:Label></p>
+                    <asp:Label runat="server" Font-Size="20px" ID="pat_age"></asp:Label>
+                </p>
                 <p>
-                    <asp:Label runat="server" Font-Size="16px" ID="vis_date"></asp:Label></p>
+                    <asp:Label runat="server" Font-Size="16px" ID="vis_date"></asp:Label>
+                </p>
             </div>
             <div class="content">
                 <div class="row">
@@ -64,7 +66,8 @@
                         <div class="header">
                             <p class="category">Препарати</p>
                         </div>
-                        <div class="row">
+
+                            <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <asp:DropDownList runat="server" ID="medicine" DataValueField="medicine_name" class="form-control"></asp:DropDownList>
@@ -86,7 +89,6 @@
                                 </div>
                             </div>
                         </div>
-                        <asp:Button runat="server" ID="add_med" OnClick="add_med_Click" class="btn btn-primary btn-sm bottom-left" Text="Додати" />
 
                     </div>
                 </div>
@@ -106,9 +108,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Аналіз</label>
-                            <asp:DropDownList runat="server" ID="analysis" DataValueField="analysis_name" class="form-control">
-                            </asp:DropDownList>
-                            <!--add dynamic button-->
+                            <asp:ListBox ID="analys" Rows="6" DataValueField="id_analysis" DataTextField="analysis_name" class="form-control"  runat="server" >
+                            </asp:ListBox>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,8 @@ namespace clinic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 Bind();
             }
 
@@ -38,15 +39,12 @@ namespace clinic
                                 GridView1.UseAccessibleHeader = true;
                                 GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
                             }
-
-                            fillCards(con, cmd);
-
                         }
                     }
                 }
             }
 
-            
+
         }
 
         protected void card_Click(object sender, EventArgs e)
@@ -56,7 +54,7 @@ namespace clinic
             Response.Redirect("reception_card_individual.aspx?ID=" + Server.UrlEncode(clickedRow.Cells[0].Text));
         }
 
-        protected void fillCards(MySqlConnection thisConnection, MySqlCommand thisCommand)
+       /* protected void fillCards(MySqlConnection thisConnection, MySqlCommand thisCommand)
         {
             thisConnection.Open();
             MySqlDataReader reader = thisCommand.ExecuteReader();
@@ -74,19 +72,15 @@ namespace clinic
                 String City = reader.GetString(8);
                 int Zip_code = reader.GetInt32(9);
                 string Telephone = reader.GetString(10);
-                Card card = new Card(Surname, Name, Fathers_name, Birthday, Gender, Email, Address, City, Zip_code, Telephone);
-
-                if (!PatientSet.set.Contains(id))
-                {
-                    PatientSet.set.Add(id, card);
-                }
-                else {
-                }
-
             }
 
             thisConnection.Close();
-        }
+        }*/
 
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            Bind();
+        }
     }
 }

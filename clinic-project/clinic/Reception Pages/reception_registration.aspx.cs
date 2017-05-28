@@ -37,7 +37,6 @@ namespace clinic
                         command.Parameters.AddWithValue("@city", rec_city.Text);
                         command.Parameters.AddWithValue("@zip_code", rec_zip.Text);
                         command.Parameters.AddWithValue("@telephone", rec_number.Text);
-
                         command.ExecuteNonQuery();
                         command.Dispose();
                         con.Close();

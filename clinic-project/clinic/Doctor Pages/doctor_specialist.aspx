@@ -33,7 +33,6 @@
                         <div class="form-group">
                             <label>ОБРАТИ СПЕЦІАЛІСТА</label>
                             <asp:DropDownList runat="server" ID="app_spec" DataValueField="id_specialty" AutoPostBack="True"  OnSelectedIndexChanged="app_spec_SelectedIndexChanged" DataTextField="name_specialty" class="form-control"></asp:DropDownList>
-
                         </div>
                     </div>
                 </div>
@@ -43,7 +42,6 @@
                         <div class="form-group">
                             <label>ОБРАТИ ЛІКАРЯ</label>
                             <asp:DropDownList runat="server" ID="app_spec_name" DataValueField="id_doctor" DataTextField="name" type="text" class="form-control"></asp:DropDownList>
-
                         </div>
                     </div>
                 </div>

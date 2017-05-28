@@ -42,7 +42,7 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
 
-                        <asp:GridView runat="server" ID="GridView1" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
+                        <asp:GridView runat="server" ID="GridView1" PageSize="15 " AutoGenereteSelectButton="true" AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging" Width="100%" CssClass="ui celled table" AllowPaging="true">
                             <Columns>
                                 <asp:BoundField DataField="idpatient_card" HeaderText="ID" />
                                 <asp:TemplateField HeaderText="ПІБ">

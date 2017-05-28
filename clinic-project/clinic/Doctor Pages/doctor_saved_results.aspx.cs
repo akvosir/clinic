@@ -25,7 +25,7 @@ namespace clinic.Doctor_Pages
              using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
              {
 
-                 using (MySqlCommand cmd = new MySqlCommand("SELECT start_med, end_med, medicine.medicine_name FROM medicine_patient " +
+                 using (MySqlCommand cmd = new MySqlCommand("SELECT start_med, end_med, howtotake, medicine.medicine_name FROM medicine_patient " +
                      "INNER JOIN medicine ON medicine_patient.id_medicine = medicine.id_medicine INNER JOIN visits ON medicine_patient.id_visit = visits.id_visit " +
                      "WHERE visits.visit_date = '" + date + "' AND visits.patient_id = " + id))
                  {
@@ -57,8 +57,8 @@ namespace clinic.Doctor_Pages
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT visit_date, reason, symptoms, diagnosis, " +
-                    "recom_consult, recom_analysis, next_visit, patient_card.name, patient_card.surname, patient_card.fathers_name " +
-                    "FROM visits INNER JOIN patient_card ON visits.patient_id = patient_card.idpatient_card WHERE patient_id =" + id + " AND visit_date = '" + date + "'"))
+                    "doctor_specialty.name_specialty, recom_analysis, next_visit, patient_card.name, patient_card.surname, patient_card.fathers_name " +
+                    "FROM visits INNER JOIN doctor_specialty ON id_specialty = recom_consult INNER JOIN patient_card ON visits.patient_id = patient_card.idpatient_card WHERE patient_id =" + id + " AND visit_date = '" + date + "'"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -77,7 +77,7 @@ namespace clinic.Doctor_Pages
                                 dsr_next_date.Text = reader.GetDateTime(6).ToString("dd.MM.yyy");
                                 dsr_name.Text = reader.GetString(8) + " " + reader.GetString(7) + " " + reader.GetString(9);
 
-                            }
+                        }
                             con.Close();
                         }
                     }

@@ -19,7 +19,7 @@ namespace clinic
             //after login get doctor's id
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT id_doctor, doctor_surname FROM doctors"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', doctor_surname, doctor_name, doctor_fathersname) AS 'name', id_doctor FROM doctors"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {

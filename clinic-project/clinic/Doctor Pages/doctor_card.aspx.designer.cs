@@ -130,15 +130,6 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.WebControls.TextBox med_en;
         
         /// <summary>
-        /// add_med control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button add_med;
-        
-        /// <summary>
         /// specialists control.
         /// </summary>
         /// <remarks>
@@ -148,13 +139,13 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.WebControls.DropDownList specialists;
         
         /// <summary>
-        /// analysis control.
+        /// analys control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList analysis;
+        protected global::System.Web.UI.WebControls.ListBox analys;
         
         /// <summary>
         /// dc_next control.
