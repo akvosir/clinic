@@ -43,34 +43,56 @@
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="header">
-                        </div>
-                        <div class="content"></div>
-                        <asp:TextBox runat="server" ID="rec_app_pat"></asp:TextBox>
-                        <asp:Label runat="server" Text="Обрати лікаря"></asp:Label>
-                        <asp:DropDownList runat="server" type="text" AutoPostBack="true" DataValueField="id_doctor" DataTextField="name" ID="doctors" class="form-control"></asp:DropDownList>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label>ДАТА</label>
-                                    <asp:TextBox runat="server" ID="rec_app_date" class="form-control"></asp:TextBox>
-                                    <ajaxToolkit:CalendarExtender runat="server" TargetControlID="rec_app_date"></ajaxToolkit:CalendarExtender>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <asp:Label runat="server" Text="Пацієнт"></asp:Label>
+                                        <asp:DropDownList runat="server" ID="pat" size="5" DataValueField="idpatient_card" DataTextField="name" class="form-control"></asp:DropDownList>
+                                        <ajaxToolkit:ListSearchExtender ID="ListSearchExtender1" runat="server" TargetControlID="pat" PromptText="Почніть друкувати для пошуку" PromptCssClass="form-control">
+                                        </ajaxToolkit:ListSearchExtender>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label>ЧАС</label>
-                                    <telerik:RadTimePicker RenderMode="Lightweight" UseTimeSpanForBinding="true" ID="RadTimePicker1" runat="server" class="form-control"></telerik:RadTimePicker>
-                                    <asp:TextBox runat="server" type="time" ID="rec_app_time" ></asp:TextBox>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <asp:Label runat="server" Text="Обрати спеціальність"></asp:Label>
+                                        <asp:DropDownList runat="server" type="text" AutoPostBack="true" DataValueField="id_specialty" OnSelectedIndexChanged="specialty_SelectedIndexChanged" DataTextField="name_specialty" ID="specialty" class="form-control"></asp:DropDownList>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <asp:Label runat="server" Text="Обрати лікаря"></asp:Label>
+                                        <asp:DropDownList runat="server" type="text" AutoPostBack="true" DataValueField="id_doctor" DataTextField="name" ID="doctors" class="form-control"></asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>ДАТА</label>
+                                        <asp:TextBox runat="server" ID="rec_app_date" type="date" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>ЧАС</label>
+                                        <asp:TextBox ID="rec_app_time" runat="server" type="time" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <asp:Button runat="server" Text="Зберегти запис" ID="save" OnClick="save_Click" class="btn btn-info btn-fill pull-left"></asp:Button>
                         </div>
-                        <asp:Button runat="server" Text="Зберегти запис" ID="save" OnClick="save_Click" class="btn btn-info btn-fill pull-left"></asp:Button>
                     </div>
                 </div>
-                <div class="footer-default"></div>
             </div>
             <div class="clearfix"></div>
         </div>

@@ -130,6 +130,8 @@ namespace clinic
         protected void submit_Click(object sender, EventArgs e)
         {
             d_schedule();
+            make_anapp.Visible = true;
+            Session["schedule_doc_id"] = doc.SelectedValue;
         }
 
         protected void cancel_doc_Click(object sender, EventArgs e)
@@ -209,11 +211,15 @@ namespace clinic
         protected void submit_pat_Click(object sender, EventArgs e)
         {
             pat_schedule();
+            make_anapp.Visible = true;
+            Session["schedule_pat"] = pat.SelectedValue;
+            Session["schedule_date"] = dateTB.Text;
         }
 
         protected void make_anapp_Click(object sender, EventArgs e)
         {
-
+            Session["page"] = "schedule";
+            Response.Redirect("reception_app.aspx");
         }
     }
 }

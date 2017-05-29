@@ -120,21 +120,12 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Хронічні хвороби</label>
-                                    <textarea rows="5" id="rci_disease" class="form-control" readonly="true">Журба за Вкраїну</textarea>
-                                </div>
-                            </div>
-                        </div>
 
-                      
-                                <asp:Button runat="server" Text="Записати на прийом" type="button" ID="rci_app" OnClick="rci_app_Click" class="btn btn-info btn-fill"></asp:Button>
-                                <asp:Button runat="server" Text="Змінити інформацію про пацієнта" OnClick="rci_edit_Click" type="button" ID="rci_edit" class="btn btn-info btn-fill"></asp:Button>
-                                <asp:Button runat="server" Text="Зберегти" Visible="false" type="button" ID="rci_save" OnClick="rci_save_Click" class="btn btn-info btn-fill"></asp:Button>
-                                                       
-                        </div>
+                        <asp:Button runat="server" Text="Записати на прийом" type="button" ID="rci_app" OnClick="rci_app_Click" class="btn btn-info btn-fill"></asp:Button>
+                        <asp:Button runat="server" Text="Змінити інформацію про пацієнта" OnClick="rci_edit_Click" type="button" ID="rci_edit" class="btn btn-info btn-fill"></asp:Button>
+                        <asp:Button runat="server" Text="Зберегти" Visible="false" type="button" ID="rci_save" OnClick="rci_save_Click" class="btn btn-info btn-fill"></asp:Button>
+
+                    </div>
 
 
                     <div class="container">

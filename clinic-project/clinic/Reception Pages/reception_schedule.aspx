@@ -71,8 +71,8 @@
                     </div>
 
                     <div class="content">
-                        <asp:Button Visible="false" runat="server" ID="submit" OnClick="submit_Click" Text="Переглянути дописи" class="btn btn-info btn-fill pull-left" />
-                        <asp:Button Visible="false" runat="server" ID="submit_pat" OnClick="submit_pat_Click" Text="Переглянути дописи" class="btn btn-info btn-fill pull-left" />
+                        <asp:Button Visible="false" runat="server" ID="submit" OnClick="submit_Click" Text="Переглянути дописи" class="btn btn-info btn-fill center-block" />
+                        <asp:Button Visible="false" runat="server" ID="submit_pat" OnClick="submit_pat_Click" Text="Переглянути дописи" class="btn btn-info btn-fill center-block" />
                         <asp:Button Visible="false" runat="server" ID="make_anapp" OnClick="make_anapp_Click" Text="Записати на прийом" class="btn btn-info btn-fill pull-left" />
                         <div class="clearfix"></div>
                     </div>

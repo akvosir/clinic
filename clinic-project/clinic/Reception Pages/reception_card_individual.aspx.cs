@@ -213,6 +213,7 @@ namespace clinic
 
         protected void rci_app_Click(object sender, EventArgs e)
         {
+            Session["page"] = "ci";
             Response.Redirect(String.Format("reception_app.aspx?ID={0}&name={1}", Server.UrlEncode(rci_id.Text), Server.UrlEncode(rci_name.Text)));
         }
     }

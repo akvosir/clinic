@@ -22,13 +22,31 @@ namespace clinic {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// rec_app_pat control.
+        /// pat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_app_pat;
+        protected global::System.Web.UI.WebControls.DropDownList pat;
+        
+        /// <summary>
+        /// ListSearchExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ListSearchExtender ListSearchExtender1;
+        
+        /// <summary>
+        /// specialty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList specialty;
         
         /// <summary>
         /// doctors control.
@@ -47,15 +65,6 @@ namespace clinic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox rec_app_date;
-        
-        /// <summary>
-        /// RadTimePicker1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTimePicker RadTimePicker1;
         
         /// <summary>
         /// rec_app_time control.

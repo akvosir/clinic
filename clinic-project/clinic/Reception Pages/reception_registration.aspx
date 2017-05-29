@@ -32,6 +32,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="mainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="col-md-16">
         <div class="card">
             <div class="header">
@@ -72,7 +73,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Дата народження</label>
-                                <asp:TextBox runat="server" type="date" ID="rec_birthday" class="form-control" placeholder="Дата"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="rec_birthday" class="form-control" placeholder="Дата"></asp:TextBox>
+                                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="rec_birthday"/>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -105,24 +107,16 @@
                                 <asp:TextBox runat="server" type="number" ID="rec_zip" class="form-control" placeholder="Індекс"></asp:TextBox>
                             </div>
                         </div>
-                        <!--ISPRAVIT'-->
+                      
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Номер телефону</label>
                                 <asp:TextBox runat="server" type="text" ID="rec_number" class="form-control" placeholder="Номер телефону"></asp:TextBox>
+                                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" Mask="+99(999) 999-99-99" TargetControlID="rec_number"/>
                             </div>
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Хронічні хвороби</label>
-                                <textarea rows="5" id="rec_diseases" class="form-control" placeholder=""></textarea>
-                            </div>
-                        </div>
-                    </div>
-
                     <asp:Button runat="server" Text="Додати пацієнта" OnClick="rec_submitButton_Click" type="submit" ID="rec_submitButton" class="btn btn-info btn-fill pull-right"></asp:Button>
                     <div class="clearfix"></div>
             </div>
