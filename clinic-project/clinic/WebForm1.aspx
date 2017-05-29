@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
 
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -60,6 +62,8 @@
 
 <body>
     <form id="form1" runat="server">
+        <telerik:RadScriptManager runat="server" id="RadScriptManager1" />
+        <telerik:RadTimePicker  ID="RadTimePicker2" runat="server"></telerik:RadTimePicker>
         <div>
             <asp:GridView runat="server" ID="GridView1" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                 <Columns>

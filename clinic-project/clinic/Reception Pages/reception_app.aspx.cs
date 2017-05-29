@@ -12,8 +12,9 @@ namespace clinic
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                rec_app_patname.Text = Request.QueryString["name"];
+                rec_app_pat.Text = Request.QueryString["name"];
                 doctor_bind();
+                //timeBind();
             }
         }
 
@@ -41,6 +42,33 @@ namespace clinic
                     }
                 }
             }
+        }
+
+        protected void timeBind() {
+
+            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM time_table", con))
+                {
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable ds = new DataTable())
+                        {
+                            sda.Fill(ds);
+                            if (ds.Rows.Count > 0)
+                            {
+                               
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            
         }
 
         protected void save_Click(object sender, EventArgs e)

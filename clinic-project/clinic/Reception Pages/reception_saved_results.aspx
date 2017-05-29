@@ -67,6 +67,7 @@
                             <asp:GridView runat="server" ID="rsr_med_table" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                                 <Columns>
                                     <asp:BoundField DataField="medicine_name"  HeaderText="Назва препарату" />
+                                    <asp:BoundField DataField="howtotake" HeaderText="Спосіб прийому" />
                                     <asp:BoundField DataField="start_med" DataFormatString="{0:dd-MM-yyyy}" HeaderText="Початок прийому" />
                                     <asp:BoundField DataField="end_med" DataFormatString="{0:dd-MM-yyyy}" HeaderText="Кінець прийому" />
                                 </Columns>

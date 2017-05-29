@@ -142,7 +142,7 @@ namespace clinic
                             rci_editname.Text = reader.GetString(2);
                             rci_surname.Text = reader.GetString(1);
                             rci_fathers.Text = reader.GetString(3);
-                            rci_birthday.Text = reader.GetDateTime(4).Date.ToString("dd.MM.yyyy");
+                            rci_birthday.Text = reader.GetDateTime(4).Date.ToString("yyyy-MM-dd");
                             rci_gender.Text = reader.GetString(5);
                             rci_email.Text = reader.GetString(6);
                             rci_address.Text = reader.GetString(7);
@@ -159,6 +159,7 @@ namespace clinic
         protected void rci_save_Click(object sender, EventArgs e)
         {
             updateDB();
+            fillTextBoxes(Convert.ToInt32(Request.QueryString["ID"]));
             rci_editname.Visible = false;
             rci_surname.Visible = false;
             rci_fathers.Visible = false;
@@ -176,7 +177,7 @@ namespace clinic
             rci_city.ReadOnly = true;
             rci_zip.ReadOnly = true;
             rci_phonenumber.ReadOnly = true;
-
+            
 
         }
 
@@ -192,12 +193,12 @@ namespace clinic
                         cmd.Parameters.AddWithValue("@surname", rci_surname.Text);
                         cmd.Parameters.AddWithValue("@name", rci_editname.Text);
                         cmd.Parameters.AddWithValue("@fathers_name", rci_fathers.Text);
-                        //cmd.Parameters.AddWithValue("@birthday", rci_birthday.Text); //date
+                        cmd.Parameters.AddWithValue("@birthday", DateTime.Parse(rci_birthday.Text).Date); //date
                         cmd.Parameters.AddWithValue("@gender", rci_gender.Text);
                         cmd.Parameters.AddWithValue("@email", rci_email.Text);
                         cmd.Parameters.AddWithValue("@address", rci_address.Text);
                         cmd.Parameters.AddWithValue("@city", rci_city.Text);
-                        cmd.Parameters.AddWithValue("@zip_code", rci_zip.Text); //int
+                        cmd.Parameters.AddWithValue("@zip_code", Int32.Parse(rci_zip.Text)); //int
 
                         cmd.Connection = con;
                         con.Open();

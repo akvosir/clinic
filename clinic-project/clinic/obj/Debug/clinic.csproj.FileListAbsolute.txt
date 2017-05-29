@@ -70,3 +70,7 @@ D:\gitrep\clinic\clinic-project\clinic\bin\MySql.Data.xml
 D:\gitrep\clinic\clinic-project\clinic\obj\Debug\clinic.csprojResolveAssemblyReference.cache
 D:\gitrep\clinic\clinic-project\clinic\obj\Debug\clinic.dll
 D:\gitrep\clinic\clinic-project\clinic\obj\Debug\clinic.pdb
+D:\gitrep\clinic\clinic-project\clinic\bin\AjaxControlToolkit.dll
+D:\gitrep\clinic\clinic-project\clinic\bin\Telerik.Web.UI.dll
+D:\gitrep\clinic\clinic-project\clinic\bin\Telerik.Web.UI.xml
+D:\gitrep\clinic\clinic-project\clinic\obj\Debug\clinic.dll.licenses

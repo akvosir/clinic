@@ -48,7 +48,7 @@ namespace clinic.Admin_Pages
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
 
-                using (MySqlCommand cmd = new MySqlCommand("SELECT day, start, end  FROM doctor_shift WHERE doctor_id =" + doctors.SelectedValue))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT shift, start, end, even_odd  FROM doctor_shift WHERE doctor_id =" + doctors.SelectedValue))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -59,18 +59,40 @@ namespace clinic.Admin_Pages
                             sda.Fill(ds);
                             if (ds.Rows.Count > 0)
                             {
+                                lbl1.Visible = false;
+                                lbl2.Visible = false;
+                                lbl3.Visible = false;
+                                lbl4.Visible = false;
+                                ddeo_1.Visible = false;
+                                ddeo_2.Visible = false;
+                                ddsh_1.Visible = false;
+                                start_add1.Visible = false;
+                                end_add1.Visible = false;
+                                ddsh_2.Visible = false;
+                                start_add2.Visible = false;
+                                end_add2.Visible = false;
+                                save_adding.Visible = false;
                                 unbind.Visible = false;
                                 schedule_table.DataSource = ds;
                                 schedule_table.DataBind();
                             }
                             else
                             {
+                                lbl1.Visible = true;
+                                lbl3.Visible = true;
+                                lbl2.Visible = true;
+                                lbl4.Visible = true;
                                 unbind.Visible = true;
                                 schedule_table.DataSource = null;
                                 schedule_table.DataBind();
-                                day_add.Visible = true;
-                                start_add.Visible = true;
-                                end_add.Visible = true;
+                                ddsh_2.Visible = true;
+                                start_add2.Visible = true;
+                                end_add2.Visible = true;
+                                ddsh_1.Visible = true;
+                                start_add1.Visible = true;
+                                end_add1.Visible = true;
+                                ddeo_1.Visible = true;
+                                ddeo_2.Visible = true;
                                 save_adding.Visible = true;
                             }
 
@@ -90,27 +112,27 @@ namespace clinic.Admin_Pages
         {
             TextBox start = schedule_table.Rows[e.RowIndex].FindControl("txt_start") as TextBox;
             TextBox end = schedule_table.Rows[e.RowIndex].FindControl("txt_end") as TextBox;
+            DropDownList shift = schedule_table.Rows[e.RowIndex].FindControl("dd_shift") as DropDownList;
             Label day = schedule_table.Rows[e.RowIndex].FindControl("lbl_day") as Label;
+
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                int result = DateTime.Parse(start.Text).ToLongTimeString().CompareTo(DateTime.Parse(end.Text).ToLongTimeString());
-                if (result < 0)
+                //int result = DateTime.Parse(start.Text).ToLongTimeString().CompareTo(DateTime.Parse(end.Text).ToLongTimeString());
+
+                using (MySqlCommand cmd = new MySqlCommand("UPDATE doctor_shift SET shift = @shift, start = @start, end = @end WHERE doctor_id = " + doctors.SelectedValue +
+                    " AND even_odd = " + Int32.Parse(day.Text)))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("UPDATE doctor_shift SET start = '" + DateTime.Parse(start.Text).ToString("HH:mm:ss") + "', end = '" + DateTime.Parse(end.Text).ToString("HH:mm:ss") +
-                    "' WHERE doctor_id = " + doctors.SelectedValue + " AND day = '" + day.Text + "'"))
-                    {
-                        cmd.Connection = con;
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                    }
-                    schedule_table.EditIndex = -1;
-                    bindDoctorSchedule();
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@shift", shift.SelectedValue);
+                    cmd.Parameters.AddWithValue("@start", DateTime.Parse(start.Text).ToString("HH:mm:ss"));
+                    cmd.Parameters.AddWithValue("@end", DateTime.Parse(end.Text).ToString("HH:mm:ss"));
+                    cmd.ExecuteNonQuery();
+                    con.Close();
                 }
-                else if (result == 0)
-                    Response.End();
-                else
-                    Response.End();
+
+                schedule_table.EditIndex = -1;
+                bindDoctorSchedule();
             }
         }
 
@@ -125,9 +147,35 @@ namespace clinic.Admin_Pages
             bindDoctorSchedule();
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
+        protected void save_adding_Click(object sender, EventArgs e)
         {
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO doctor_shift (even_odd, shift, start, end, doctor_id) VALUES (@even_odd1, @shift1, @start1, @end1, @doctor_id1), (@even_odd2, @shift2, @start2, @end2, @doctor_id2)", con))
+                {
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@even_odd1", ddeo_1.SelectedValue);
+                        cmd.Parameters.AddWithValue("@even_odd2", ddeo_2.SelectedValue);
+                        cmd.Parameters.AddWithValue("@shift1", Int32.Parse(ddsh_1.Text));
+                        cmd.Parameters.AddWithValue("@start1", DateTime.Parse(start_add1.Text).ToString("HH:mm:ss"));
+                        cmd.Parameters.AddWithValue("@end1", DateTime.Parse(end_add1.Text).ToString("HH:mm:ss"));
+                        cmd.Parameters.AddWithValue("@doctor_id1", doctors.SelectedValue);
+                        cmd.Parameters.AddWithValue("@shift2", Int32.Parse(ddsh_2.Text));
+                        cmd.Parameters.AddWithValue("@start2", DateTime.Parse(start_add2.Text).ToString("HH:mm:ss"));
+                        cmd.Parameters.AddWithValue("@end2", DateTime.Parse(end_add2.Text).ToString("HH:mm:ss"));
+                        cmd.Parameters.AddWithValue("@doctor_id2", doctors.SelectedValue);
+                        cmd.ExecuteNonQuery();
 
+                        cmd.Dispose();
+                        con.Close();
+                    }
+                }
+            }
+            bindDoctorSchedule();
         }
+
     }
 }
