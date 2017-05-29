@@ -81,18 +81,18 @@ namespace ClinicSite
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
-        protected MySqlCommand LogInCommand(MySqlConnection cnn, UInt64 id)
-        {
-            MySqlCommand cmd = cnn.CreateCommand();
+        //protected MySqlCommand LogInCommand(MySqlConnection cnn, UInt64 id)
+        //{
+        //    MySqlCommand cmd = cnn.CreateCommand();
 
-            cmd.CommandText = "INSERT INTO patient_login (id_patient, telephone, password) " +
-                "VALUES (?id_patient, ?telephone, ?password)";
+        //    cmd.CommandText = "INSERT INTO patient_login (id_patient, telephone, password) " +
+        //        "VALUES (?id_patient, ?telephone, ?password)";
 
-            cmd.Parameters.AddWithValue("?id_patient", id);
-            cmd.Parameters.AddWithValue("?telephone", log_phone.Text);
-            cmd.Parameters.AddWithValue("?password", log_psswrd.Text);
-            return cmd;
-        }
+        //    cmd.Parameters.AddWithValue("?id_patient", id);
+        //    cmd.Parameters.AddWithValue("?telephone", log_phone.Text);
+        //    cmd.Parameters.AddWithValue("?password", log_psswrd.Text);
+        //    return cmd;
+        //}
 
 
         protected void Register_Click(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace ClinicSite
                 foreach (DataRow dr in dt.Rows)
                 {
                     Session["telephone"] = dr["telephone"].ToString();
-                    Response.Redirect("~/UserFunctions.aspx");
+                    Response.Redirect("~/UserAccount/UserFunctions.aspx");
                     break;
                 }
             }

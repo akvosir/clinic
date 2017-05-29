@@ -113,7 +113,12 @@
     <Content Include="assets\Doctor8.jpg" />
     <Content Include="assets\doctor9.jpg" />
     <Content Include="assets\logo.jpg" />
-    <Content Include="chooceDoctor.aspx" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\animations.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="UserAccount\chooceDoctor.aspx" />
     <Content Include="css\bootstrap-combined.min.css" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -142,8 +147,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="javas\.mfhidden" />
-    <Content Include="receptionResult.aspx" />
-    <Content Include="User.Master" />
+    <Content Include="UserAccount\receptionResult.aspx" />
+    <Content Include="UserAccount\User.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -153,26 +158,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.aspx" />
-    <Content Include="UserFunctions.aspx" />
+    <Content Include="UserAccount\UserFunctions.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="chooceDoctor.aspx.cs">
+    <Compile Include="UserAccount\chooceDoctor.aspx.cs">
       <DependentUpon>chooceDoctor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="chooceDoctor.aspx.designer.cs">
+    <Compile Include="UserAccount\chooceDoctor.aspx.designer.cs">
       <DependentUpon>chooceDoctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="receptionResult.aspx.cs">
+    <Compile Include="UserAccount\receptionResult.aspx.cs">
       <DependentUpon>receptionResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="receptionResult.aspx.designer.cs">
+    <Compile Include="UserAccount\receptionResult.aspx.designer.cs">
       <DependentUpon>receptionResult.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationForm.cs" />
+    <Compile Include="UserAccount\RegistrationForm.cs" />
     <Compile Include="Site.aspx.cs">
       <DependentUpon>Site.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,18 +185,18 @@
     <Compile Include="Site.aspx.designer.cs">
       <DependentUpon>Site.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User.Master.cs">
+    <Compile Include="UserAccount\User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User.Master.designer.cs">
+    <Compile Include="UserAccount\User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserFunctions.aspx.cs">
+    <Compile Include="UserAccount\UserFunctions.aspx.cs">
       <DependentUpon>UserFunctions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserFunctions.aspx.designer.cs">
+    <Compile Include="UserAccount\UserFunctions.aspx.designer.cs">
       <DependentUpon>UserFunctions.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

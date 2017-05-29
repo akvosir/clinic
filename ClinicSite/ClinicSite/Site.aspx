@@ -3,9 +3,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Clinic without queue</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
     <link href="css/css/bootstrap.css" rel="stylesheet">
@@ -71,7 +74,7 @@
 														<div class="modal-content">
 															<div class="modal-header">
 																<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
-																<h4 class="modal-title" id="project-2-label">Кабінет</h4>
+																<h4 class="modal-title">Кабінет</h4>
 															</div>
 															<div class="modal-body">
                                                                 <form role="form" runat ="server" id="LoginForm">
@@ -742,7 +745,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<p class="text-center">Copyright © 2017</p>
+							<p class="copyright">&copy;
+                                <script>document.write(new Date().getFullYear())
+                                </script>
+							</p>
 						</div>
 					</div>
 				</div>
