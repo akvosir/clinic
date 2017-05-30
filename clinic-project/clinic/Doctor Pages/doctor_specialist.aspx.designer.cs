@@ -40,6 +40,15 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.WebControls.LinkButton an;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// app_spec control.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,13 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.WebControls.TextBox app_spec_date;
         
         /// <summary>
-        /// app_spec_time control.
+        /// RadTimePicker1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox app_spec_time;
+        protected global::Telerik.Web.UI.RadTimePicker RadTimePicker1;
         
         /// <summary>
         /// make_app control.

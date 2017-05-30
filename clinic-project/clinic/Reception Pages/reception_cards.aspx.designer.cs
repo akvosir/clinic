@@ -13,24 +13,6 @@ namespace clinic {
     public partial class reception_cards {
         
         /// <summary>
-        /// search_txt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox search_txt;
-        
-        /// <summary>
-        /// search_btn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button search_btn;
-        
-        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>

@@ -46,6 +46,8 @@
                                     <div class="form-group">
                                         <asp:Label runat="server">Прізвище </asp:Label>
                                         <asp:TextBox runat="server" ID="admin_surname" type="text" class="form-control" placeholder="Прізвище"></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_surname" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admin_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 
@@ -54,6 +56,8 @@
                                         <div class="form-group">
                                             <asp:Label runat="server">Ім`я </asp:Label>
                                             <asp:TextBox runat="server" ID="admin_name" class="form-control" placeholder="Ім`я"></asp:TextBox>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_name" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admin_name" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                 </div>
@@ -63,6 +67,8 @@
                                         <div class="form-group">
                                             <asp:Label runat="server">По батькові </asp:Label>
                                             <asp:TextBox runat="server" ID="admin_fathers" class="form-control" placeholder="По батькові"></asp:TextBox>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_login" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admch_login" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                 </div>
@@ -73,6 +79,8 @@
                                     <div class="form-group">
                                         <asp:Label runat="server">Логін</asp:Label>
                                         <asp:TextBox runat="server" ID="admin_login" type="text" class="form-control" placeholder="Логін"></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_login" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9]+$" ControlToValidate="admin_login" ErrorMessage="Латиниця" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 
@@ -81,6 +89,7 @@
                                     <div class="form-group">
                                         <asp:Label runat="server">Пароль</asp:Label>
                                         <asp:TextBox runat="server" ID="admin_password" type="text" class="form-control" placeholder="Пароль"></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_password" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 

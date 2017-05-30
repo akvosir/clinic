@@ -1,4 +1,4 @@
-﻿<%@ Page validateRequest="false" Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_card_individual.aspx.cs" Inherits="clinic.reception_card_individual" %>
+﻿<%@ Page ValidateRequest="false" Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_card_individual.aspx.cs" Inherits="clinic.reception_card_individual" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content1" runat="server">
     <li class="active">
@@ -28,6 +28,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="mainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="col-md-16">
         <div class="card">
             <div class="header">
@@ -51,18 +52,27 @@
                                 <div class="form-group">
                                     <asp:Label runat="server" ID="rci_surnameLab" Text="Прізвище" Visible="false"></asp:Label>
                                     <asp:TextBox runat="server" Visible="false" type="text" AutoPostBack="true" ID="rci_surname" class="form-control" placeholder="Прізвище"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="rci_surname" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$"
+                                        ControlToValidate="rci_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <asp:Label runat="server" ID="rci_nameLab" Text="Ім'я" Visible="false"></asp:Label>
                                     <asp:TextBox runat="server" Visible="false" type="text" ID="rci_editname" class="form-control" placeholder="Ім'я"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="rci_editname" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$"
+                                        ControlToValidate="rci_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <asp:Label runat="server" ID="rci_fathnameLab" Text="По батькові" Visible="false"></asp:Label>
                                     <asp:TextBox runat="server" Visible="false" type="text" ID="rci_fathers" class="form-control" placeholder="По батькові"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="rci_fathers" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$"
+                                        ControlToValidate="rci_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                         </div>
@@ -72,6 +82,8 @@
                                 <div class="form-group">
                                     <label>Дата народження</label>
                                     <asp:TextBox runat="server" type="text" ID="rci_birthday" class="form-control" ReadOnly="true" />
+                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="rci_birthday" />
+                                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="12px" ControlToValidate="rci_birthday"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -85,6 +97,11 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Електронна пошта</label>
                                     <asp:TextBox runat="server" type="email" ID="rci_email" class="form-control" placeholder="Email" ReadOnly="true" />
+                                    
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Введіть дійсний e-mail!" ForeColor="#dd4242" Font-Size="11px"
+                                ValidationGroup="vgSubmit" ControlToValidate="rci_email" CssClass="requiredFieldValidateStyle"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                            </asp:RegularExpressionValidator>
                                 </div>
                             </div>
                         </div>
@@ -94,6 +111,7 @@
                                 <div class="form-group">
                                     <label>Адреса</label>
                                     <asp:TextBox runat="server" type="text" ID="rci_address" class="form-control" ReadOnly="true" />
+                                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rci_address"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -103,12 +121,22 @@
                                 <div class="form-group">
                                     <label>Місто</label>
                                     <asp:TextBox runat="server" type="text" ID="rci_city" class="form-control" ReadOnly="true" />
+                                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rci_city"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px" ValidationGroup="vgSubmit"
+                                        ControlToValidate="rci_city" CssClass="requiredFieldValidateStyle"
+                                        ValidationExpression="[^0-9]+$">
+                                    </asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Поштовий індекс</label>
                                     <asp:TextBox runat="server" type="number" ID="rci_zip" class="form-control" ReadOnly="true" />
+                                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rci_zip"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="Тільки цифри!" ForeColor="#dd4242" Font-Size="11px" ValidationGroup="vgSubmit"
+                                        ControlToValidate="rci_zip" CssClass="requiredFieldValidateStyle"
+                                        ValidationExpression="\d{5}">
+                                    </asp:RegularExpressionValidator>
                                 </div>
                             </div>
 
@@ -116,6 +144,9 @@
                                 <div class="form-group">
                                     <label>Номер телефону</label>
                                     <asp:TextBox runat="server" type="tel" ID="rci_phonenumber" class="form-control" ReadOnly="true" />
+                                     <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" ClearMaskOnLostFocus="false" Mask="+99(999) 999-99-99" TargetControlID="rci_phonenumber" />
+                            <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rci_phonenumber"></asp:RequiredFieldValidator>
+
                                 </div>
                             </div>
 

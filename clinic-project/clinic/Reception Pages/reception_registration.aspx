@@ -44,7 +44,7 @@
                             <label>Прізвище</label>
                             <asp:TextBox runat="server" type="text" ID="rec_surname" class="form-control" placeholder="Прізвище"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="rec_surname" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator runat="server" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$" 
+                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" 
                                 ControlToValidate="rec_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                             <label>Ім'я</label>
                             <asp:TextBox runat="server" type="text" ID="rec_name" class="form-control" placeholder="Ім'я"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rec_name"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator runat="server" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$" 
+                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$"
                                 ControlToValidate="rec_name" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             <label>По батькові</label>
                             <asp:TextBox runat="server" type="text" ID="rec_fathers" class="form-control" placeholder="По батькові"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server"  ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rec_fathers"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator runat="server" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$" 
+                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" 
                                 ControlToValidate="rec_fathers" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                             <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rec_city"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px" ValidationGroup="vgSubmit" 
                                 ControlToValidate="rec_city" CssClass="requiredFieldValidateStyle"
-                                ValidationExpression="[aA-zZ]">
+                                ValidationExpression="[^0-9]+$">
                             </asp:RegularExpressionValidator>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                         <div class="form-group">
                             <label>Номер телефону</label>
                             <asp:TextBox runat="server" type="text" ID="rec_number" class="form-control" placeholder="Номер телефону"></asp:TextBox>
-                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" ClearMaskOnLostFocus="false" Mask="+38(999) 999-99-99" TargetControlID="rec_number" />
+                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" ClearMaskOnLostFocus="false" Mask="+99(999) 999-99-99" TargetControlID="rec_number" />
                             <asp:RequiredFieldValidator runat="server" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rec_number"></asp:RequiredFieldValidator>
                         </div>
 

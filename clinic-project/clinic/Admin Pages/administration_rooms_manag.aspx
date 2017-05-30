@@ -41,16 +41,6 @@
                 <div class="content">
                     <div class="col">
 
-
-                        <div class="col-md-16">
-                            <div class="input-group">
-                                <asp:TextBox runat="server" type="text" class="form-control" placeholder="Search"></asp:TextBox>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-md-16">
                             <asp:GridView runat="server" ID="rooms_table" OnRowEditing="rooms_table_RowEditing" OnRowCancelingEdit="rooms_table_RowCancelingEdit" OnRowUpdating="rooms_table_RowUpdating" OnPageIndexChanging="rooms_table_PageIndexChanging" PageSize="20" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" AllowPaging="true" CssClass="ui celled table">
                                 <Columns>
@@ -70,6 +60,7 @@
                                          </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:TextBox ID="txt_Room" runat="server" Text='<%#Eval("doctor_room") %>'></asp:TextBox>
+                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[0-9]+$" ControlToValidate="txt_Room" ErrorMessage="Повинно містити тільки цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>

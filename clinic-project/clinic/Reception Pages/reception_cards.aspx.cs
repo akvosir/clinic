@@ -64,16 +64,5 @@ namespace clinic
         {
             this.Bind();
         }
-
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Cells[0].Text = Regex.Replace(e.Row.Cells[0].Text, search_txt.Text.Trim(), delegate (Match match)
-                {
-                    return string.Format("<span style = 'background-color:#D9EDF7'>{0}</span>", match.Value);
-                }, RegexOptions.IgnoreCase);
-            }
-        }
     }
 }
