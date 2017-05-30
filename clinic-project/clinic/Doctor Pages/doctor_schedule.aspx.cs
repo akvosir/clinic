@@ -22,7 +22,7 @@ namespace clinic.Doctor_Pages
             using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT patient_card.idpatient_card, patient_card.name, patient_card.surname, patient_card.fathers_name, start_app FROM `doctor_schedule` " +
-                    "INNER JOIN patient_card ON patient = patient_card.idpatient_card WHERE doctor = 1 AND date(start_app) = '" + date.ToString("yyyy-MM-dd") + "'"))
+                    "INNER JOIN patient_card ON patient = patient_card.idpatient_card WHERE doctor = " + UserS.id + " AND date(start_app) = '" + date.ToString("yyyy-MM-dd") + "'"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {

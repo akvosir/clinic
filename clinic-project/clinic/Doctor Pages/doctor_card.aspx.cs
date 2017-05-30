@@ -18,8 +18,6 @@ namespace clinic.Doctor_Pages
                 bindSpecialists();
                 bindAnalysis();
                 bindMedicine();
-
-                
             }
         }
 
@@ -39,14 +37,36 @@ namespace clinic.Doctor_Pages
                         cmd.Parameters.AddWithValue("@reason", dc_reason.Text);
                         cmd.Parameters.AddWithValue("@symptoms", dc_symptoms.Text);
                         cmd.Parameters.AddWithValue("@diagnosis", dc_diagnosis.Text);
-                        //cmd.Parameters.AddWithValue("@med_name", medicine.SelectedValue);
-                        //cmd.Parameters.AddWithValue("@med_start", med_st.Text);
-                        //cmd.Parameters.AddWithValue("@med_end", med_en.Text);
                         cmd.Parameters.AddWithValue("@recom_consult", specialists.SelectedValue);
-                        //cmd.Parameters.AddWithValue("@recom_analysis", analys.GetSelectedIndices);
+                        cmd.Parameters.AddWithValue("@recom_analysis", analys.SelectedValue);
                         cmd.Parameters.AddWithValue("@next_visit", DateTime.Parse(dc_next.Text));
                         cmd.Parameters.AddWithValue("@patient_id", id);
-                        cmd.Parameters.AddWithValue("@doctor_id", 1); //get id from login form
+                        cmd.Parameters.AddWithValue("@doctor_id", UserS.id); //get id from login form
+
+                        cmd.ExecuteNonQuery();
+                        cmd.Dispose();
+                        con.Close();
+                    }
+                }
+            }
+        }
+
+        protected void addMedicine(int id)
+        {
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO medicine_patient (id_medicine, id_visit, start_med, end_med, howtotake) " +
+                    "VALUES (@id_medicine, @id_visit, @start_med, @end_med, @howtotake)", con))
+                {
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        /*cmd.Parameters.AddWithValue("@id_medicine", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@id_visit", dc_reason.Text);
+                        cmd.Parameters.AddWithValue("@start_med", dc_symptoms.Text);
+                        cmd.Parameters.AddWithValue("@end_med", dc_diagnosis.Text);
+                        cmd.Parameters.AddWithValue("@howtotake", specialists.SelectedValue);*/
 
                         cmd.ExecuteNonQuery();
                         cmd.Dispose();
@@ -161,7 +181,6 @@ namespace clinic.Doctor_Pages
                             {
                                 analys.DataSource = ds;
                                 analys.DataBind();
-                                analys.SelectionMode = ListSelectionMode.Multiple;
 
                             }
 
@@ -175,6 +194,7 @@ namespace clinic.Doctor_Pages
         {
             string id = Request.QueryString["ID"];
             addVisitData(Int32.Parse(id));
+            Response.Redirect("doctor_specialist.aspx?ID=" + Server.UrlEncode(id));
         }
 
 

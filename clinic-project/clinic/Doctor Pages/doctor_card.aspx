@@ -108,7 +108,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Аналіз</label>
-                            <asp:ListBox ID="analys" Rows="6" DataValueField="id_analysis" DataTextField="analysis_name" class="form-control"  runat="server" >
+                            <asp:ListBox ID="analys" Rows="6" DataValueField="analysis_name" DataTextField="analysis_name" class="form-control"  runat="server" >
                             </asp:ListBox>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ namespace clinic.Admin_Pages
 
         protected void bindStaff()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM staff_login "))
@@ -93,13 +93,12 @@ namespace clinic.Admin_Pages
             TextBox fathers_name = user_table.Rows[e.RowIndex].FindControl("admch_fname") as TextBox;
             TextBox login = user_table.Rows[e.RowIndex].FindControl("admch_login") as TextBox;
             TextBox password = user_table.Rows[e.RowIndex].FindControl("admch_password") as TextBox;
-            DropDownList type = user_table.Rows[e.RowIndex].FindControl("admch_type") as DropDownList;
 
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE staff_login SET surname= @surname, name =@name, fathers_name = @fathers_name, " +
-                    "login=@login, password = @password, type = @type WHERE id = " + Convert.ToInt32(id.Text)))
+                    "login=@login, password = @password WHERE id = " + Convert.ToInt32(id.Text)))
                 {
                     cmd.Connection = con;
                     con.Open();
@@ -108,7 +107,6 @@ namespace clinic.Admin_Pages
                     cmd.Parameters.AddWithValue("@fathers_name", fathers_name.Text);
                     cmd.Parameters.AddWithValue("@login", login.Text);
                     cmd.Parameters.AddWithValue("@password", password.Text);
-                    cmd.Parameters.AddWithValue("@type", type.SelectedValue);
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -131,6 +129,12 @@ namespace clinic.Admin_Pages
                 }
             }
             this.bindStaff();
+        }
+
+        protected void user_table_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            user_table.EditIndex = -1;
+            bindStaff();
         }
     }
 

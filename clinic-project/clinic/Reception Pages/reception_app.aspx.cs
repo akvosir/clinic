@@ -22,14 +22,21 @@ namespace clinic
                     {
                         doctors.ClearSelection();
                         string id = (string)Session["schedule_doc_id"];
+                        string date = (string)Session["schedule_date"];
                         doctors.SelectedValue = id;
+                        rec_app_date.Text = date;
                         getDocInfo();
                         doctor_bind();
+                        doc();
                     }
-                    else if (Session["schedule_doc_id"] == null) {
+                    else if (Session["schedule_doc_id"] == null)
+                    {
                         string id = (string)Session["schedule_pat"];
+                        string date = (string)Session["schedule_date"];
                         pat.SelectedValue = id;
+                        rec_app_date.Text = date;
                         doctor_bind();
+                        doc();
                     }
 
                 }
@@ -143,33 +150,6 @@ namespace clinic
             }
         }
 
-       /* protected void timeBind()
-        {
-
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
-            {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM time_table", con))
-                {
-                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
-                    {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable ds = new DataTable())
-                        {
-                            sda.Fill(ds);
-                            if (ds.Rows.Count > 0)
-                            {
-
-                            }
-
-                        }
-                    }
-                }
-            }
-
-
-        }*/
-
         protected void save_Click(object sender, EventArgs e)
         {
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
@@ -178,10 +158,10 @@ namespace clinic
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                         //добавить сешион с датой
                         cmd.Connection = con;
                         con.Open();
-                        DateTime d = DateTime.Parse(rec_app_date.Text).Add(TimeSpan.Parse(rec_app_time.Text));
+                        TimeSpan t = RadTimePicker1.SelectedTime.Value;
+                        DateTime d = DateTime.Parse(rec_app_date.Text).Add(t);
                         DateTime ed = d.AddMinutes(30.0);
 
                         cmd.Parameters.AddWithValue("@start_app", d);
@@ -197,14 +177,123 @@ namespace clinic
             }
         }
 
+        protected int even_odd(DateTime dat)
+        {
+
+            int f = dat.Day;
+            if (f % 2 == 0) { return 0; }
+            else { return 1; }
+        }
+
+        protected void docshift(List<TimeSpan> sh1)
+        {
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            {
+                if (even_odd(DateTime.Parse(rec_app_date.Text)) == 0)
+                {
+                    MySqlCommand sh = new MySqlCommand("SELECT shift FROM `doctor_shift` WHERE doctor_id =" + doctors.SelectedValue + " AND even_odd = 0");
+                    sh.Connection = con;
+                    con.Open();
+                    int result = Int32.Parse(sh.ExecuteScalar().ToString());
+
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM `time_table` WHERE shift =" + result))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            MySqlDataReader reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                sh1.Add(TimeSpan.Parse(reader["time_app"].ToString()));
+                            }
+
+
+                        }
+                    }
+                }
+                else
+                {
+                    MySqlCommand sh = new MySqlCommand("SELECT shift FROM `doctor_shift` WHERE doctor_id =" + doctors.SelectedValue + " AND even_odd = 1");
+                    sh.Connection = con;
+                    con.Open();
+                    int result = Int32.Parse(sh.ExecuteScalar().ToString());
+
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM `time_table` WHERE shift =" + result))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                             MySqlDataReader reader = cmd.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                sh1.Add(TimeSpan.Parse(reader["time_app"].ToString()));
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+        protected void doc()
+        {
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app  FROM `time_table` INNER JOIN doctor_shift ON doctor_shift.shift = time_table.shift " +
+                    "INNER JOIN doctor_schedule ON doctor_schedule.doctor = doctor_shift.doctor_id WHERE date(doctor_schedule.start_app)= '" + DateTime.Parse(rec_app_date.Text).Date + "' AND time_app = time(doctor_schedule.start_app)  " +
+                    "AND doctor_schedule.doctor = " + doctors.SelectedValue + " AND time_app >= time(doctor_shift.start)"))
+                {
+                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                    {
+                        List<TimeSpan> t = new List<TimeSpan>();
+                        docshift(t);
+
+                        List<TimeSpan> t2 = new List<TimeSpan>();
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        con.Open();
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            t2.Add(TimeSpan.Parse(reader["time_app"].ToString()));
+                        }
+
+                        for (int i = t.Count - 1; i >= 0; i--)
+                            if (t2.Exists(h => h == t[i]))
+                            {
+                                t.RemoveAt(i);
+                            }
+
+                        TimeSpan[] time = new TimeSpan[t.Count];
+                        for (int i = 0; i < t.Count; i++)
+                        {
+                            time[i] = t[i];
+                        }
+
+                        RadTimePicker1.TimeView.CustomTimeValues = time;
+
+                    }
+                }
+            }
+        }
+
         protected void specialty_SelectedIndexChanged(object sender, EventArgs e)
         {
             doctor_bind();
         }
 
+        protected void rec_app_date_TextChanged(object sender, EventArgs e)
+        {
+            doc();
+        }
+
         protected void doctors_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            doc();
         }
     }
 }

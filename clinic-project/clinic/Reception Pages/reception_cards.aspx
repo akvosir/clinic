@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_cards.aspx.cs" Inherits="clinic.reception_cards" %>
+﻿<%@ Page  validateRequest="false" Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_cards.aspx.cs" Inherits="clinic.reception_cards" %>
 
 <asp:Content ID="Con" ContentPlaceHolderID="Content5" runat="server">
     <script type="text/javascript">
@@ -41,6 +41,13 @@
             <div class="content">
                 <div class="col-md-12">
                     <div class="card card-plain">
+
+                        <div class="input-group">
+                            <asp:TextBox runat="server" ID="search_txt" type="text" class="form-control" placeholder="Пошук по пацієнтам"></asp:TextBox>
+                            <div class="input-group-btn">
+                                <asp:Button runat="server" ID="search_btn" OnClick="search_btn_Click" class="btn btn-default" type="submit" Text="O\"></asp:Button>
+                            </div>
+                        </div>
 
                         <asp:GridView runat="server" ID="GridView1" PageSize="15 " AutoGenereteSelectButton="true" AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging" Width="100%" CssClass="ui celled table" AllowPaging="true">
                             <Columns>

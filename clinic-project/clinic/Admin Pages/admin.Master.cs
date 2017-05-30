@@ -11,7 +11,20 @@ namespace clinic.Admin_Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                name.Text = UserS.surname + " " + UserS.name + " " + UserS.fathers_name;
+            }
+        }
 
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            UserS.id = 0;
+            UserS.name = null;
+            UserS.surname = null;
+            UserS.fathers_name = null;
+            Response.Redirect("~/Login Page/LoginPage.aspx");
         }
     }
+
 }

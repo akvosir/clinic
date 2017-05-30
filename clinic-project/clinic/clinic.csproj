@@ -197,7 +197,6 @@
     <Compile Include="Admin Pages\administration_rooms_manag.aspx.designer.cs">
       <DependentUpon>administration_rooms_manag.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Doctor Pages\Doctor.cs" />
     <Compile Include="Doctor Pages\doctor.Master.cs">
       <DependentUpon>doctor.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -304,6 +303,7 @@
     <Compile Include="Reception Pages\reception_app.aspx.designer.cs">
       <DependentUpon>reception_app.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserS.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

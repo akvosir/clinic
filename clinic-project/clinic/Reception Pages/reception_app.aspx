@@ -68,7 +68,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <asp:Label runat="server" Text="Обрати лікаря"></asp:Label>
-                                        <asp:DropDownList runat="server" type="text" AutoPostBack="true" DataValueField="id_doctor" DataTextField="name" ID="doctors" class="form-control"></asp:DropDownList>
+                                        <asp:DropDownList runat="server" type="text" AutoPostBack="true" OnSelectedIndexChanged="doctors_SelectedIndexChanged" DataValueField="id_doctor" DataTextField="name" ID="doctors" class="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
@@ -77,15 +77,17 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>ДАТА</label>
-                                        <asp:TextBox runat="server" ID="rec_app_date" type="date" class="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="rec_app_date" type="date" OnTextChanged="rec_app_date_TextChanged" AutoPostBack="true" class="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>ЧАС</label>
-                                        <asp:TextBox ID="rec_app_time" runat="server" type="time" class="form-control"></asp:TextBox>
+                                        <telerik:RadTimePicker ID="RadTimePicker1" runat="server"  AutoPostBack="true" TimeView-StartTime="09:00:00" TimeView-EndTime="19:00:00" TimeView-Interval="00:30:00"></telerik:RadTimePicker>
                                     </div>
                                 </div>
                             </div>

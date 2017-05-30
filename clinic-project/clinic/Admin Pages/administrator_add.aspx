@@ -54,6 +54,8 @@
                                                 <asp:Button runat="server" ID="submit_spectype" OnClick="submit_spectype_Click" type="button" class="btn btn-default" Text="Додати працівника"></asp:Button>
                                             </span>
                                         </div>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"
+                                            ControlToValidate="admin_spectype" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                             </div>
@@ -67,6 +69,8 @@
                                                 <asp:Button runat="server" ID="submit_med" OnClick="submit_med_Click" type="button" class="btn btn-default" Text="Додати препарат"></asp:Button>
                                             </span>
                                         </div>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-zA-Z/'/-\]+"
+                                            ControlToValidate="admin_med" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                             </div>
@@ -81,6 +85,8 @@
                                                 <asp:Button runat="server" type="button" ID="submit_antype" OnClick="submit_antype_Click" class="btn btn-default" Text="Додати тип аналізу"></asp:Button>
                                             </span>
                                         </div>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"
+                                            ControlToValidate="admin_an" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                             </div>

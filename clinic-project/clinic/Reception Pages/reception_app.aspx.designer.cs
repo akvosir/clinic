@@ -67,13 +67,13 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.TextBox rec_app_date;
         
         /// <summary>
-        /// rec_app_time control.
+        /// RadTimePicker1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rec_app_time;
+        protected global::Telerik.Web.UI.RadTimePicker RadTimePicker1;
         
         /// <summary>
         /// save control.

@@ -82,14 +82,6 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Хронічні хвороби</label>
-                                    <textarea rows="5" class="form-control">Журба за Вкраїну</textarea>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                     <div id="visits">

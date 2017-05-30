@@ -38,7 +38,7 @@ namespace clinic
 
         protected void addStaffMember()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; Allow User Variables=True"))
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
                 using (MySqlCommand command = new MySqlCommand("INSERT INTO staff_login (login, password, surname, name, fathers_name, type) " +
                     "VALUES (@login, @password, @surname, @name, @fathers_name, @type)", con))
@@ -89,7 +89,7 @@ namespace clinic
         }
 
         protected void addDoctor() {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk';"))
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
                 using (MySqlCommand command = new MySqlCommand("INSERT INTO doctors (doctor_surname, doctor_name, doctor_fathersname, doctor_specialty, doctor_room) " +
                     "VALUES (@doctor_surname, @doctor_name, @doctor_fathersname, @doctor_specialty, @doctor_room)"))

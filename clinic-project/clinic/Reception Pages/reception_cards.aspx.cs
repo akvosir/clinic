@@ -3,6 +3,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
+using System.Configuration;
 
 namespace clinic
 {
@@ -12,7 +14,7 @@ namespace clinic
         {
             if (!IsPostBack)
             {
-                Bind();
+                this.Bind();
             }
 
         }
@@ -21,9 +23,8 @@ namespace clinic
         {
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-
                 using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, surname, name, fathers_name, birthday, gender, email, " +
-                    "address, city, zip_code, telephone  FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient "))
+                    "address, city, zip_code, telephone  FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -44,7 +45,6 @@ namespace clinic
                 }
             }
 
-
         }
 
         protected void card_Click(object sender, EventArgs e)
@@ -54,33 +54,26 @@ namespace clinic
             Response.Redirect("reception_card_individual.aspx?ID=" + Server.UrlEncode(clickedRow.Cells[0].Text));
         }
 
-       /* protected void fillCards(MySqlConnection thisConnection, MySqlCommand thisCommand)
-        {
-            thisConnection.Open();
-            MySqlDataReader reader = thisCommand.ExecuteReader();
-
-            while (reader.Read())
-            {
-                int id = reader.GetInt32(0);
-                String Surname = reader.GetString(1);
-                String Name = reader.GetString(2);
-                String Fathers_name = reader.GetString(3);
-                DateTime Birthday = reader.GetDateTime(4);
-                String Gender = reader.GetString(5);
-                String Email = reader.GetString(6);
-                String Address = reader.GetString(7);
-                String City = reader.GetString(8);
-                int Zip_code = reader.GetInt32(9);
-                string Telephone = reader.GetString(10);
-            }
-
-            thisConnection.Close();
-        }*/
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             Bind();
+        }
+
+        protected void search_btn_Click(object sender, EventArgs e)
+        {
+            this.Bind();
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].Text = Regex.Replace(e.Row.Cells[0].Text, search_txt.Text.Trim(), delegate (Match match)
+                {
+                    return string.Format("<span style = 'background-color:#D9EDF7'>{0}</span>", match.Value);
+                }, RegexOptions.IgnoreCase);
+            }
         }
     }
 }

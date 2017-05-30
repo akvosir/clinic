@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace clinicWeb {
+namespace clinic {
     
     
     public partial class LoginPage {

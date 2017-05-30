@@ -18,7 +18,7 @@ namespace clinic.Admin_Pages
 
         protected void submit_spectype_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; Allow User Variables=True"))
+            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
                 using (MySqlCommand command = new MySqlCommand("INSERT INTO doctor_specialty (name_specialty) VALUES (@name_specialty)", con))
                 {

@@ -14,6 +14,7 @@ namespace clinic.Doctor_Pages
             if (!IsPostBack) {
                 bindSpecialists();
                 bindSpecialistsByName();
+                string f = Request.QueryString["ID"];
             }
         }
 
@@ -21,7 +22,7 @@ namespace clinic.Doctor_Pages
         {
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM doctor_specialty", con))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM doctor_specialty WHERE id_specialty > 0", con))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -82,7 +83,7 @@ namespace clinic.Doctor_Pages
                         cmd.Parameters.AddWithValue("@start_app", d);
                         cmd.Parameters.AddWithValue("@end_app", ed);
                         cmd.Parameters.AddWithValue("@doctor", 2);
-                        cmd.Parameters.AddWithValue("@patient", 1);
+                        cmd.Parameters.AddWithValue("@patient", Int32.Parse(Request.QueryString["ID"]));
         
                         cmd.ExecuteNonQuery();
                         cmd.Dispose();

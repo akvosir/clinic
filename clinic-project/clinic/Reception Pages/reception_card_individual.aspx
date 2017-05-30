@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_card_individual.aspx.cs" Inherits="clinic.reception_card_individual" %>
+﻿<%@ Page validateRequest="false" Title="" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="reception_card_individual.aspx.cs" Inherits="clinic.reception_card_individual" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content1" runat="server">
     <li class="active">

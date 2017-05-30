@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="clinicWeb.LoginPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="clinic.LoginPage" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,6 @@
         <h1>Вхід</h1>
     </hgroup>
     <form runat="server">
-
     <div class="group">
         <asp:TextBox id="loginTextBox" runat="server" type="text"/>
         <span class="highlight"></span><span class="bar"></span>

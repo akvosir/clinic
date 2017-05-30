@@ -131,6 +131,7 @@ namespace clinic
         {
             d_schedule();
             make_anapp.Visible = true;
+            Session["schedule_date"] = dateTB.Text;
             Session["schedule_doc_id"] = doc.SelectedValue;
         }
 

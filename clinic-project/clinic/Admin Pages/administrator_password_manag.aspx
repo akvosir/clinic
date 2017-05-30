@@ -48,27 +48,34 @@
                 </div>
 
                 <div class="col-md-16">
-                    <asp:GridView runat="server" ID="user_table" PageSize="20" OnRowEditing="user_table_RowEditing" OnRowUpdating="user_table_RowUpdating" OnRowDeleting="user_table_RowDeleting" OnPageIndexChanging="user_table_PageIndexChanging" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" AllowPaging="true" CssClass="ui celled table">
+                    <asp:GridView runat="server" ID="user_table" PageSize="20" OnRowCancelingEdit="user_table_RowCancelingEdit" OnRowEditing="user_table_RowEditing" OnRowUpdating="user_table_RowUpdating" OnRowDeleting="user_table_RowDeleting" OnPageIndexChanging="user_table_PageIndexChanging" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" AllowPaging="true" CssClass="ui celled table">
                         <Columns>
                             <asp:TemplateField HeaderText="Номер працівника">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl_id" runat="server" Text='<%# Eval("id")%>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Прізвище">
+                            <asp:TemplateField HeaderText="Ім'я">
                                 <ItemTemplate>
                                     <asp:Label runat="server" Text='<%# Eval("name")%>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox runat="server" ID="admch_surname" Text='<%# Eval("name")%>'></asp:TextBox>
+                                    <div class=" form-group-sm">
+                                        <asp:TextBox runat="server" ID="admch_surname" class="form-control input-sm" Text='<%#Eval("name")%>'></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_surname" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    </div>
                                 </EditItemTemplate>
+
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Прізвище">
                                 <ItemTemplate>
                                     <asp:Label runat="server" Text='<%# Eval("surname")%>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox runat="server" ID="admch_name" Text='<%# Eval("surname")%>'></asp:TextBox>
+                                    <div class=" form-group-sm">
+                                        <asp:TextBox runat="server" ID="admch_name" class="form-control input-sm" Text='<%# Eval("surname")%>'></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_name" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    </div>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="По батькові">
@@ -76,7 +83,10 @@
                                     <asp:Label runat="server" Text='<%# Eval("fathers_name")%>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox runat="server" ID="admch_fname" Text='<%# Eval("fathers_name")%>'></asp:TextBox>
+                                    <div class=" form-group-sm">
+                                        <asp:TextBox runat="server" ID="admch_fname" class="form-control input-sm" Text='<%# Eval("fathers_name")%>'></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_surname" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    </div>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Логін">
@@ -84,21 +94,18 @@
                                     <asp:Label runat="server" Text='<%# Eval("login")%>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox runat="server" ID="admch_login" Text='<%# Eval("login")%>'></asp:TextBox>
-                                    <asp:TextBox runat="server" ID="admch_password" TextMode="Password" Text='<%# Eval("password")%>'></asp:TextBox>
+                                    <div class=" form-group-sm">
+                                        <asp:TextBox runat="server" ID="admch_login" class="form-control input-sm" Text='<%# Eval("login")%>'></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="admch_password" class="form-control input-sm" TextMode="Password" Text='<%# Eval("password")%>'></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_login" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_password" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    </div>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Тип працівника">
                                 <ItemTemplate>
                                     <asp:Label runat="server" Text='<%# Eval("type")%>'></asp:Label>
                                 </ItemTemplate>
-                                <EditItemTemplate>
-                                    <asp:DropDownList runat="server" ID="admch_type">
-                                        <asp:ListItem Text="Працівник реєстратури" Value="Працівник реєстратури"></asp:ListItem>
-                                        <asp:ListItem Text="Лікар" Value="Лікар"></asp:ListItem>
-                                        <asp:ListItem Text="Адміністратор" Value="Адміністратор"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -115,4 +122,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </asp:Content>
