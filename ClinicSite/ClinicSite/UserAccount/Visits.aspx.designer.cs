@@ -10,7 +10,7 @@
 namespace ClinicSite {
     
     
-    public partial class chooseDoctor {
+    public partial class Visits {
         
         /// <summary>
         /// UserName control.
@@ -49,57 +49,12 @@ namespace ClinicSite {
         protected global::System.Web.UI.WebControls.LinkButton LogOut;
         
         /// <summary>
-        /// therapeutist control.
+        /// visit_table control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList therapeutist;
-        
-        /// <summary>
-        /// app_spec_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox app_spec_date;
-        
-        /// <summary>
-        /// app_spec_time control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox app_spec_time;
-        
-        /// <summary>
-        /// make_app control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button make_app;
-        
-        /// <summary>
-        /// deleteVisit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList deleteVisit;
-        
-        /// <summary>
-        /// VisitDel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button VisitDel;
+        protected global::System.Web.UI.WebControls.GridView visit_table;
     }
 }

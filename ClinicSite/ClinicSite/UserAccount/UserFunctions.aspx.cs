@@ -53,42 +53,23 @@ namespace ClinicSite
             }
         }
 
-        //protected void patientId(string patientPhoneNum)
-        //{
-        //    using (MySqlConnection cnn = Connection())
-        //    {
-        //        try
-        //        {
-        //            MySqlCommand cmd = cnn.CreateCommand();
-
-        //            cmd.CommandText = "SELECT idpatient_card FROM patient_card "+
-        //            "INNER JOIN patient_login ON idpatient_card = patient_login.id_patient " +
-        //            "WHERE patient_login.telephone = '" + patientPhoneNum + "'";
-
-        //            //cmd.CommandText = "SELECT telephone FROM patient_login WHERE telephone = '" + patientPhoneNum + "'";
-        //            cnn.Open();
-        //            var res = cmd.ExecuteScalar();
-
-        //            if (res != null)
-        //                Response.Write(res);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //        }
-        //    }
-        //    //return res;
-        //}
-
         protected void docChoose_Click(object sender, EventArgs e)
         {
             Session["UserName"] = UserName.Text;
             Response.Redirect("chooseDoctor.aspx?");
         }
 
+        protected void LogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();        
+            Response.Redirect("~/Site.aspx");
+        }
+
         protected void visits_Click(object sender, EventArgs e)
         {
             string id = Request.QueryString["ID"];
-            Response.Redirect("receptionResult.aspx?ID=" + Server.UrlEncode(id));
+            Session["UserName"] = UserName.Text;
+            Response.Redirect("Visits.aspx?ID=" + Server.UrlEncode(id));
         }
 
     }

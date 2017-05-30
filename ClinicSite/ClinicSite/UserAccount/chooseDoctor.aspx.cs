@@ -166,6 +166,12 @@ namespace ClinicSite
             }
         }
 
+        protected void LogOut_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("~/Site.aspx");
+        }
+
         protected void docChoose_Click(object sender, EventArgs e)
         {
             Session["UserName"] = UserName.Text;
@@ -175,7 +181,7 @@ namespace ClinicSite
         protected void visits_Click(object sender, EventArgs e)
         {
             string id = Request.QueryString["ID"];
-            Response.Redirect("receptionResult.aspx?ID=" + Server.UrlEncode(id));
+            Response.Redirect("Visits.aspx?ID=" + Server.UrlEncode(id));
         }
 
         protected void app_spec_SelectedIndexChanged(object sender, EventArgs e)

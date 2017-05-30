@@ -10,23 +10,28 @@ namespace ClinicSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    //btnnRegister.Click += new EventHandler(this.Register_Click);
-            //    //Check();
-            //}
-            
-            
+            if (!IsPostBack)
+            {
+                //btnnRegister.Click += new EventHandler(this.Register_Click);
+                Check();
+            }
+
+
         }
 
         private void Check()
         {
             string connection = @"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'";
-            using (MySqlConnection cn = new MySqlConnection(connection))
+            try
             {
-                cn.Open();
-                Response.Write("Successful");
+                using (MySqlConnection cn = new MySqlConnection(connection))
+                {
+                    cn.Open();
+                    Response.Write("Successful");
+                }
             }
+            catch (Exception ex) { Response.Write("Disconnect"); }
+            
         }
 
         protected MySqlConnection Connection()
