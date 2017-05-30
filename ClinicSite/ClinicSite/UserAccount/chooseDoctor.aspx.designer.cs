@@ -10,7 +10,7 @@
 namespace ClinicSite {
     
     
-    public partial class chooceDoctor {
+    public partial class chooseDoctor {
         
         /// <summary>
         /// UserName control.
@@ -74,5 +74,23 @@ namespace ClinicSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button make_app;
+        
+        /// <summary>
+        /// deleteVisit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList deleteVisit;
+        
+        /// <summary>
+        /// VisitDel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button VisitDel;
     }
 }

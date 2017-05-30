@@ -103,26 +103,36 @@ namespace ClinicSite
 
         protected void OkButton_Click(object sender, EventArgs e)
         {
+            int? id = GetUserID();
+
+            if (id.HasValue)
+            {
+                Session["telephone"] = log_phone.Text;
+                Session["id"] = id.Value;
+                Response.Redirect("~/UserAccount/UserFunctions.aspx");
+            }
+        }
+
+        protected int? GetUserID()
+        {
             using (MySqlConnection cnn = Connection())
             {
-
-                MySqlCommand cmd = cnn.CreateCommand();
-
-                string sql = "select * from patient_login  where telephone = '" + log_phone.Text + "' and password = '" + log_psswrd.Text + "'";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, cnn);
-                MySqlCommandBuilder cb = new MySqlCommandBuilder(adapter);
-
-                var dataSet = new DataSet();
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                //filter by type 
-                foreach (DataRow dr in dt.Rows)
+                try
                 {
-                    Session["telephone"] = dr["telephone"].ToString();
-                    Response.Redirect("~/UserAccount/UserFunctions.aspx");
-                    break;
+                    MySqlCommand cmd = cnn.CreateCommand();
+
+                    cmd.CommandText = "SELECT id_patient FROM patient_login WHERE telephone = '" + log_phone.Text + "' and password = '" + log_psswrd.Text + "'";
+
+                    cnn.Open();
+                    var res = cmd.ExecuteScalar();
+
+                    if (res != null)
+                        return int.Parse(res.ToString());
                 }
+                catch (Exception ex)
+                {
+                }
+                return null;
             }
         }
     }

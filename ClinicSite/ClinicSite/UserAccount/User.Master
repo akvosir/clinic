@@ -67,18 +67,18 @@
                         </div>
                     </div>
                 </nav>
-
-
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
                             <asp:ContentPlaceHolder ID="mainContentdoc" runat="server">
                             </asp:ContentPlaceHolder>
                         </div>
+                        <div class="row">
+                            <asp:ContentPlaceHolder ID="DeleteVisit" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
                     </div>
                 </div>
-
-
                 <footer class="footer">
                     <div class="container-fluid">
                         <nav class="pull-left">
