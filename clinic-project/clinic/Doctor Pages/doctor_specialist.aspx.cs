@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MySql.Data.MySqlClient;
 using System.Data;
-using System.Web.UI.WebControls;
+using System.Messaging;
 
 namespace clinic.Doctor_Pages
 {
@@ -83,7 +83,7 @@ namespace clinic.Doctor_Pages
 
                         cmd.Parameters.AddWithValue("@start_app", d);
                         cmd.Parameters.AddWithValue("@end_app", ed);
-                        cmd.Parameters.AddWithValue("@doctor", 2);
+                        cmd.Parameters.AddWithValue("@doctor", UserS.id);
                         cmd.Parameters.AddWithValue("@patient", Int32.Parse(Request.QueryString["ID"]));
         
                         cmd.ExecuteNonQuery();
@@ -222,7 +222,12 @@ namespace clinic.Doctor_Pages
 
         protected void app_spec_name_SelectedIndexChanged(object sender, EventArgs e)
         {
-            doc();
+            if (!string.IsNullOrEmpty(this.app_spec_date.Text))
+            {
+                doc();
+            }
+            
+            
         }
 
         protected void app_spec_date_TextChanged(object sender, EventArgs e)

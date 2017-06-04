@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic.Doctor_Pages
 {
-    public partial class doctor_card : System.Web.UI.Page
+    public partial class doctor_card : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,9 +21,13 @@ namespace clinic.Doctor_Pages
             }
         }
 
+        //suuuka
+        //esli dannye pro visit uzhe est'
+        //link ne dolzhen rabotat'
+
         protected void addVisitData(int id)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("INSERT INTO visits (visit_date, reason, symptoms, diagnosis, recom_consult, recom_analysis, " +
                     "next_visit, patient_id, doctor_id) VALUES ( @visit_date, @reason, @symptoms, @diagnosis, @recom_consult, @recom_analysis, " +
@@ -31,21 +35,28 @@ namespace clinic.Doctor_Pages
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                        cmd.Connection = con;
-                        con.Open();
-                        cmd.Parameters.AddWithValue("@visit_date", DateTime.Now);
-                        cmd.Parameters.AddWithValue("@reason", dc_reason.Text);
-                        cmd.Parameters.AddWithValue("@symptoms", dc_symptoms.Text);
-                        cmd.Parameters.AddWithValue("@diagnosis", dc_diagnosis.Text);
-                        cmd.Parameters.AddWithValue("@recom_consult", specialists.SelectedValue);
-                        cmd.Parameters.AddWithValue("@recom_analysis", analys.SelectedValue);
-                        cmd.Parameters.AddWithValue("@next_visit", DateTime.Parse(dc_next.Text));
-                        cmd.Parameters.AddWithValue("@patient_id", id);
-                        cmd.Parameters.AddWithValue("@doctor_id", UserS.id); //get id from login form
+                        try
+                        {
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.Parameters.AddWithValue("@visit_date", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@reason", dc_reason.Text);
+                            cmd.Parameters.AddWithValue("@symptoms", dc_symptoms.Text);
+                            cmd.Parameters.AddWithValue("@diagnosis", dc_diagnosis.Text);
+                            cmd.Parameters.AddWithValue("@recom_consult", specialists.SelectedValue);
+                            cmd.Parameters.AddWithValue("@recom_analysis", analys.SelectedValue);
+                            cmd.Parameters.AddWithValue("@next_visit", DateTime.Parse(dc_next.Text));
+                            cmd.Parameters.AddWithValue("@patient_id", id);
+                            cmd.Parameters.AddWithValue("@doctor_id", UserS.id);
 
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        con.Close();
+                            cmd.ExecuteNonQuery();
+                            cmd.Dispose();
+                            con.Close();
+                            ShowNotification("Дані про візит додані!", WarningType.Success);
+                        }
+                        catch (Exception ex) {
+                            throw ex;
+                        }
                     }
                 }
             }
@@ -68,7 +79,7 @@ namespace clinic.Doctor_Pages
                         cmd.Parameters.AddWithValue("@end_med", dc_diagnosis.Text);
                         cmd.Parameters.AddWithValue("@howtotake", specialists.SelectedValue);*/
 
-                        cmd.ExecuteNonQuery();
+                        //cmd.ExecuteNonQuery();
                         cmd.Dispose();
                         con.Close();
                     }

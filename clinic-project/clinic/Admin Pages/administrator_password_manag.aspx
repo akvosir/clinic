@@ -53,8 +53,9 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <div class=" form-group-sm">
-                                        <asp:TextBox runat="server" ID="admch_surname" class="form-control input-sm" Text='<%#Eval("name")%>'></asp:TextBox>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admch_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:TextBox runat="server" ID="admch_surname" Text='<%#Eval("name")%>'></asp:TextBox>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]{3,20}$" ControlToValidate="admch_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_surname" ErrorMessage="*" Display="Dynamic" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
                                     </div>
                                 </EditItemTemplate>
 
@@ -65,9 +66,9 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <div class=" form-group-sm">
-                                        <asp:TextBox runat="server" ID="admch_name" class="form-control input-sm" Text='<%# Eval("surname")%>'></asp:TextBox>
-                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_name" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admch_name" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:TextBox runat="server" ID="admch_name" Text='<%# Eval("surname")%>'></asp:TextBox>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]{3,20}$" ControlToValidate="admch_name" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_name" ErrorMessage="*" Display="Dynamic" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
                                     </div>
                                 </EditItemTemplate>
                             </asp:TemplateField>
@@ -77,9 +78,9 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <div class=" form-group-sm">
-                                        <asp:TextBox runat="server" ID="admch_fname" class="form-control input-sm" Text='<%# Eval("fathers_name")%>'></asp:TextBox>
-                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_fname" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admch_fname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:TextBox runat="server" ID="admch_fname" Text='<%# Eval("fathers_name")%>'></asp:TextBox>
+                                         <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]{3,20}$" ControlToValidate="admch_fname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_fname" ErrorMessage="*" Display="Dynamic" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
                                     </div>
                                 </EditItemTemplate>
                             </asp:TemplateField>
@@ -89,11 +90,11 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <div class=" form-group-sm">
-                                        <asp:TextBox runat="server" ID="admch_login" class="form-control input-sm" Text='<%# Eval("login")%>'></asp:TextBox>
-                                        <asp:TextBox runat="server" ID="admch_password" class="form-control input-sm" TextMode="Password" Text='<%# Eval("password")%>'></asp:TextBox>
-                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_login" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_password" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9]+$" ControlToValidate="admch_login" ErrorMessage="Латиниця" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:TextBox runat="server" ID="admch_login" Text='<%# Eval("login")%>'></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="admch_password" TextMode="Password" Text='<%# Eval("password")%>'></asp:TextBox>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_login" ErrorMessage="*" Display="Dynamic" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_password" ErrorMessage="*" Display="Dynamic" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9\w\.\-]{3,20}$" ControlToValidate="admch_login" ErrorMessage="Латиниця" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </EditItemTemplate>
                             </asp:TemplateField>
@@ -105,11 +106,11 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" Text="Змінити" CommandName="Edit" />
-                                    <asp:LinkButton runat="server" Text="Видалити" CommandName="Delete" />
+                                    <asp:LinkButton runat="server" Text="Видалити" CausesValidation="false" CommandName="Delete" />
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:LinkButton runat="server" Text="Зберегти" CommandName="Update" />
-                                    <asp:LinkButton runat="server" Text="Відмінити" CommandName="Cancel" />
+                                    <asp:LinkButton runat="server" Text="Відмінити" CausesValidation="false" CommandName="Cancel" />
                                 </EditItemTemplate>
                             </asp:TemplateField>
                         </Columns>

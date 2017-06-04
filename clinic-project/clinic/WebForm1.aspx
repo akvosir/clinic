@@ -9,18 +9,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
 </head>
 
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-        <telerik:RadTimePicker ID="RadTimePicker1" runat="server" AutoPostBack="true"></telerik:RadTimePicker>
-
-        <asp:TextBox runat="server" ID="date" type="date" OnTextChanged="date_TextChanged"></asp:TextBox>
-        <asp:Button runat="server" OnClick="Unnamed_Click"/>
-        <asp:TextBox runat="server" ID="doc_id" ></asp:TextBox>
+       <asp:Button runat="server" OnClick="Unnamed_Click"></asp:Button>
     </form>
 </body>
 

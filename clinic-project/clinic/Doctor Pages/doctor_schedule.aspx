@@ -9,7 +9,7 @@
     </li>
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="mainContentdoc" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
     <div class="col-md-16">
         <div class="card">
             <div class="header">
@@ -24,7 +24,7 @@
 
 
                         <div class="content table-responsive table-full-width">
-                            <asp:GridView runat="server" ID="doc_schedule" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
+                            <asp:GridView runat="server" ID="doc_schedule" AutoGenereteSelectButton="true" OnRowCommand="doc_schedule_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                                 <Columns>
                                     <asp:BoundField DataField="idpatient_card" HeaderText="Номер картки" />
                                     <asp:BoundField DataField="start_app" DataFormatString="{0:t}" HeaderText="Час прийому" />
@@ -33,15 +33,14 @@
                                             <%# Eval("surname") + " " + Eval("name") + " " + Eval("fathers_name")%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="start" OnClick="start_app_Click" runat="server" ItemStyle-Width="150">Розпочати прийом</asp:LinkButton>
+                                            <asp:LinkButton runat="server" ID="start" OnClick="start_app_Click" ItemStyle-Width="150">Розпочати прийом</asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="card" OnClick="patient_card_Click" runat="server" ItemStyle-Width="150">Картка</asp:LinkButton>
+                                            <asp:LinkButton ID="card" CommandName="card_clicked" OnClick="patient_card_Click" runat="server" ItemStyle-Width="150">Картка</asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

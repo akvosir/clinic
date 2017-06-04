@@ -35,7 +35,7 @@
     </li>
 </asp:Content>
 
-<asp:Content ID="Content4" ContentPlaceHolderID="mainContent" runat="server">
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
     <div class="col-md-16">
         <div class="card">
             <div class="content">

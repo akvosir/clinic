@@ -31,15 +31,6 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.DropDownList rec_pd;
         
         /// <summary>
-        /// ch_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ch_date;
-        
-        /// <summary>
         /// dateTB control.
         /// </summary>
         /// <remarks>
@@ -47,24 +38,6 @@ namespace clinic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox dateTB;
-        
-        /// <summary>
-        /// CalendarExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
-        
-        /// <summary>
-        /// ch_pat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ch_pat;
         
         /// <summary>
         /// pat control.
@@ -85,15 +58,6 @@ namespace clinic {
         protected global::AjaxControlToolkit.ListSearchExtender ListSearchExtender1;
         
         /// <summary>
-        /// ch_doc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ch_doc;
-        
-        /// <summary>
         /// doc control.
         /// </summary>
         /// <remarks>
@@ -110,6 +74,15 @@ namespace clinic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ListSearchExtender doc_ListSearchExtender;
+        
+        /// <summary>
+        /// doc_rfv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator doc_rfv;
         
         /// <summary>
         /// submit control.

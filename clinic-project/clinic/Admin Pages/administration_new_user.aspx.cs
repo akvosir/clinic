@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace clinic
 {
-    public partial class administration_new_user : System.Web.UI.Page
+    public partial class administration_new_user : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                bindSpec();
                 
+
             }
         }
         private String staffType()
@@ -45,25 +45,37 @@ namespace clinic
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                        command.Connection = con;
-                        con.Open();
-                        command.Parameters.AddWithValue("@login", admin_login.Text);
-                        command.Parameters.AddWithValue("@password", admin_password.Text);
-                        command.Parameters.AddWithValue("@surname", admin_surname.Text);
-                        command.Parameters.AddWithValue("@name", admin_name.Text);
-                        command.Parameters.AddWithValue("@fathers_name", admin_fathers.Text);
-                        command.Parameters.AddWithValue("@type", staffType());
+                        try
+                        {
+                            command.Connection = con;
+                            con.Open();
+                            command.Parameters.AddWithValue("@login", admin_login.Text);
+                            command.Parameters.AddWithValue("@password", admin_password.Text);
+                            command.Parameters.AddWithValue("@surname", admin_surname.Text);
+                            command.Parameters.AddWithValue("@name", admin_name.Text);
+                            command.Parameters.AddWithValue("@fathers_name", admin_fathers.Text);
+                            command.Parameters.AddWithValue("@type", staffType());
 
-                        command.ExecuteNonQuery();
-                        command.Dispose();
-                        con.Close();
+                            command.ExecuteNonQuery();
+                            command.Dispose();
+                            con.Close();
+                            ShowNotification("Працівника додано!", WarningType.Success);
+                        }
+                        catch (Exception e)
+                        {
+                            ShowNotification("Заповніть всі поля та спробуйте ще раз!", WarningType.Danger);
+                        }
+
                     }
                 }
             }
 
+
+
         }
 
-        protected void bindSpec() {
+        protected void bindSpec()
+        {
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
 
@@ -79,7 +91,7 @@ namespace clinic
                             if (ds.Rows.Count > 0)
                             {
                                 admin_dspec.DataSource = ds;
-                                admin_dspec.DataBind(); 
+                                admin_dspec.DataBind();
                             }
 
                         }
@@ -88,7 +100,8 @@ namespace clinic
             }
         }
 
-        protected void addDoctor() {
+        protected void addDoctor()
+        {
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
                 using (MySqlCommand command = new MySqlCommand("INSERT INTO doctors (doctor_surname, doctor_name, doctor_fathersname, doctor_specialty, doctor_room) " +
@@ -96,18 +109,26 @@ namespace clinic
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
+                        try
+                        {
+                            command.Connection = con;
+                            con.Open();
+                            command.Parameters.AddWithValue("@doctor_surname", admin_surname.Text);
+                            command.Parameters.AddWithValue("@doctor_name", admin_name.Text);
+                            command.Parameters.AddWithValue("@doctor_fathersname", admin_fathers.Text);
+                            command.Parameters.AddWithValue("@doctor_specialty", Int32.Parse(admin_dspec.SelectedValue));
+                            command.Parameters.AddWithValue("@doctor_room", Int32.Parse(admin_droom.Text));
 
-                        command.Connection = con;
-                        con.Open();
-                        command.Parameters.AddWithValue("@doctor_surname", admin_surname.Text);
-                        command.Parameters.AddWithValue("@doctor_name", admin_name.Text);
-                        command.Parameters.AddWithValue("@doctor_fathersname", admin_fathers.Text);
-                        command.Parameters.AddWithValue("@doctor_specialty", Int32.Parse(admin_dspec.SelectedValue));
-                        command.Parameters.AddWithValue("@doctor_room", Int32.Parse(admin_droom.Text));
+                            command.ExecuteNonQuery();
+                            command.Dispose();
+                            con.Close();
+                            ShowNotification("Лікаря додано!", WarningType.Success);
+                        }
+                        catch (Exception e)
+                        {
+                            ShowNotification("Заповніть всі поля та спробуйте ще раз!", WarningType.Danger);
 
-                        command.ExecuteNonQuery();
-                        command.Dispose();
-                        con.Close();
+                        }
                     }
                 }
             }
@@ -120,10 +141,11 @@ namespace clinic
                 addStaffMember();
                 addDoctor();
             }
-            else {
+            else
+            {
                 addStaffMember();
             }
-                
+
         }
 
         protected void admin_dspec_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,6 +154,7 @@ namespace clinic
             {
                 admin_dspec.Visible = true;
                 admin_droom.Visible = true;
+                bindSpec();
             }
             else
             {

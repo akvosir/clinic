@@ -42,7 +42,7 @@ namespace clinic.Doctor_Pages
                             dci_gender.Text = reader.GetString(5);
                             dci_email.Text = reader.GetString(6);
                             dci_address.Text = reader.GetString(7);
-                            dci_address.Text = reader.GetString(8);
+                            dci_city.Text = reader.GetString(8);
                             dci_zip.Text = reader.GetInt32(9).ToString();
                             dci_phone.Text = reader.GetString(10);
                         }

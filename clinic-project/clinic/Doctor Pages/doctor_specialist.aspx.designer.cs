@@ -49,6 +49,15 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// app_spec_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox app_spec_date;
+        
+        /// <summary>
         /// app_spec control.
         /// </summary>
         /// <remarks>
@@ -65,15 +74,6 @@ namespace clinic.Doctor_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList app_spec_name;
-        
-        /// <summary>
-        /// app_spec_date control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox app_spec_date;
         
         /// <summary>
         /// RadTimePicker1 control.

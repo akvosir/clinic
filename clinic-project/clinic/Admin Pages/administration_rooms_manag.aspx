@@ -60,7 +60,9 @@
                                          </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:TextBox ID="txt_Room" runat="server" Text='<%#Eval("doctor_room") %>'></asp:TextBox>
-                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[0-9]+$" ControlToValidate="txt_Room" ErrorMessage="Повинно містити тільки цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_Room" ErrorMessage="*" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[0-9]+$" ControlToValidate="txt_Room" ErrorMessage="Тільки цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                            
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
@@ -69,7 +71,7 @@
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <asp:LinkButton runat="server" Text="Зберегти" CommandName="Update" />
-                                            <asp:LinkButton runat="server" Text="Відмінити" CommandName="Cancel" />
+                                            <asp:LinkButton runat="server" Text="Відмінити" CausesValidation="false" CommandName="Cancel" />
                                         </EditItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

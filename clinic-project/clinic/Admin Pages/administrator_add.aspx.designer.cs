@@ -13,6 +13,15 @@ namespace clinic.Admin_Pages {
     public partial class administrator_add {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// admin_spectype control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace clinic.Admin_Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button submit_spectype;
+        
+        /// <summary>
+        /// requir1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requir1;
         
         /// <summary>
         /// admin_med control.

@@ -11,14 +11,15 @@ namespace clinic.Doctor_Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                d_schedule(DateTime.Now);
+            if (!IsPostBack)
+            {
+
+                d_schedule(DateTime.Now.Date);
             }
         }
 
         protected void d_schedule(DateTime date)
         {
-            //after login get doctor's id
             using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT patient_card.idpatient_card, patient_card.name, patient_card.surname, patient_card.fathers_name, start_app FROM `doctor_schedule` " +
@@ -35,7 +36,6 @@ namespace clinic.Doctor_Pages
                             {
                                 doc_schedule.DataSource = ds;
                                 doc_schedule.DataBind();
-                                doc_schedule.UseAccessibleHeader = true;
                             }
 
                         }
@@ -58,7 +58,26 @@ namespace clinic.Doctor_Pages
         }
         protected void date_bar_TextChanged(object sender, EventArgs e)
         {
-            d_schedule(DateTime.Parse(date_bar.Text));
+            if (DateTime.Now.CompareTo(date_bar.Text) == 0)
+            {
+                d_schedule(DateTime.Parse(date_bar.Text));
+            }
+            else
+            {
+                //disable link button
+                d_schedule(DateTime.Parse(date_bar.Text));
+            }
+
+
+        }
+
+        protected void doc_schedule_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "card_clicked")
+            {
+                //HyperLink myHyperLink = e.Row.FindControl("Edit") as HyperLink;
+
+            }
         }
     }
 }

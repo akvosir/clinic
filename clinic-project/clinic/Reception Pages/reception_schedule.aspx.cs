@@ -21,7 +21,6 @@ namespace clinic
 
         protected void doc_dropdown()
         {
-            //after login get doctor's id
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', doctor_surname, doctor_name, doctor_fathersname) AS 'name', id_doctor FROM doctors"))
@@ -47,7 +46,6 @@ namespace clinic
 
         protected void pat_dropdown()
         {
-            //after login get doctor's id
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', surname, name, fathers_name) AS 'name', idpatient_card FROM patient_card"))
@@ -161,12 +159,9 @@ namespace clinic
             if (rec_pd.SelectedValue == "1"){
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                ch_date.Visible = true;
-                ch_pat.Visible = true;
                 doc.Visible = false;
                 submit.Visible = false;
 
-                ch_doc.Visible = false;
                 dateTB.Visible = true;
                 pat.Visible = true;
                 pat_dropdown();
@@ -175,16 +170,14 @@ namespace clinic
             else if(rec_pd.SelectedValue == "2"){
                 GridView2.DataSource = null;
                 GridView2.DataBind();
-                ch_date.Visible = true;
-                ch_pat.Visible = false;
                 pat.Visible = false;
                 submit_pat.Visible = false;
 
-                ch_doc.Visible = true;
                 dateTB.Visible = true;
                 doc.Visible = true;
                 doc_dropdown();
                 submit.Visible = true;
+                doc_rfv.Display = ValidatorDisplay.Dynamic;
             }
         }
 

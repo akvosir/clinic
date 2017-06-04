@@ -67,7 +67,7 @@
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <asp:ContentPlaceHolder ID="mainContentdoc" runat="server">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
                             </asp:ContentPlaceHolder>
                         </div>
                     </div>

@@ -51,6 +51,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,6 +129,7 @@
     <Content Include="WebForm1.aspx" />
     <Content Include="Doctor Pages\doctor.Master" />
     <Content Include="Admin Pages\admin.Master" />
+    <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,7 +140,6 @@
   <ItemGroup>
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\light-bootstrap-dashboard.css" />
     <Content Include="assets\css\pe-icon-7-stroke.css" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.svg" />
@@ -196,6 +197,9 @@
     </Compile>
     <Compile Include="Admin Pages\administration_rooms_manag.aspx.designer.cs">
       <DependentUpon>administration_rooms_manag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BootstrapPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Doctor Pages\doctor.Master.cs">
       <DependentUpon>doctor.Master</DependentUpon>
@@ -302,6 +306,13 @@
     </Compile>
     <Compile Include="Reception Pages\reception_app.aspx.designer.cs">
       <DependentUpon>reception_app.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
     <Compile Include="UserS.cs" />
     <Compile Include="WebForm1.aspx.cs">

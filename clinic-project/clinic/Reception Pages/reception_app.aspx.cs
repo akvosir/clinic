@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic
 {
-    public partial class reception_app : System.Web.UI.Page
+    public partial class reception_app : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,7 +54,6 @@ namespace clinic
 
         protected void pat_dropdown()
         {
-            //after login get doctor's id
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', surname, name, fathers_name) AS 'name', idpatient_card FROM patient_card"))
@@ -158,20 +157,27 @@ namespace clinic
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                        cmd.Connection = con;
-                        con.Open();
-                        TimeSpan t = RadTimePicker1.SelectedTime.Value;
-                        DateTime d = DateTime.Parse(rec_app_date.Text).Add(t);
-                        DateTime ed = d.AddMinutes(30.0);
+                        try
+                        {
+                            cmd.Connection = con;
+                            con.Open();
+                            TimeSpan t = RadTimePicker1.SelectedTime.Value;
+                            DateTime d = DateTime.Parse(rec_app_date.Text).Add(t);
+                            DateTime ed = d.AddMinutes(30.0);
 
-                        cmd.Parameters.AddWithValue("@start_app", d);
-                        cmd.Parameters.AddWithValue("@end_app", ed);
-                        cmd.Parameters.AddWithValue("@doctor", Int32.Parse(doctors.SelectedValue));
-                        cmd.Parameters.AddWithValue("@patient", Int32.Parse(pat.SelectedValue));
+                            cmd.Parameters.AddWithValue("@start_app", d);
+                            cmd.Parameters.AddWithValue("@end_app", ed);
+                            cmd.Parameters.AddWithValue("@doctor", Int32.Parse(doctors.SelectedValue));
+                            cmd.Parameters.AddWithValue("@patient", Int32.Parse(pat.SelectedValue));
 
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        con.Close();
+                            cmd.ExecuteNonQuery();
+                            cmd.Dispose();
+                            con.Close();
+                            ShowNotification("Прийом назначений!", WarningType.Success);
+                        }
+                        catch(Exception ex) {
+                            throw ex;
+                        }
                     }
                 }
             }
@@ -249,33 +255,38 @@ namespace clinic
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                        List<TimeSpan> t = new List<TimeSpan>();
-                        docshift(t);
-
-                        List<TimeSpan> t2 = new List<TimeSpan>();
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        con.Open();
-                        MySqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
+                        try
                         {
-                            t2.Add(TimeSpan.Parse(reader["time_app"].ToString()));
-                        }
+                            List<TimeSpan> t = new List<TimeSpan>();
+                            docshift(t);
 
-                        for (int i = t.Count - 1; i >= 0; i--)
-                            if (t2.Exists(h => h == t[i]))
+                            List<TimeSpan> t2 = new List<TimeSpan>();
+                            cmd.Connection = con;
+                            sda.SelectCommand = cmd;
+                            con.Open();
+                            MySqlDataReader reader = cmd.ExecuteReader();
+                            while (reader.Read())
                             {
-                                t.RemoveAt(i);
+                                t2.Add(TimeSpan.Parse(reader["time_app"].ToString()));
                             }
 
-                        TimeSpan[] time = new TimeSpan[t.Count];
-                        for (int i = 0; i < t.Count; i++)
-                        {
-                            time[i] = t[i];
+                            for (int i = t.Count - 1; i >= 0; i--)
+                                if (t2.Exists(h => h == t[i]))
+                                {
+                                    t.RemoveAt(i);
+                                }
+
+                            TimeSpan[] time = new TimeSpan[t.Count];
+                            for (int i = 0; i < t.Count; i++)
+                            {
+                                time[i] = t[i];
+                            }
+
+                            RadTimePicker1.TimeView.CustomTimeValues = time;
                         }
-
-                        RadTimePicker1.TimeView.CustomTimeValues = time;
-
+                        catch (Exception ex){
+                            throw ex;
+                        }
                     }
                 }
             }

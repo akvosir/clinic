@@ -21,7 +21,7 @@
     </li>
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="mainContentdoc" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
     <div class="col-md-16">
         <div class="card">
             <div class="header">

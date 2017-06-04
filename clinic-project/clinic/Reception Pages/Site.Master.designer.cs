@@ -76,12 +76,12 @@ namespace clinic {
         protected global::System.Web.UI.WebControls.LinkButton logout;
         
         /// <summary>
-        /// mainContent control.
+        /// ContentPlaceHolderMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder mainContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderMain;
     }
 }

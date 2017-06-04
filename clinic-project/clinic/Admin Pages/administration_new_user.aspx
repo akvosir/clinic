@@ -47,7 +47,7 @@
                                         <asp:Label runat="server">Прізвище </asp:Label>
                                         <asp:TextBox runat="server" ID="admin_surname" type="text" class="form-control" placeholder="Прізвище"></asp:TextBox>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_surname" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admin_surname" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]{3,20}$" ControlToValidate="admin_surname" ErrorMessage="Більше 3 символів та без цифр!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 
@@ -57,7 +57,7 @@
                                             <asp:Label runat="server">Ім`я </asp:Label>
                                             <asp:TextBox runat="server" ID="admin_name" class="form-control" placeholder="Ім`я"></asp:TextBox>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_name" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admin_name" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]{3,20}$" ControlToValidate="admin_name" ErrorMessage="Більше 3 символів та без цифр!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                 </div>
@@ -67,8 +67,8 @@
                                         <div class="form-group">
                                             <asp:Label runat="server">По батькові </asp:Label>
                                             <asp:TextBox runat="server" ID="admin_fathers" class="form-control" placeholder="По батькові"></asp:TextBox>
-                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="admch_login" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]+$" ControlToValidate="admch_login" ErrorMessage="Не повинно містити цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_fathers" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[^0-9]{3,20}$" ControlToValidate="admin_fathers" ErrorMessage="Більше 3 символів та без цифр!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                         <asp:Label runat="server">Логін</asp:Label>
                                         <asp:TextBox runat="server" ID="admin_login" type="text" class="form-control" placeholder="Логін"></asp:TextBox>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_login" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9]+$" ControlToValidate="admin_login" ErrorMessage="Латиниця" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9\w\.\-]{3,20}$" ControlToValidate="admin_login" ErrorMessage="Більше 5 символів латиницею (дозволяется . _ -)!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 
@@ -88,8 +88,9 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <asp:Label runat="server">Пароль</asp:Label>
-                                        <asp:TextBox runat="server" ID="admin_password" type="text" class="form-control" placeholder="Пароль"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="admin_password" type="password" class="form-control" placeholder="Пароль"></asp:TextBox>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_password" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9]{5,20}$" ControlToValidate="admin_password" ErrorMessage="Більше 5 символів латиницею!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 
@@ -101,19 +102,21 @@
                                         <asp:ListItem Text="Адміністратор" Value="3"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3">
-                                <asp:DropDownList runat="server" ID="admin_dspec" Visible="false" class="form-control" DataTextField="name_specialty" DataValueField="id_specialty"></asp:DropDownList>
                             </div>
-                            <div class="col-md-3">
-                                <asp:TextBox runat="server" type="text" ID="admin_droom" Visible="false" class="form-control" placeholder="Номер кабінету"></asp:TextBox>
-                            </div>
-                        </div>
 
-                         <asp:Button runat="server" type="button" ID="submit_staff" OnClick="submit_staff_Click" class="btn btn-info btn-fill pull-right" Text="Додати працівника"></asp:Button>
-                         <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <asp:DropDownList runat="server" ID="admin_dspec" Visible="false" class="form-control" DataTextField="name_specialty" DataValueField="id_specialty"></asp:DropDownList>
+                                </div>
+                                <div class="col-md-3">
+                                    <asp:TextBox runat="server" type="text" ID="admin_droom" Visible="false" class="form-control" placeholder="Номер кабінету"></asp:TextBox>
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_droom" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator runat="server" ValidationExpression="[0-9]{3}$" ControlToValidate="admin_droom" ErrorMessage="Тільки цифри!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                </div>
+                            </div>
+
+                            <asp:Button runat="server" type="button" ID="submit_staff" OnClick="submit_staff_Click" class="btn btn-info btn-fill pull-right" Text="Додати працівника"></asp:Button>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@
     </li>
 </asp:Content>
 
-<asp:Content ID="Content5" ContentPlaceHolderID="mainContent" runat="server">
+<asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="col-md-16">
         <div class="card">
@@ -51,6 +51,8 @@
                                         <asp:DropDownList runat="server" ID="pat" size="5" DataValueField="idpatient_card" DataTextField="name" class="form-control"></asp:DropDownList>
                                         <ajaxToolkit:ListSearchExtender ID="ListSearchExtender1" runat="server" TargetControlID="pat" PromptText="Почніть друкувати для пошуку" PromptCssClass="form-control">
                                         </ajaxToolkit:ListSearchExtender>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="pat" ErrorMessage="*"></asp:RequiredFieldValidator>
+
                                     </div>
                                 </div>
                             </div>
@@ -78,6 +80,7 @@
                                     <div class="form-group">
                                         <label>ДАТА</label>
                                         <asp:TextBox runat="server" ID="rec_app_date" type="date" OnTextChanged="rec_app_date_TextChanged" AutoPostBack="true" class="form-control"></asp:TextBox>
+                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="rec_app_date" ErrorMessage="*"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +90,8 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>ЧАС</label>
-                                        <telerik:RadTimePicker ID="RadTimePicker1" runat="server"  AutoPostBack="true" TimeView-StartTime="09:00:00" TimeView-EndTime="19:00:00" TimeView-Interval="00:30:00"></telerik:RadTimePicker>
+                                        <telerik:RadTimePicker ID="RadTimePicker1" runat="server" TimeView-StartTime="09:00:00" TimeView-EndTime="19:00:00" TimeView-Interval="00:30:00"></telerik:RadTimePicker>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="RadTimePicker1" ErrorMessage="*"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                             </div>

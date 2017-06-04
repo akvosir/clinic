@@ -23,14 +23,24 @@
     </li>
 </asp:Content>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="mainContentdoc" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="col-md-16">
         <div class="card">
             <div class="header">
-                <h4 class="title">ОБРАТИ СПЕЦІАЛІСТА</h4>
+                <h4 class="title">ЗАПИС ДО СПЕЦІАЛІСТА</h4>
             </div>
             <div class="content">
+                 <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>ДАТА</label>
+                            <asp:TextBox runat="server" ID="app_spec_date" AutoPostBack="true" OnTextChanged="app_spec_date_TextChanged" type="date" class="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="app_spec_date" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -49,27 +59,20 @@
                     </div>
                 </div>
 
-                <!--datetime picker-->
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label>ДАТА</label>
-                            <asp:TextBox runat="server" ID="app_spec_date" AutoPostBack="true" OnTextChanged="app_spec_date_TextChanged" type="date" class="form-control"></asp:TextBox>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>ЧАС</label>
-                            <telerik:RadTimePicker ID="RadTimePicker1" runat="server"  AutoPostBack="true" TimeView-StartTime="09:00:00" TimeView-EndTime="19:00:00" TimeView-Interval="00:30:00"></telerik:RadTimePicker>                      
+                            <telerik:RadTimePicker ID="RadTimePicker1" runat="server"  AutoPostBack="true" TimeView-StartTime="09:00:00" TimeView-EndTime="19:00:00" TimeView-Interval="00:30:00"></telerik:RadTimePicker>    
+                             <asp:RequiredFieldValidator runat="server" ControlToValidate="RadTimePicker1" ErrorMessage="*"></asp:RequiredFieldValidator>
                         </div>                       
                     </div>
                 </div>
+
                 <asp:Button runat="server" Text="Зберегти запис" ID="make_app" OnClick="make_app_Click" class="btn btn-info btn-fill pull-right"></asp:Button>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
+            
         </div>
     </div>
 

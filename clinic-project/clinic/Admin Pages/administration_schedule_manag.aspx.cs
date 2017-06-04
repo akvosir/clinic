@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic.Admin_Pages
 {
-    public partial class administration_schedule_manag : System.Web.UI.Page
+    public partial class administration_schedule_manag : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -108,6 +108,7 @@ namespace clinic.Admin_Pages
             bindDoctorSchedule();
         }
 
+        //ЕСЛИ НАЖАТЬ ВО ВТОРОЙ РАЗ НИЧЕГО НЕ БАЙНДИТСЯ
         protected void schedule_table_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             TextBox start = schedule_table.Rows[e.RowIndex].FindControl("txt_start") as TextBox;
@@ -117,22 +118,36 @@ namespace clinic.Admin_Pages
 
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
-                //int result = DateTime.Parse(start.Text).ToLongTimeString().CompareTo(DateTime.Parse(end.Text).ToLongTimeString());
-
+                int result = DateTime.Parse(start.Text).ToLongTimeString().CompareTo(DateTime.Parse(end.Text).ToLongTimeString());
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE doctor_shift SET shift = @shift, start = @start, end = @end WHERE doctor_id = " + doctors.SelectedValue +
-                    " AND even_odd = " + Int32.Parse(day.Text)))
+                " AND even_odd = " + Int32.Parse(day.Text)))
                 {
-                    cmd.Connection = con;
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@shift", shift.SelectedValue);
-                    cmd.Parameters.AddWithValue("@start", DateTime.Parse(start.Text).ToString("HH:mm:ss"));
-                    cmd.Parameters.AddWithValue("@end", DateTime.Parse(end.Text).ToString("HH:mm:ss"));
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                }
+                    try
+                    {
+                        if (result == -1)
+                        {
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.Parameters.AddWithValue("@shift", shift.SelectedValue);
+                            cmd.Parameters.AddWithValue("@start", TimeSpan.Parse(start.Text));
+                            cmd.Parameters.AddWithValue("@end", TimeSpan.Parse(end.Text));
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                        }
+                        else
+                        {
+                            ShowNotification("Початок зміни повинен бути раніше, ніж кінець, хоча б на три години!", WarningType.Danger);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowNotification("Зверніться за допомогою до адміністратора!", WarningType.Danger);
+                        throw ex;
+                    }
 
-                schedule_table.EditIndex = -1;
-                bindDoctorSchedule();
+                    schedule_table.EditIndex = -1;
+                    bindDoctorSchedule();
+                }
             }
         }
 
@@ -155,26 +170,34 @@ namespace clinic.Admin_Pages
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                        cmd.Connection = con;
-                        con.Open();
-                        cmd.Parameters.AddWithValue("@even_odd1", ddeo_1.SelectedValue);
-                        cmd.Parameters.AddWithValue("@even_odd2", ddeo_2.SelectedValue);
-                        cmd.Parameters.AddWithValue("@shift1", Int32.Parse(ddsh_1.Text));
-                        cmd.Parameters.AddWithValue("@start1", DateTime.Parse(start_add1.Text).ToString("HH:mm:ss"));
-                        cmd.Parameters.AddWithValue("@end1", DateTime.Parse(end_add1.Text).ToString("HH:mm:ss"));
-                        cmd.Parameters.AddWithValue("@doctor_id1", doctors.SelectedValue);
-                        cmd.Parameters.AddWithValue("@shift2", Int32.Parse(ddsh_2.Text));
-                        cmd.Parameters.AddWithValue("@start2", DateTime.Parse(start_add2.Text).ToString("HH:mm:ss"));
-                        cmd.Parameters.AddWithValue("@end2", DateTime.Parse(end_add2.Text).ToString("HH:mm:ss"));
-                        cmd.Parameters.AddWithValue("@doctor_id2", doctors.SelectedValue);
-                        cmd.ExecuteNonQuery();
+                        try
+                        {
+                            cmd.Connection = con;
+                            con.Open();
+                            cmd.Parameters.AddWithValue("@even_odd1", ddeo_1.SelectedValue);
+                            cmd.Parameters.AddWithValue("@even_odd2", ddeo_2.SelectedValue);
+                            cmd.Parameters.AddWithValue("@shift1", Int32.Parse(ddsh_1.Text));
+                            cmd.Parameters.AddWithValue("@start1", DateTime.Parse(start_add1.Text).ToString("HH:mm:ss"));
+                            cmd.Parameters.AddWithValue("@end1", DateTime.Parse(end_add1.Text).ToString("HH:mm:ss"));
+                            cmd.Parameters.AddWithValue("@doctor_id1", doctors.SelectedValue);
+                            cmd.Parameters.AddWithValue("@shift2", Int32.Parse(ddsh_2.Text));
+                            cmd.Parameters.AddWithValue("@start2", DateTime.Parse(start_add2.Text).ToString("HH:mm:ss"));
+                            cmd.Parameters.AddWithValue("@end2", DateTime.Parse(end_add2.Text).ToString("HH:mm:ss"));
+                            cmd.Parameters.AddWithValue("@doctor_id2", doctors.SelectedValue);
+                            cmd.ExecuteNonQuery();
 
-                        cmd.Dispose();
-                        con.Close();
+                            cmd.Dispose();
+                            con.Close();
+                            ShowNotification("Графік роботи збережений!", WarningType.Success);
+                        }
+                        catch (Exception ex) {
+                            ShowNotification("Зверніться за допомогою до адміністратора!", WarningType.Danger);
+                            throw ex;
+                        }
                     }
                 }
             }
-            bindDoctorSchedule();
+                bindDoctorSchedule();
         }
 
     }
