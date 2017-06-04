@@ -4,19 +4,19 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderMenu" runat="server">
     <li>
-         <asp:LinkButton runat="server" ID="sc" OnClick="sc_Click" >
+         <asp:LinkButton runat="server" ID="sc" CausesValidation="false" OnClick="sc_Click" >
             <i class="pe-7s-note2"></i>
             <p>Розклад</p>
         </asp:LinkButton>
     </li>
     <li class="active">
-        <asp:LinkButton runat="server" ID="sp" OnClick="sp_Click" >
+        <asp:LinkButton runat="server" ID="sp" CausesValidation="false" OnClick="sp_Click" >
             <i class="pe-7s-note2"></i>
             <p>Записати до спеціаліста</p>
         </asp:LinkButton>
     </li>
     <li>
-         <asp:LinkButton runat="server" id="an" OnClick="an_Click">
+         <asp:LinkButton runat="server" id="an" CausesValidation="false" OnClick="an_Click">
             <i class="pe-7s-note2"></i>
             <p>Записати на аналізи</p>
          </asp:LinkButton>

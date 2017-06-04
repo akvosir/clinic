@@ -249,9 +249,9 @@ namespace clinic
         {
             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app  FROM `time_table` INNER JOIN doctor_shift ON doctor_shift.shift = time_table.shift " +
-                    "INNER JOIN doctor_schedule ON doctor_schedule.doctor = doctor_shift.doctor_id WHERE date(doctor_schedule.start_app)= '" + DateTime.Parse(rec_app_date.Text).Date + "' AND time_app = time(doctor_schedule.start_app)  " +
-                    "AND doctor_schedule.doctor = " + doctors.SelectedValue + " AND time_app >= time(doctor_shift.start)"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM time_table ta INNER JOIN doctor_shift ds ON ds.shift = ta.shift INNER JOIN doctor_schedule dsc ON dsc.doctor = ds.doctor_id " +
+                    "WHERE date(dsc.start_app)= '" + DateTime.Parse(rec_app_date.Text).ToString("yyyy-MM-dd") + "' AND dsc.doctor = " + doctors.SelectedValue +
+                    " AND ta.time_app = time(dsc.start_app) AND ta.time_app >= time(ds.start)", con))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {

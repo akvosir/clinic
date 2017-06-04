@@ -23,48 +23,64 @@ namespace clinic.Doctor_Pages
 
         //suuuka
         //esli dannye pro visit uzhe est'
-        //link ne dolzhen rabotat'
+
 
         protected void addVisitData(int id)
         {
-            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO visits (visit_date, reason, symptoms, diagnosis, recom_consult, recom_analysis, " +
+                MySqlCommand com = new MySqlCommand("SELECT EXISTS(SELECT * FROM visits WHERE visit_date = @date AND doctor_id = @doctor AND patient_id = @patient)");
+                com.Connection = con;
+                con.Open();
+                com.Parameters.AddWithValue("@date", DateTime.Now.Date);
+                com.Parameters.AddWithValue("@doctor", UserS.id);
+                com.Parameters.AddWithValue("@patient", Int32.Parse(Request.QueryString["ID"]));
+                int num = Int32.Parse(com.ExecuteScalar().ToString());
+                if (num == 0) {
+                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO visits (visit_date, reason, symptoms, diagnosis, recom_consult, recom_analysis, " +
                     "next_visit, patient_id, doctor_id) VALUES ( @visit_date, @reason, @symptoms, @diagnosis, @recom_consult, @recom_analysis, " +
                     "@next_visit, @patient_id, @doctor_id)", con))
-                {
-                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
-                        try
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
                         {
-                            cmd.Connection = con;
-                            con.Open();
-                            cmd.Parameters.AddWithValue("@visit_date", DateTime.Now);
-                            cmd.Parameters.AddWithValue("@reason", dc_reason.Text);
-                            cmd.Parameters.AddWithValue("@symptoms", dc_symptoms.Text);
-                            cmd.Parameters.AddWithValue("@diagnosis", dc_diagnosis.Text);
-                            cmd.Parameters.AddWithValue("@recom_consult", specialists.SelectedValue);
-                            cmd.Parameters.AddWithValue("@recom_analysis", analys.SelectedValue);
-                            cmd.Parameters.AddWithValue("@next_visit", DateTime.Parse(dc_next.Text));
-                            cmd.Parameters.AddWithValue("@patient_id", id);
-                            cmd.Parameters.AddWithValue("@doctor_id", UserS.id);
+                            try
+                            {
+                                cmd.Connection = con;
+                                cmd.Parameters.AddWithValue("@visit_date", DateTime.Now);
+                                cmd.Parameters.AddWithValue("@reason", dc_reason.Text);
+                                cmd.Parameters.AddWithValue("@symptoms", dc_symptoms.Text);
+                                cmd.Parameters.AddWithValue("@diagnosis", dc_diagnosis.Text);
+                                cmd.Parameters.AddWithValue("@recom_consult", specialists.SelectedValue);
+                                cmd.Parameters.AddWithValue("@recom_analysis", analys.SelectedValue);
+                                cmd.Parameters.AddWithValue("@next_visit", DateTime.Parse(dc_next.Text));
+                                cmd.Parameters.AddWithValue("@patient_id", id);
+                                cmd.Parameters.AddWithValue("@doctor_id", UserS.id);
 
-                            cmd.ExecuteNonQuery();
-                            cmd.Dispose();
-                            con.Close();
-                            ShowNotification("Дані про візит додані!", WarningType.Success);
-                        }
-                        catch (Exception ex) {
-                            throw ex;
+                                cmd.ExecuteNonQuery();
+                                cmd.Dispose();
+                                con.Close();
+                                ShowNotification("Дані про візит додані!", WarningType.Success);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
                         }
                     }
                 }
+                else {
+                    Session["vis_exists"] = "exists";
+                    Response.Redirect("doctor_schedule.aspx");
+                }
+
+
+                
             }
         }
 
         protected void addMedicine(int id)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("INSERT INTO medicine_patient (id_medicine, id_visit, start_med, end_med, howtotake) " +
                     "VALUES (@id_medicine, @id_visit, @start_med, @end_med, @howtotake)", con))

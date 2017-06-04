@@ -7,7 +7,7 @@ using System.Messaging;
 
 namespace clinic.Doctor_Pages
 {
-    public partial class doctor_specialist : System.Web.UI.Page
+    public partial class doctor_specialist : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace clinic.Doctor_Pages
 
         protected void bindSpecialists()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM doctor_specialty WHERE id_specialty > 0", con))
                 {
@@ -69,27 +69,42 @@ namespace clinic.Doctor_Pages
 
         protected void make_app_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@" Server = localhost; Database = clinic; Uid = root; Password = root"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO doctor_schedule (start_app, end_app, doctor, patient) VALUES (@start_app, @end_app, @doctor, @patient)", con))
-                {
-                    using (MySqlDataAdapter sda = new MySqlDataAdapter())
-                    {
-                        cmd.Connection = con;
-                        con.Open();
-                        TimeSpan t = RadTimePicker1.SelectedTime.Value;
-                        DateTime d = DateTime.Parse(app_spec_date.Text).Add(t);
-                        DateTime ed = d.AddMinutes(30.0);
+                MySqlCommand com = new MySqlCommand("SELECT EXISTS(SELECT * FROM doctor_schedule WHERE start_app = @date AND doctor= @doctor AND patient = @patient)");
+                com.Connection = con;
+                con.Open();
+                com.Parameters.AddWithValue("@date", DateTime.Parse(app_spec_date.Text).Add(RadTimePicker1.SelectedTime.Value));
+                com.Parameters.AddWithValue("@doctor", app_spec_name.SelectedValue);
+                com.Parameters.AddWithValue("@patient", Int32.Parse(Request.QueryString["ID"]));
+                int num = Int32.Parse(com.ExecuteScalar().ToString());
 
-                        cmd.Parameters.AddWithValue("@start_app", d);
-                        cmd.Parameters.AddWithValue("@end_app", ed);
-                        cmd.Parameters.AddWithValue("@doctor", UserS.id);
-                        cmd.Parameters.AddWithValue("@patient", Int32.Parse(Request.QueryString["ID"]));
-        
-                        cmd.ExecuteNonQuery();
-                        cmd.Dispose();
-                        con.Close();
+                if (num == 0)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO doctor_schedule (start_app, end_app, doctor, patient) VALUES (@start_app, @end_app, @doctor, @patient)", con))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            cmd.Connection = con;
+                            TimeSpan t = RadTimePicker1.SelectedTime.Value;
+                            DateTime d = DateTime.Parse(app_spec_date.Text).Add(t);
+                            DateTime ed = d.AddMinutes(30.0);
+
+                            cmd.Parameters.AddWithValue("@start_app", d);
+                            cmd.Parameters.AddWithValue("@end_app", ed);
+                            cmd.Parameters.AddWithValue("@doctor", app_spec_name.SelectedValue);
+                            cmd.Parameters.AddWithValue("@patient", Int32.Parse(Request.QueryString["ID"]));
+
+                            cmd.ExecuteNonQuery();
+                            cmd.Dispose();
+                            con.Close();
+                            ShowNotification("Прийом назначено!", WarningType.Danger);
+                        }
                     }
+                }
+                else
+                {
+                    ShowNotification("Запис вже існує!", WarningType.Danger);
                 }
             }
         }
@@ -104,7 +119,7 @@ namespace clinic.Doctor_Pages
 
         protected void docshift(List<TimeSpan> sh1)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
                 if (even_odd(DateTime.Parse(app_spec_date.Text)) == 0)
                 {
@@ -129,6 +144,7 @@ namespace clinic.Doctor_Pages
                         }
                     }
                 }
+
                 else
                 {
                     MySqlCommand sh = new MySqlCommand("SELECT shift FROM `doctor_shift` WHERE doctor_id =" + app_spec_name.SelectedValue + " AND even_odd = 1");
@@ -158,11 +174,11 @@ namespace clinic.Doctor_Pages
 
         protected void doc()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app  FROM `time_table` INNER JOIN doctor_shift ON doctor_shift.shift = time_table.shift " +
-                    "INNER JOIN doctor_schedule ON doctor_schedule.doctor = doctor_shift.doctor_id WHERE date(doctor_schedule.start_app)= '" + DateTime.Parse(app_spec_date.Text).Date + "' AND time_app = time(doctor_schedule.start_app)  " +
-                    "AND doctor_schedule.doctor = " + app_spec_name.SelectedValue + " AND time_app >= time(doctor_shift.start)"))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM time_table ta INNER JOIN doctor_shift ds ON ds.shift = ta.shift INNER JOIN doctor_schedule dsc ON dsc.doctor = ds.doctor_id " +
+                    "WHERE date(dsc.start_app)= '" + DateTime.Parse(app_spec_date.Text).ToString("yyyy-MM-dd") + "' AND dsc.doctor = " + app_spec_name.SelectedValue +
+                    " AND ta.time_app = time(dsc.start_app) AND ta.time_app >= time(ds.start)", con))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
@@ -226,8 +242,6 @@ namespace clinic.Doctor_Pages
             {
                 doc();
             }
-            
-            
         }
 
         protected void app_spec_date_TextChanged(object sender, EventArgs e)

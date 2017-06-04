@@ -98,7 +98,7 @@
                         <div class="form-group">
                             <h4>РЕКОМЕНДОВАНІ</h4>
                             <label>Консультація лікаря-спеціаліста</label>
-                            <asp:DropDownList runat="server" ID="specialists" DataValueField="name_specialty" class="form-control">
+                            <asp:DropDownList runat="server" ID="specialists" DataValueField="id_specialty" DataTextField="name_specialty" class="form-control">
                             </asp:DropDownList>
                         </div>
                     </div>

@@ -13,8 +13,44 @@
 
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-       <asp:Button runat="server" OnClick="Unnamed_Click"></asp:Button>
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+         <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>ДАТА</label>
+                            <asp:TextBox runat="server" ID="app_spec_date" AutoPostBack="true" OnTextChanged="app_spec_date_TextChanged" type="date" class="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="app_spec_date" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>ОБРАТИ СПЕЦІАЛІСТА</label>
+                            <asp:DropDownList runat="server" ID="app_spec" DataValueField="id_specialty" AutoPostBack="True"  OnSelectedIndexChanged="app_spec_SelectedIndexChanged" DataTextField="name_specialty" class="form-control"></asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>ОБРАТИ ЛІКАРЯ</label>
+                            <asp:DropDownList runat="server" ID="app_spec_name" AutoPostBack="true" OnSelectedIndexChanged="app_spec_name_SelectedIndexChanged" DataValueField="id_doctor" DataTextField="name" type="text" class="form-control"></asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>ЧАС</label>
+                            <telerik:RadTimePicker ID="RadTimePicker1" runat="server"  AutoPostBack="true"></telerik:RadTimePicker>    
+                             <asp:RequiredFieldValidator runat="server" ControlToValidate="RadTimePicker1" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        </div>                       
+                    </div>
+                    </div>
     </form>
 </body>
 

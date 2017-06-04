@@ -7,14 +7,22 @@ using System.Web.UI.WebControls;
 
 namespace clinic.Doctor_Pages
 {
-    public partial class doctor_schedule : System.Web.UI.Page
+    public partial class doctor_schedule : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
-                d_schedule(DateTime.Now.Date);
+                if(Session["vis_exists"] == null)
+                {
+                    d_schedule(DateTime.Now.Date);
+                }
+                else if (Session["vis_exists"].ToString().Equals("exists"))
+                {
+                    ShowNotification("Візит вже існує!", WarningType.Warning);
+                    d_schedule(DateTime.Now.Date);
+                }
+                 
             }
         }
 
@@ -22,7 +30,7 @@ namespace clinic.Doctor_Pages
         {
             using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT patient_card.idpatient_card, patient_card.name, patient_card.surname, patient_card.fathers_name, start_app FROM `doctor_schedule` " +
+                using (MySqlCommand cmd = new MySqlCommand("SELECT patient_card.idpatient_card, patient_card.name, patient_card.surname, patient_card.fathers_name, start_app FROM doctor_schedule " +
                     "INNER JOIN patient_card ON patient = patient_card.idpatient_card WHERE doctor = " + UserS.id + " AND date(start_app) = '" + date.ToString("yyyy-MM-dd") + "'"))
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
@@ -58,17 +66,7 @@ namespace clinic.Doctor_Pages
         }
         protected void date_bar_TextChanged(object sender, EventArgs e)
         {
-            if (DateTime.Now.CompareTo(date_bar.Text) == 0)
-            {
                 d_schedule(DateTime.Parse(date_bar.Text));
-            }
-            else
-            {
-                //disable link button
-                d_schedule(DateTime.Parse(date_bar.Text));
-            }
-
-
         }
 
         protected void doc_schedule_RowCommand(object sender, GridViewCommandEventArgs e)
