@@ -13,13 +13,12 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
     <link href="css/css/bootstrap.css" rel="stylesheet">
-    <link href="css/font-awesome/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/css/animations.css" rel="stylesheet">
+     <link href="css/font-awesome/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <%--<link href="css/css/animations.css" rel="stylesheet">--%>
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="no-trans">
-
-
+    
     <!-- header start -->
     <!-- ================ -->
     <header class="header fixed clearfix navbar navbar-fixed-top">
@@ -70,6 +69,7 @@
                                             <li><a href="#services">Лікарі</a></li>
                                             <li><a href="#contact">Контакти</a></li>
                                             <li><a class="overlay-container" data-toggle="modal" data-target="#room">Кабінет</a></li>
+        
                                             <div class="modal fade" id="room" style="z-index: 99999" role="dialog" aria-labelledby="project-2-label" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -78,17 +78,18 @@
                                                             <h4 class="modal-title">Кабінет</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form role="form" runat="server" id="LoginForm">
+                                                            <form role="form" runat="server">
                                                                 <div class="form-group has-feedback">
                                                                     <label class="sr-only">Телефон</label>
-                                                                    <asp:TextBox runat="server" type="text" ID="log_phone" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox>
+                                                                    <asp:TextBox runat="server" type="text" ID="log_phone" ClientIDMode ="Static" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox>
                                                                     <i class="fa fa-phone form-control-feedback"></i>
                                                                 </div>
                                                                 <div class="form-group has-feedback">
                                                                     <label class="sr-only">Пароль</label>
                                                                     <asp:TextBox runat="server" type="password" ID="log_psswrd" CssClass="form-control" placeholder="Введіть пароль"></asp:TextBox>
+                                                                    <i class="fa fa-key form-control-feedback"></i>
                                                                 </div>
-                                                                <asp:Button runat="server" Text="Ввійти" OnClick="OkButton_Click" ID="Register" CssClass="btn btn-default" />
+                                                                <asp:Button runat="server" Text="Ввійти" OnClick ="LogIn_Click" ID="LogIn" CssClass="btn btn-default" UseSubmitBehavior ="false" />
                                                                 <div class="form-group has-feedback">
                                                                     <label for="text">Забули пароль?</label>
                                                                 </div>
@@ -130,7 +131,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
-                                            <h4 class="modal-title" id="project-2-label">Записатися на прийом</h4>
+                                            <h4 class="modal-title">Записатися на прийом</h4>
                                         </div>
                                         <div class="modal-body">
                                             <h5 class="text-center">Для того, щоб записатися на прийом, Вам необхідно ввійти у Кабінет</h5>
@@ -149,11 +150,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
-                                            <h4 class="modal-title" id="project-2-label">Реєстрація</h4>
+                                            <h4 class="modal-title">Реєстрація</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <%--<form role="form" runat ="server" id="RegisterForm">
-                                                    <div class="form-group has-feedback">
+                                            <%--<form role="form" runat ="server" id="RegisterForm">--%>
+                                                    <%-- <div class="form-group has-feedback">
                                                             <asp:RadioButtonList ID="ddlGender" CssClass="radioButtonList" runat="server" RepeatDirection="Horizontal">
                                                                 <asp:ListItem Text="Ж" CssClass="radioButtonList" Value="Жінка" />
                                                                 <asp:ListItem Text="M" CssClass="radioButtonList" Value="Чоловік" />
@@ -177,6 +178,7 @@
 													<div class="form-group has-feedback">
 														<label class="sr-only">Дата народження</label>
                                                         <asp:TextBox runat="server" type="date" ID="rec_birthday" CssClass="form-control" placeholder="Дата"></asp:TextBox>
+                                                        <i class="fa fa-calendar form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
 														<label class="sr-only">Телефон</label>
@@ -186,14 +188,17 @@
                                                     <div class="form-group has-feedback">
 														<label class="sr-only">Адреса</label>
                                                         <asp:TextBox runat="server" type="text" ID="rec_address" CssClass="form-control" placeholder="Домашня адреса"></asp:TextBox>
+                                                        <i class="fa fa-home form-control-feedback"></i>
 													</div>
                                                     <div class="form-group has-feedback">
 														<label class="sr-only">Місто</label>
                                                         <asp:TextBox runat="server" type="text" ID="rec_city" CssClass="form-control" placeholder="Місто"></asp:TextBox>
+                                                        <i class="fa fa-envelope form-control-feedback"></i>
 													</div>
                                                     <div class="form-group has-feedback">
 														<label class="sr-only">>Поштовий індекс</label>
                                                         <asp:TextBox runat="server" type="number" ID="rec_zip" CssClass="form-control" placeholder="Індекс"></asp:TextBox>
+                                                        <i class="fa fa-pencil form-control-feedback"></i>
 													</div>
 													<div class="form-group has-feedback">
 															<label class="sr-only">Пошта</label>
@@ -209,9 +214,9 @@
 															<input type="checkbox" id="checkbox" name="checkbox">
 													</div>
                                                     
-                                                    <asp:Button runat="server" Text="Відправити данні" OnClick="Register_Click" ID="Register"  CssClass="btn btn-default"/>
-                                                    <div class="clearfix"></div>
-												</form>--%>
+                                                   <asp:Button runat="server" Text="Відправити данні" OnClick="Register_Click" ID="Register"  CssClass="btn btn-default"/>
+                                                    <div class="clearfix"></div>--%>
+												 <%--</form>--%>
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +231,6 @@
             </div>
         </div>
     </div>
-
     <!-- banner end -->
 
 
@@ -710,9 +714,9 @@
                 <h1 class="title text-center" id="contact">Контакти</h1>
                 <div class="space"></div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    
                         <div class="footer-content">
-                            <p class="large">Ви можете зв'язатися з нами, зателефонувавши за телефоном, або заповніть форму, і ми передвонимо найближчим часом!</p>
+                            <p class="large">Ви можете зв'язатися з нами, зателефонувавши за номераминижче</p>
                             <ul class="list-icons">
                                 <li><i class="fa fa-map-marker pr-10"></i>Адреса клініки</li>
                                 <li><i class="fa fa-phone pr-10"></i>+38 (ХХХ) ХХХ-ХХ-ХХ</li>
@@ -720,8 +724,8 @@
                                 <li><i class="fa fa-envelope-o pr-10"></i>your@email.com</li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
+                    
+                    <%--<div class="col-sm-6">
                         <div class="footer-content">
                             <form role="form" id="footer-form">
                                 <div class="form-group has-feedback">
@@ -747,7 +751,7 @@
                                 <input type="submit" value="Відправити" class="btn btn-default">
                             </form>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
@@ -788,6 +792,6 @@
 
 
 
-
+    
 </body>
 </html>

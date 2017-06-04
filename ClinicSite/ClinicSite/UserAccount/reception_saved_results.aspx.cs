@@ -92,7 +92,14 @@ namespace ClinicSite
                             rsr_symptoms.Text = reader.GetString(2);
                             rsr_diagnosis.Text = reader.GetString(3);
                             rsr_consult.Text = reader.GetString(4);
-                            rsr_analysis.Text = reader.GetString(5);
+                            if (!reader.IsDBNull(5))
+                            {
+                                rsr_analysis.Text = reader.GetString(5);
+                            }
+                            else
+                            {
+                                rsr_analysis.Text = "Не призначено";
+                            }
                             rsr_next_date.Text = reader.GetDateTime(6).ToString("dd-MM-yyyy");
                             rsr_name.Text = reader.GetString(8) + " " + reader.GetString(7) + " " + reader.GetString(9);
 
@@ -105,7 +112,7 @@ namespace ClinicSite
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-            Session.RemoveAll();
+            Session.Abandon();
             Response.Redirect("~/Site.aspx");
         }
 

@@ -3,6 +3,8 @@ using MySql.Data.MySqlClient;
 
 using clinic;
 using System.Data;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace ClinicSite
 {
@@ -18,6 +20,8 @@ namespace ClinicSite
 
 
         }
+
+
 
         private void Check()
         {
@@ -39,19 +43,37 @@ namespace ClinicSite
             MySqlConnection connection = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; CharSet = utf8");
             return connection;
         }
-        
+
+        //public Task<> ValidateAsync(string item)
+        //{
+
+        //    if (String.IsNullOrEmpty(item) || item.Length < RequiredLength)
+        //    {
+        //        return Task.FromResult(IdentityResult.Failed(
+        //                        String.Format("Минимальная длина пароля равна {0}", RequiredLength)));
+        //    }
+        //    string pattern = "^[0-9]+$";
+
+        //    if (!Regex.IsMatch(item, pattern))
+        //    {
+        //        return Task.FromResult(IdentityResult.Failed("Пароль должен состоять только из цифр"));
+        //    }
+
+        //    return Task.FromResult(IdentityResult.Success);
+        //}
+
         //protected void PatientCard()
         //{
-        //    //RegistrationForm c = new RegistrationForm();
-        //    //c.Name = rec_name.Text;
-        //    //c.Surname = rec_surname.Text;
-        //    //c.Fathers_name = rec_fathers.Text;
-        //    //c.Birthday = DateTime.Parse(rec_birthday.Text);
-        //    //c.Gender = ddlGender.Text;
-        //    //c.Email = rec_email.Text;
-        //    //c.Address = rec_address.Text;
-        //    //c.City = rec_city.Text;
-        //    //c.Zip = Int32.Parse(rec_zip.Text);
+        //    RegistrationForm c = new RegistrationForm();
+        //    c.Name = rec_name.Text;
+        //    c.Surname = rec_surname.Text;
+        //    c.Fathers_name = rec_fathers.Text;
+        //    c.Birthday = DateTime.Parse(rec_birthday.Text);
+        //    c.Gender = ddlGender.Text;
+        //    c.Email = rec_email.Text;
+        //    c.Address = rec_address.Text;
+        //    c.City = rec_city.Text;
+        //    c.Zip = Int32.Parse(rec_zip.Text);
 
 
         //    using (MySqlConnection cnn = Connection())
@@ -62,7 +84,7 @@ namespace ClinicSite
         //        cmd.CommandText = "INSERT INTO patient_card (surname, name, fathers_name, birthday, gender, email, address, city, zip_code) " +
         //            "VALUES (?surname, ?name, ?fathers_name, ?birthday, ?gender, ?email, ?address, ?city, ?zip_code ); SELECT LAST_INSERT_ID()";
 
-                
+
         //        cmd.Parameters.AddWithValue("?surname", c.Surname);
         //        cmd.Parameters.AddWithValue("?name", c.Name);
         //        cmd.Parameters.AddWithValue("?fathers_name", c.Fathers_name);
@@ -103,11 +125,12 @@ namespace ClinicSite
         protected void Register_Click(object sender, EventArgs e)
         {
             //PatientCard();
-            Response.Write("Here");
+            Response.Write("Registration is Successful");
         }
 
-        protected void OkButton_Click(object sender, EventArgs e)
+        protected void LogIn_Click(object sender, EventArgs e)
         {
+           
             int? id = GetUserID();
 
             if (id.HasValue)

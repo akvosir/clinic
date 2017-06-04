@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClinicSite {
+namespace ClinicSite.MainSite {
     
     
-    public partial class Site {
+    public partial class Contacts {
         
         /// <summary>
         /// log_phone control.
@@ -31,12 +31,12 @@ namespace ClinicSite {
         protected global::System.Web.UI.WebControls.TextBox log_psswrd;
         
         /// <summary>
-        /// LogIn control.
+        /// LogInAcc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogIn;
+        protected global::System.Web.UI.WebControls.Button LogInAcc;
     }
 }

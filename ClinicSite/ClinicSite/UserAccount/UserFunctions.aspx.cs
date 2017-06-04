@@ -61,7 +61,7 @@ namespace ClinicSite
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-            Session.RemoveAll();        
+            Session.Abandon();        
             Response.Redirect("~/Site.aspx");
         }
 
