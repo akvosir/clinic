@@ -13,17 +13,17 @@ namespace ClinicSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             HttpContext context = HttpContext.Current;
             if (context.Session["telephone"] != null)
             {
                 UserName.Text = Session["UserName"].ToString();
                 var id = Int32.Parse(Session["id"].ToString());
                 string dt = Session["date"].ToString();
-                                
-                String formatForMySql = DateTime.ParseExact(dt, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).Date.ToString("yyy-MM-dd");
-                //DateTime date = DateTime.Parse(dt);
-                //String formatForMySql = date.Date.ToString("yyy-MM-dd");
+
+                //String formatForMySql = DateTime.ParseExact(dt, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).Date.ToString("yyy-MM-dd");
+                DateTime date = DateTime.Parse(dt);
+                String formatForMySql = date.Date.ToString("yyy-MM-dd");
 
                 visit_results(id, formatForMySql);
                 medicine_table(id, formatForMySql);
@@ -41,7 +41,7 @@ namespace ClinicSite
             using (MySqlConnection con = Connection())
             {
 
-                using (MySqlCommand cmd = con.CreateCommand()) 
+                using (MySqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "SELECT start_med, end_med, howtotake, medicine.medicine_name FROM medicine_patient " +
                      "INNER JOIN medicine ON medicine_patient.id_medicine = medicine.id_medicine INNER JOIN visits ON medicine_patient.id_visit = visits.id_visit " +
@@ -73,7 +73,7 @@ namespace ClinicSite
             using (MySqlConnection con = Connection())
             {
 
-                using (MySqlCommand cmd = con.CreateCommand()) 
+                using (MySqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "SELECT visit_date, reason, symptoms, diagnosis, " +
                      "doctor_specialty.name_specialty, recom_analysis, next_visit, patient_card.name, patient_card.surname, patient_card.fathers_name " +
@@ -100,7 +100,15 @@ namespace ClinicSite
                             {
                                 rsr_analysis.Text = "Не призначено";
                             }
-                            rsr_next_date.Text = reader.GetDateTime(6).ToString("dd-MM-yyyy");
+                            string nullDate = "00.00.0000";
+                            if (reader.GetMySqlDateTime(6).ToString() != nullDate)
+                            {
+                                rsr_next_date.Text = reader.GetMySqlDateTime(6).ToString();
+                            }
+                            else
+                            {
+                                rsr_next_date.Text = "Не призначено";
+                            }
                             rsr_name.Text = reader.GetString(8) + " " + reader.GetString(7) + " " + reader.GetString(9);
 
                         }
@@ -112,8 +120,11 @@ namespace ClinicSite
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-            Session.Abandon();
-            Response.Redirect("~/Site.aspx");
+            Session["id"] = null;
+            Session["telephone"] = null;
+            Session["date"] = null;
+            Session["UserName"] = null;
+            Response.Redirect("../MainSite/LogIn.aspx");
         }
 
         protected void docChoose_Click(object sender, EventArgs e)
@@ -122,7 +133,7 @@ namespace ClinicSite
         }
 
         protected void visits_Click(object sender, EventArgs e)
-        {            
+        {
             Response.Redirect("Visits.aspx?");
         }
     }

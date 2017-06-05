@@ -10,7 +10,7 @@
 namespace ClinicSite.MainSite {
     
     
-    public partial class LogIn {
+    public partial class DocInfo {
         
         /// <summary>
         /// ScriptManager1 control.

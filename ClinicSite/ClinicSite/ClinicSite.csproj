@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=17.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.17.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -120,7 +124,9 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\my.css" />
     <Content Include="MainSite\Contacts.aspx" />
+    <Content Include="MainSite\DocInfo.aspx" />
     <Content Include="MainSite\LogIn.aspx" />
+    <Content Include="MainSite\Registration.aspx" />
     <Content Include="UserAccount\chooseDoctor.aspx" />
     <Content Include="css\bootstrap-combined.min.css" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
@@ -174,12 +180,26 @@
     <Compile Include="MainSite\Contacts.aspx.designer.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MainSite\DocInfo.aspx.cs">
+      <DependentUpon>DocInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainSite\DocInfo.aspx.designer.cs">
+      <DependentUpon>DocInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MainSite\LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainSite\LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainSite\Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainSite\Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainSite\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

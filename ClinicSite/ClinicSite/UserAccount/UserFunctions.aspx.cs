@@ -61,8 +61,11 @@ namespace ClinicSite
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-            Session.Abandon();        
-            Response.Redirect("~/Site.aspx");
+            Session["id"] = null;
+            Session["telephone"] = null;
+            Session["date"] = null;
+            Session["UserName"] = null;
+            Response.Redirect("../MainSite/LogIn.aspx");
         }
 
         protected void visits_Click(object sender, EventArgs e)

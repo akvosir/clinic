@@ -1,5 +1,4 @@
-﻿using clinic;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,30 +8,10 @@ using System.Web.UI.WebControls;
 
 namespace ClinicSite.MainSite
 {
-    public partial class LogIn : System.Web.UI.Page
+    public partial class DocInfo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Check();
-            }
-
-        }
-
-        private void Check()
-        {            
-            try
-            {
-                using (MySqlConnection cn = Connection())
-                {
-                    cn.Open();
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>alert('Can not connect to database');</script>");
-            }
 
         }
 
@@ -41,9 +20,9 @@ namespace ClinicSite.MainSite
             MySqlConnection connection = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; CharSet = utf8");
             return connection;
         }
-              
+
         protected void LogInAcc_Click(object sender, EventArgs e)
-        {        
+        {
             int? id = GetUserID();
 
             if (id.HasValue)
