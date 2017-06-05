@@ -21,10 +21,6 @@ namespace clinic.Doctor_Pages
             }
         }
 
-        //suuuka
-        //esli dannye pro visit uzhe est'
-
-
         protected void addVisitData(int id)
         {
             using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
@@ -45,13 +41,21 @@ namespace clinic.Doctor_Pages
                         {
                             try
                             {
+                                var collection = RadComboBox1.CheckedItems;
+                                string str = string.Empty;
+                                foreach (var item in collection)
+                                {
+                                    str += item.Text + ", ";
+                                }
+                                
+
                                 cmd.Connection = con;
                                 cmd.Parameters.AddWithValue("@visit_date", DateTime.Now);
                                 cmd.Parameters.AddWithValue("@reason", dc_reason.Text);
                                 cmd.Parameters.AddWithValue("@symptoms", dc_symptoms.Text);
                                 cmd.Parameters.AddWithValue("@diagnosis", dc_diagnosis.Text);
                                 cmd.Parameters.AddWithValue("@recom_consult", specialists.SelectedValue);
-                                cmd.Parameters.AddWithValue("@recom_analysis", analys.SelectedValue);
+                                cmd.Parameters.AddWithValue("@recom_analysis", str.Trim().TrimEnd(','));
                                 cmd.Parameters.AddWithValue("@next_visit", DateTime.Parse(dc_next.Text));
                                 cmd.Parameters.AddWithValue("@patient_id", id);
                                 cmd.Parameters.AddWithValue("@doctor_id", UserS.id);
@@ -206,8 +210,8 @@ namespace clinic.Doctor_Pages
                             sda.Fill(ds);
                             if (ds.Rows.Count > 0)
                             {
-                                analys.DataSource = ds;
-                                analys.DataBind();
+                                RadComboBox1.DataSource = ds;
+                                RadComboBox1.DataBind();
 
                             }
 

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic
 {
-    public partial class administration_rooms_manag : System.Web.UI.Page
+    public partial class administration_rooms_manag : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,6 +71,8 @@ namespace clinic
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    ShowNotification("Номер кабінету змінений!", WarningType.Success);
+                    Response.AddHeader("REFRESH", "2; URL = administration_rooms_manag.aspx");
                 }
             }
             rooms_table.EditIndex = -1; 

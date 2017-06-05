@@ -40,6 +40,15 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.WebControls.LinkButton an;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// pat_name control.
         /// </summary>
         /// <remarks>
@@ -139,13 +148,13 @@ namespace clinic.Doctor_Pages {
         protected global::System.Web.UI.WebControls.DropDownList specialists;
         
         /// <summary>
-        /// analys control.
+        /// RadComboBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox analys;
+        protected global::Telerik.Web.UI.RadComboBox RadComboBox1;
         
         /// <summary>
         /// dc_next control.

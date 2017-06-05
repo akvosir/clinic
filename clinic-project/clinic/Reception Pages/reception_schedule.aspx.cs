@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic
 {
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class WebForm3 : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -86,9 +86,14 @@ namespace clinic
                             sda.Fill(ds);
                             if (ds.Rows.Count > 0)
                             {
+                                novis.Visible = false;
                                 GridView1.DataSource = ds;
                                 GridView1.DataBind();
                                 GridView1.UseAccessibleHeader = true;
+                            }
+                            else
+                            {
+                                novis.Visible = true;
                             }
 
                         }
@@ -114,9 +119,14 @@ namespace clinic
                             sda.Fill(ds);
                             if (ds.Rows.Count > 0)
                             {
+                                novis.Visible = false;
                                 GridView2.DataSource = ds;
                                 GridView2.DataBind();
                                 GridView2.UseAccessibleHeader = true;
+                            }
+                            else
+                            {
+                                novis.Visible = true;
                             }
 
                         }
@@ -147,6 +157,10 @@ namespace clinic
                     con.Close();
                     GridView1.DataSource = null;
                     GridView1.DataBind();
+                    ShowNotification("Прийом скасовано!", WarningType.Success);
+
+                    System.Threading.Thread.Sleep(2000);
+                    Response.Redirect(Request.RawUrl);
                 }
             }
 

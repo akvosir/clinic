@@ -174,6 +174,7 @@ namespace clinic
                             cmd.Dispose();
                             con.Close();
                             ShowNotification("Прийом назначений!", WarningType.Success);
+                            Response.AddHeader("REFRESH", "2; URL = reception_schedule.aspx");
                         }
                         catch(Exception ex) {
                             throw ex;

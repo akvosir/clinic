@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="doctor.Master" AutoEventWireup="true" CodeBehind="doctor_card.aspx.cs" Inherits="clinic.Doctor_Pages.doctor_card" %>
 
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderMenu" runat="server">
     <li class="active">
         <asp:LinkButton runat="server" ID="sc" OnClick="sc_Click">
@@ -22,6 +24,7 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="col-md-16">
         <div class="card">
             <div class="header">
@@ -108,8 +111,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Аналіз</label>
-                            <asp:ListBox ID="analys" Rows="6" DataValueField="analysis_name" DataTextField="analysis_name" class="form-control"  runat="server" >
-                            </asp:ListBox>
+                            <telerik:RadComboBox ID="RadComboBox1" class="form-control" runat="server" CheckBoxes="true" DataValueField="analysis_name" DataTextField="analysis_name"></telerik:RadComboBox>
                         </div>
                     </div>
                 </div>

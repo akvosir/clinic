@@ -69,13 +69,5 @@ namespace clinic.Doctor_Pages
                 d_schedule(DateTime.Parse(date_bar.Text));
         }
 
-        protected void doc_schedule_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "card_clicked")
-            {
-                //HyperLink myHyperLink = e.Row.FindControl("Edit") as HyperLink;
-
-            }
-        }
     }
 }

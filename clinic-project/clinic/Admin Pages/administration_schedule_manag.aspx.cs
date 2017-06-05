@@ -118,13 +118,14 @@ namespace clinic.Admin_Pages
 
             using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
             {
-                int result = DateTime.Parse(start.Text).ToLongTimeString().CompareTo(DateTime.Parse(end.Text).ToLongTimeString());
+                TimeSpan time = TimeSpan.Parse(end.Text).Subtract(TimeSpan.Parse(start.Text));
+
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE doctor_shift SET shift = @shift, start = @start, end = @end WHERE doctor_id = " + doctors.SelectedValue +
                 " AND even_odd = " + Int32.Parse(day.Text)))
                 {
                     try
                     {
-                        if (result == -1)
+                        if (time > new TimeSpan(3, 0, 0))
                         {
                             cmd.Connection = con;
                             con.Open();
@@ -133,10 +134,13 @@ namespace clinic.Admin_Pages
                             cmd.Parameters.AddWithValue("@end", TimeSpan.Parse(end.Text));
                             cmd.ExecuteNonQuery();
                             con.Close();
+                            ShowNotification("Час роботи змінений!", WarningType.Success);
+                            Response.AddHeader("REFRESH", "2; URL = administration_schedule_manag.aspx");
                         }
                         else
                         {
                             ShowNotification("Початок зміни повинен бути раніше, ніж кінець, хоча б на три години!", WarningType.Danger);
+                            Response.AddHeader("REFRESH", "2; URL = administration_schedule_manag.aspx");
                         }
                     }
                     catch (Exception ex)

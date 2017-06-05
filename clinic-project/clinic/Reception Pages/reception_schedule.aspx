@@ -103,7 +103,11 @@
                 </asp:GridView>
             </div>
 
+            <div class="header">
+                <asp:Label runat="server" Font-Size="18px" ForeColor="Black" Text="Візитів на цей день немає!" ID="novis"  Visible="false"></asp:Label>
+            </div>
             <div class="content">
+                
                 <asp:GridView runat="server" ID="GridView2" DataKeyNames="id_app" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                     <Columns>
                         <asp:BoundField DataField="start_app" DataFormatString="{0:t}" HeaderText="Час" />

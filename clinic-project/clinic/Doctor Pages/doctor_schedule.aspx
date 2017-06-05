@@ -24,7 +24,7 @@
 
 
                         <div class="content table-responsive table-full-width">
-                            <asp:GridView runat="server" ID="doc_schedule" AutoGenereteSelectButton="true" OnRowCommand="doc_schedule_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
+                            <asp:GridView runat="server" ID="doc_schedule" AutoGenereteSelectButton="true" AutoGenerateColumns="false" Width="100%" CssClass="ui celled table" AllowPaging="true">
                                 <Columns>
                                     <asp:BoundField DataField="idpatient_card" HeaderText="Номер картки" />
                                     <asp:BoundField DataField="start_app" DataFormatString="{0:t}" HeaderText="Час прийому" />

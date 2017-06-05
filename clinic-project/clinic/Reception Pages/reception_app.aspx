@@ -90,7 +90,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>ЧАС</label>
-                                        <telerik:RadTimePicker ID="RadTimePicker1" runat="server" TimeView-StartTime="09:00:00" TimeView-EndTime="19:00:00" TimeView-Interval="00:30:00"></telerik:RadTimePicker>
+                                        <telerik:RadTimePicker ID="RadTimePicker1" runat="server" AutoPostBack="true"></telerik:RadTimePicker>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="RadTimePicker1" ErrorMessage="*"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>

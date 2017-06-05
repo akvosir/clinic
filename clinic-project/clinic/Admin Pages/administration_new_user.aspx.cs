@@ -60,6 +60,7 @@ namespace clinic
                             command.Dispose();
                             con.Close();
                             ShowNotification("Працівника додано!", WarningType.Success);
+                            Response.AddHeader("REFRESH", "2; URL = administration_new_user.aspx");
                         }
                         catch (Exception e)
                         {

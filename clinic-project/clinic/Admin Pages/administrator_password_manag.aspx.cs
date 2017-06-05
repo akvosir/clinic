@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace clinic.Admin_Pages
 {
-    public partial class administrator_password_manag : System.Web.UI.Page
+    public partial class administrator_password_manag : BootstrapPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -109,6 +109,8 @@ namespace clinic.Admin_Pages
                     cmd.Parameters.AddWithValue("@password", password.Text);
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    ShowNotification("Дані збережені!", WarningType.Success);
+                    Response.AddHeader("REFRESH", "2; URL = administrator_password_manag.aspx");
                 }
             }
             user_table.EditIndex = -1;
@@ -126,6 +128,8 @@ namespace clinic.Admin_Pages
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    ShowNotification("Працівника видалено!", WarningType.Success);
+                    Response.AddHeader("REFRESH", "2; URL = administrator_password_manag.aspx");
                 }
             }
             this.bindStaff();
