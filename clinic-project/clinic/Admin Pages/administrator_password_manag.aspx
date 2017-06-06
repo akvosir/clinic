@@ -26,12 +26,6 @@
             <p>Управління розкладом лікаря</p>
         </a>
     </li>
-    <li>
-        <a href="administrator_add.aspx">
-            <i class="pe-7s-clock"></i>
-            <p>Управління</p>
-        </a>
-    </li>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">

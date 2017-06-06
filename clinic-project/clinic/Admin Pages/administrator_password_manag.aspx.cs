@@ -19,7 +19,7 @@ namespace clinic.Admin_Pages
 
         protected void bindStaff()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM staff_login "))
@@ -47,7 +47,7 @@ namespace clinic.Admin_Pages
 
         protected void findStaff()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT id, name, surname, fathers_name, login, type FROM staff_login" ))
@@ -94,7 +94,7 @@ namespace clinic.Admin_Pages
             TextBox login = user_table.Rows[e.RowIndex].FindControl("admch_login") as TextBox;
             TextBox password = user_table.Rows[e.RowIndex].FindControl("admch_password") as TextBox;
 
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE staff_login SET surname= @surname, name =@name, fathers_name = @fathers_name, " +
@@ -120,7 +120,7 @@ namespace clinic.Admin_Pages
         protected void user_table_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             Label id = user_table.Rows[e.RowIndex].FindControl("lbl_id") as Label;
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("DELETE FROM staff_login WHERE id =" + Convert.ToInt32(id.Text)))
                 {

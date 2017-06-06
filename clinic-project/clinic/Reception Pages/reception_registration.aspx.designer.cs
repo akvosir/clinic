@@ -139,6 +139,15 @@ namespace clinic {
         protected global::AjaxControlToolkit.MaskedEditExtender MaskedEditExtender1;
         
         /// <summary>
+        /// rec_password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox rec_password;
+        
+        /// <summary>
         /// rec_submitButton control.
         /// </summary>
         /// <remarks>

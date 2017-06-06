@@ -22,7 +22,7 @@ namespace clinic.Doctor_Pages
 
          protected void medicine_table(int id, String date)
          {
-             using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+             using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
              {
 
                  using (MySqlCommand cmd = new MySqlCommand("SELECT start_med, end_med, howtotake, medicine.medicine_name FROM medicine_patient " +
@@ -53,7 +53,7 @@ namespace clinic.Doctor_Pages
 
         protected void visit_results(int id, String date)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT visit_date, reason, symptoms, diagnosis, " +

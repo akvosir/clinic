@@ -114,6 +114,7 @@ namespace clinic.Doctor_Pages
                             cmd.Dispose();
                             con.Close();
                             ShowNotification("Прийом збережено!", WarningType.Success);
+                            Response.AddHeader("REFRESH", "2; URL = doctor_schedule.aspx");
                         }
                         catch(Exception ex) {
                             throw ex;
@@ -140,10 +141,15 @@ namespace clinic.Doctor_Pages
             Response.Redirect("doctor_analysis.aspx?ID=" + Server.UrlEncode(id));
         }
 
-        //mild bug
         protected void app_an_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(app_an_date.Text))
+            {
+
+            }
+            else {
                 analysisTimer();
+            }
             
         }
 

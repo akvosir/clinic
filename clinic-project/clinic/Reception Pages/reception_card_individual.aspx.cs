@@ -28,7 +28,7 @@ namespace clinic
 
         protected void visits(int id)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT doctors.doctor_surname, doctors.doctor_name, doctors.doctor_fathersname, visits.visit_date FROM doctors " +
@@ -60,24 +60,29 @@ namespace clinic
 
         protected void generalInfo()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
+                MySqlCommand command = new MySqlCommand("SELECT idpatient_card from patient_card order by idpatient_card DESC LIMIT 1");
+                command.Connection = con;
+                con.Open();
+                int id = Int32.Parse(command.ExecuteScalar().ToString());
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, surname, name, fathers_name, birthday, gender, email, " +
-                    "address, city, zip_code, telephone FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient ORDER BY idpatient_card DESC LIMIT 1")) 
+                    "address, city, zip_code, telephone FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient " +
+                    "WHERE idpatient_card = " + id)) 
                 {
                     using (MySqlDataAdapter sda = new MySqlDataAdapter())
                     {
                         cmd.Connection = con;
                         sda.SelectCommand = cmd;
-                        con.Open();
                         MySqlDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read())
                         {
                             rci_id.Text = reader.GetInt32(0).ToString();
                             rci_surname.Text = reader.GetString(1);
-                            rci_name.Text = reader.GetString(2);
+                            rci_name.Text = reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3);
+                            rci_editname.Text = reader.GetString(2);
                             rci_fathers.Text = reader.GetString(3);
                             rci_birthday.Text = reader.GetDateTime(4).ToString();
                             ddlGender.SelectedValue = reader.GetString(5);
@@ -125,7 +130,7 @@ namespace clinic
 
         protected void fillTextBoxes(int id)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, surname, name, fathers_name, birthday, gender, email, " +
@@ -187,7 +192,7 @@ namespace clinic
 
         protected void updateDB()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE patient_card SET surname = @surname, name = @name, fathers_name = @fathers_name,  " +
                     "gender = @gender, email = @email, address = @address, city = @city, zip_code = @zip_code WHERE idpatient_card = " + Int32.Parse(rci_id.Text)))

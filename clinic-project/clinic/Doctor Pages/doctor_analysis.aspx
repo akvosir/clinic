@@ -36,7 +36,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>ОБРАТИ ТИП АНАЛІЗУ</label>
-                            <asp:DropDownList runat="server" ID="app_an" AutoPostBack="true" CausesValidation="true" OnSelectedIndexChanged="app_an_SelectedIndexChanged" DataValueField="id_analysis" DataTextField="analysis_name" class="form-control"></asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="app_an" OnSelectedIndexChanged="app_an_SelectedIndexChanged" AutoPostBack="true" DataValueField="id_analysis" DataTextField="analysis_name" class="form-control"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>ДАТА</label>
-                            <asp:TextBox runat="server" ID="app_an_date" type="date" CausesValidation="true" AutoPostBack="true" OnTextChanged="app_an_date_TextChanged" class="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="app_an_date" type="date" AutoPostBack="true" OnTextChanged="app_an_date_TextChanged" class="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="app_an_date" ErrorMessage="*"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <asp:Button runat="server" Text="Зберегти запис" CausesValidation="true" ID="an_save" OnClick="an_save_Click" type="submit" class="btn btn-info btn-fill pull-right"></asp:Button>
+                <asp:Button runat="server" Text="Зберегти запис" ID="an_save" OnClick="an_save_Click" type="submit" class="btn btn-info btn-fill pull-right"></asp:Button>
                 <div class="clearfix"></div>
             </div>
 

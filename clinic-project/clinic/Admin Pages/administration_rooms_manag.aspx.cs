@@ -20,7 +20,7 @@ namespace clinic
 
         protected void bindRooms()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT id_doctor, doctor_name, doctor_surname, doctor_fathersname, doctor_room FROM doctors"))
@@ -62,7 +62,7 @@ namespace clinic
         { 
             Label id = rooms_table.Rows[e.RowIndex].FindControl("lbl_id") as Label;
             TextBox name = rooms_table.Rows[e.RowIndex].FindControl("txt_Room") as TextBox;
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("UPDATE doctors SET doctor_room =" + Convert.ToInt32(name.Text)+ " WHERE id_doctor = "  + Convert.ToInt32(id.Text)))

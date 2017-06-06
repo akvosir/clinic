@@ -20,7 +20,7 @@ namespace clinic.Admin_Pages
 
         protected void bindDoctors()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = jnFq8Gk5Gk"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT doctors.id_doctor,  CONCAT_WS(' ', doctors.doctor_surname, doctors.doctor_name, doctors.doctor_fathersname) AS 'name' " +
                     "FROM `doctors`", con))
@@ -45,7 +45,7 @@ namespace clinic.Admin_Pages
         }
         protected void bindDoctorSchedule()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT shift, start, end, even_odd  FROM doctor_shift WHERE doctor_id =" + doctors.SelectedValue))
@@ -116,7 +116,7 @@ namespace clinic.Admin_Pages
             DropDownList shift = schedule_table.Rows[e.RowIndex].FindControl("dd_shift") as DropDownList;
             Label day = schedule_table.Rows[e.RowIndex].FindControl("lbl_day") as Label;
 
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 TimeSpan time = TimeSpan.Parse(end.Text).Subtract(TimeSpan.Parse(start.Text));
 
@@ -168,7 +168,7 @@ namespace clinic.Admin_Pages
 
         protected void save_adding_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("INSERT INTO doctor_shift (even_odd, shift, start, end, doctor_id) VALUES (@even_odd1, @shift1, @start1, @end1, @doctor_id1), (@even_odd2, @shift2, @start2, @end2, @doctor_id2)", con))
                 {

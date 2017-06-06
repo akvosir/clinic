@@ -21,7 +21,7 @@ namespace clinic
 
         protected void doc_dropdown()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', doctor_surname, doctor_name, doctor_fathersname) AS 'name', id_doctor FROM doctors"))
                 {
@@ -46,7 +46,7 @@ namespace clinic
 
         protected void pat_dropdown()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@" Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', surname, name, fathers_name) AS 'name', idpatient_card FROM patient_card"))
                 {
@@ -71,7 +71,7 @@ namespace clinic
 
         protected void d_schedule()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT id_app, start_app, patient_card.name, patient_card.surname, patient_card.fathers_name " +
                     "FROM `doctor_schedule` INNER JOIN patient_card ON patient_card.idpatient_card = patient " +
@@ -104,7 +104,7 @@ namespace clinic
 
         protected void pat_schedule()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT id_app, start_app, doctors.doctor_surname, doctors.doctor_name, doctors.doctor_fathersname " +
                     "FROM `doctor_schedule` INNER JOIN doctors ON doctors.id_doctor = doctor " +
@@ -147,7 +147,7 @@ namespace clinic
         {
             int rowIndex = ((sender as LinkButton).NamingContainer as GridViewRow).RowIndex;
             int id = Convert.ToInt32(GridView1.DataKeys[rowIndex].Values[0]);
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("DELETE FROM doctor_schedule WHERE id_app =" + id))
                 {
@@ -199,7 +199,7 @@ namespace clinic
         {
             int rowIndex = ((sender as LinkButton).NamingContainer as GridViewRow).RowIndex;
             int id = Convert.ToInt32(GridView2.DataKeys[rowIndex].Values[0]);
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("DELETE FROM doctor_schedule WHERE id_app =" + id))
                 {

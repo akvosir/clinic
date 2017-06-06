@@ -144,6 +144,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Пароль для входу на сайт</label>
+                            <asp:TextBox runat="server" type="password" ID="rec_password" class="form-control" placeholder="Пароль"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" Display="Dynamic" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="11px" ControlToValidate="rec_password"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9\w\.\-]{5,20}$" ControlToValidate="rec_password" ErrorMessage="Більше 5 символів латиницею!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                        </div>
+                    </div>
+                </div>
+
                 <asp:Button runat="server" Text="Додати пацієнта" OnClick="rec_submitButton_Click" type="submit" ID="rec_submitButton" class="btn btn-info btn-fill pull-right"></asp:Button>
                 <div class="clearfix"></div>
 

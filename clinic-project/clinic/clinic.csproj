@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin Pages\administration_schedule_manag.aspx" />
-    <Content Include="Admin Pages\administrator_add.aspx" />
     <Content Include="Admin Pages\administrator_password_manag.aspx" />
     <Content Include="Admin Pages\administration_new_user.aspx" />
     <Content Include="Admin Pages\administration_rooms_manag.aspx" />
@@ -168,13 +167,6 @@
     </Compile>
     <Compile Include="Admin Pages\administration_schedule_manag.aspx.designer.cs">
       <DependentUpon>administration_schedule_manag.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin Pages\administrator_add.aspx.cs">
-      <DependentUpon>administrator_add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin Pages\administrator_add.aspx.designer.cs">
-      <DependentUpon>administrator_add.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin Pages\administrator_password_manag.aspx.cs">
       <DependentUpon>administrator_password_manag.aspx</DependentUpon>

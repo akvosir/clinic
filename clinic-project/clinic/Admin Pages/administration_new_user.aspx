@@ -26,12 +26,6 @@
             <p>Управління розкладом лікаря</p>
         </a>
     </li>
-    <li>
-        <a href="administration_schedule_manag.aspx">
-            <i class="pe-7s-clock"></i>
-            <p>Управління</p>
-        </a>
-    </li>
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
@@ -90,7 +84,7 @@
                                         <asp:Label runat="server">Пароль</asp:Label>
                                         <asp:TextBox runat="server" ID="admin_password" type="password" class="form-control" placeholder="Пароль"></asp:TextBox>
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="admin_password" ErrorMessage="Заповніть поле" ForeColor="#dd4242" Font-Size="11px"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9]{5,20}$" ControlToValidate="admin_password" ErrorMessage="Більше 5 символів латиницею!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="[a-z || A-Z || 0-9\w\.\-]{5,20}$" ControlToValidate="admin_password" ErrorMessage="Більше 5 символів латиницею!" ForeColor="#dd4242" Font-Size="11px"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 

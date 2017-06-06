@@ -20,7 +20,7 @@ namespace clinic.Doctor_Pages
 
         protected void bindSpecialists()
         {
-            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM doctor_specialty WHERE id_specialty > 0", con))
                 {
@@ -46,7 +46,7 @@ namespace clinic.Doctor_Pages
 
         protected void bindSpecialistsByName()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT CONCAT_WS(' ', doctor_surname, doctor_name, doctor_fathersname) AS 'name', id_doctor " +
                     "FROM doctors WHERE doctor_specialty = " + "'" + app_spec.SelectedValue + "'"))
@@ -119,7 +119,7 @@ namespace clinic.Doctor_Pages
 
         protected void docshift(List<TimeSpan> sh1)
         {
-            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 if (even_odd(DateTime.Parse(app_spec_date.Text)) == 0)
                 {
@@ -174,7 +174,7 @@ namespace clinic.Doctor_Pages
 
         protected void doc()
         {
-            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT time_app FROM time_table ta INNER JOIN doctor_shift ds ON ds.shift = ta.shift INNER JOIN doctor_schedule dsc ON dsc.doctor = ds.doctor_id " +
                     "WHERE date(dsc.start_app)= '" + DateTime.Parse(app_spec_date.Text).ToString("yyyy-MM-dd") + "' AND dsc.doctor = " + app_spec_name.SelectedValue +

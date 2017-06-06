@@ -21,7 +21,7 @@ namespace clinic
 
         protected void Bind()
         {
-            using (MySqlConnection con = new MySqlConnection("Server = sql11.freemysqlhosting.net; Database = sql11175574;  Port = 3306; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection("Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT idpatient_card, surname, name, fathers_name, birthday, gender, email, " +
                     "address, city, zip_code, telephone  FROM patient_card INNER JOIN patient_login ON idpatient_card = patient_login.id_patient"))

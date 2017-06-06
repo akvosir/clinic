@@ -20,7 +20,7 @@ namespace clinic
 
         protected void OkButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'");
+            MySqlConnection connection = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8");
             connection.Open();
             MySqlCommand com = connection.CreateCommand();
             com.CommandType = CommandType.Text;
@@ -65,7 +65,7 @@ namespace clinic
         }
 
         protected void user() {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM staff_login WHERE login = '" + loginTextBox.Text + "' and password = '" + passwordTextBox.Text + "'"))
@@ -94,7 +94,7 @@ namespace clinic
 
         protected void doctor()
         {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
 
                 using (MySqlCommand cmd = new MySqlCommand("SELECT id_doctor, doctor_name, doctor_surname, doctor_fathersname FROM staff_login INNER JOIN doctors ON staff_login.surname = doctors.doctor_surname" +

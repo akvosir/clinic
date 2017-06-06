@@ -13,22 +13,14 @@ namespace clinic.Doctor_Pages
         {
             if (!IsPostBack)
             {
-                if(Session["vis_exists"] == null)
-                {
                     d_schedule(DateTime.Now.Date);
-                }
-                else if (Session["vis_exists"].ToString().Equals("exists"))
-                {
-                    ShowNotification("Візит вже існує!", WarningType.Warning);
-                    d_schedule(DateTime.Now.Date);
-                }
                  
             }
         }
 
         protected void d_schedule(DateTime date)
         {
-            using (MySqlConnection con = new MySqlConnection(@"Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT patient_card.idpatient_card, patient_card.name, patient_card.surname, patient_card.fathers_name, start_app FROM doctor_schedule " +
                     "INNER JOIN patient_card ON patient = patient_card.idpatient_card WHERE doctor = " + UserS.id + " AND date(start_app) = '" + date.ToString("yyyy-MM-dd") + "'"))

@@ -15,7 +15,7 @@ namespace clinic
         }
 
         protected void addPatient() {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand command = new MySqlCommand("INSERT INTO patient_card (surname, name, fathers_name, birthday, gender, email, address, city, zip_code) " +
                 "VALUES (@surname, @name, @fathers_name, @birthday, @gender, @email, @address, @city, @zip_code)", con))
@@ -45,7 +45,7 @@ namespace clinic
         }
 
         protected void addPhone() {
-            using (MySqlConnection con = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; charset=utf8"))
+            using (MySqlConnection con = new MySqlConnection(@"Server = localhost; Database = clinic; Uid = root; Password = root; charset=utf8"))
             {
                 using (MySqlCommand command = new MySqlCommand("SELECT idpatient_card FROM patient_card WHERE name = @name AND surname = @surname AND " +
                     "fathers_name = @fathers_name AND birthday = @birthday", con))
@@ -60,9 +60,11 @@ namespace clinic
                         con.Open();
                         int id = Int32.Parse(command.ExecuteScalar().ToString());
 
-                        command.CommandText = "INSERT INTO patient_login (id_patient, telephone) VALUES (@id_patient, @telephone)";
+                        command.CommandText = "INSERT INTO patient_login (id_patient, telephone, password) VALUES (@id_patient, @telephone, @password)";
                         command.Parameters.AddWithValue("@id_patient", id);
                         command.Parameters.AddWithValue("@telephone", rec_number.Text);
+                        command.Parameters.AddWithValue("@password", rec_password.Text);
+                        
                         command.ExecuteNonQuery();
                     }
                     catch(Exception ex) {
