@@ -29,7 +29,7 @@
                                         <div class="form-group has-feedback">
                                             <label class="sr-only">Телефон</label>
                                             <asp:TextBox runat="server" type="text" ID="log_phone" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox>
-                                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" ClearMaskOnLostFocus="false" Mask="+999999999999" TargetControlID="log_phone" />                                            
+                                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" ClearMaskOnLostFocus="false" Mask="+999999999999" TargetControlID="log_phone" />
                                             <asp:RequiredFieldValidator runat="server" Display="Dynamic" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="12px" ControlToValidate="log_phone"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="form-group has-feedback">
@@ -80,6 +80,8 @@
                     <h1 class="text-center">Районна поліклініка</h1>
                     <h2>
                         <p class="lead text-center">Вітаємо Вас на сайті районної поліклініки без черг.</p>
+                        <p class="lead text-center">Ми працюємо дотримуючись універсальних правил надання медичної допомоги, які притаманні кращим медичним закладам розвинутого світу: професіоналізм, прозорість, відкритість, чесність, дотримання медичних стандартів та пріоритетність індивідуальних потреб кожного пацієнта та його близьких.</p>
+                        <p class="lead text-center">Відповідальність перед пацієнтами та співробітниками забезпечується веденням справи згідно вимог діючого законодавства України та впровадженням кращих зразків клінічної практики розвинутих країн, постійним інвестуванням у підвищення кваліфікації фахівців та розвиток матеріальної бази клініки.</p>
                     </h2>
                 </div>
             </div>

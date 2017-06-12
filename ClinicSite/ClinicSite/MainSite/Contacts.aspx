@@ -22,14 +22,16 @@
                                         <h4 class="modal-title">Кабінет</h4>
                                     </div>
                                     <div class="modal-body small">
-
+                                         <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
                                         <div class="form-group has-feedback">
                                             <label class="sr-only">Телефон</label>
-                                            <asp:TextBox runat="server" type="text" ID="log_phone" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox>                                            
+                                            <asp:TextBox runat="server" type="text" ID="log_phone" CssClass="form-control" placeholder="+38 (ХХХ) ХХХ-ХХ-ХХ"></asp:TextBox> 
+                                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" ClearMaskOnLostFocus="false" Mask="+999999999999" TargetControlID="log_phone" />                                            
+                                            <asp:RequiredFieldValidator runat="server" Display="Dynamic" ErrorMessage="Поле повинно бути заповненим" ForeColor="#dd4242" Font-Size="12px" ControlToValidate="log_phone"></asp:RequiredFieldValidator>                                           
                                         </div>
                                         <div class="form-group has-feedback">
                                             <label class="sr-only">Пароль</label>
-                                            <asp:TextBox runat="server" type="password" ID="log_psswrd" CssClass="form-control" placeholder="Введіть пароль"></asp:TextBox>                                            
+                                            <asp:TextBox runat="server" type="password" ID="log_psswrd" CssClass="form-control" placeholder="Введіть пароль"></asp:TextBox>                                                                                        
                                         </div>
                                         <asp:Button runat="server" Text="Ввійти" OnClick="LogInAcc_Click" ID="LogInAcc" CssClass="btn btn-primary btn-sm" />
                                     </div>

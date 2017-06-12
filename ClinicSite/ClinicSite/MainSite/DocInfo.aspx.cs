@@ -17,7 +17,8 @@ namespace ClinicSite.MainSite
 
         protected MySqlConnection Connection()
         {
-            MySqlConnection connection = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; CharSet = utf8");
+            MySqlConnection connection = new MySqlConnection(@" Server = localhost; Database = clinic_bd; Uid = root; Password = '12345'; CharSet = utf8");
+           // MySqlConnection connection = new MySqlConnection(@" Server = sql11.freemysqlhosting.net; Database = sql11175574; Uid = sql11175574; Password = 'jnFq8Gk5Gk'; CharSet = utf8");
             return connection;
         }
 
